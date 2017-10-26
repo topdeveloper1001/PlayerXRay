@@ -365,10 +365,10 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
 
             foreach (var playerstatistic in playerStatistics)
             {
-                var riverActions = playerstatistic.HandHistory.HandActions
-                    .Where(x => x.Street == Street.River && x.PlayerName == playerstatistic.Playerstatistic.PlayerName).ToList();
+                var riverActions = playerstatistic.HandHistory.River.ToList();
+                var playerRiverActions = riverActions.Where(x => x.PlayerName == playerstatistic.Playerstatistic.PlayerName).ToList();
 
-                if (CompareHandActionsWithObligatoryHandActions(riverActions, riverObligatoryActions))
+                if (CompareHandActionsWithObligatoryHandActions(playerRiverActions, riverActions, riverObligatoryActions))
                 {
                     fileteredList.Add(playerstatistic);
                 }
@@ -385,10 +385,10 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
 
             foreach (var playerstatistic in playerStatistics)
             {
-                var turnActions = playerstatistic.HandHistory.HandActions
-                    .Where(x => x.Street == Street.Turn && x.PlayerName == playerstatistic.Playerstatistic.PlayerName).ToList();
+                var turnActions = playerstatistic.HandHistory.Turn.ToList();
+                var playerTurnActions = turnActions.Where(x => x.PlayerName == playerstatistic.Playerstatistic.PlayerName).ToList();
 
-                if (CompareHandActionsWithObligatoryHandActions(turnActions, turnObligatoryActions))
+                if (CompareHandActionsWithObligatoryHandActions(playerTurnActions, turnActions, turnObligatoryActions))
                 {
                     fileteredList.Add(playerstatistic);
                 }
@@ -405,10 +405,10 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
 
             foreach (var playerstatistic in playerStatistics)
             {
-                var flopActions = playerstatistic.HandHistory.HandActions
-                    .Where(x => x.Street == Street.Flop && x.PlayerName == playerstatistic.Playerstatistic.PlayerName).ToList();
+                var flopActions = playerstatistic.HandHistory.Flop.ToList();
+                var playerFlopActions = flopActions.Where(x => x.PlayerName == playerstatistic.Playerstatistic.PlayerName).ToList();
 
-                if (CompareHandActionsWithObligatoryHandActions(flopActions, flopObligatoryActions))
+                if (CompareHandActionsWithObligatoryHandActions(playerFlopActions, flopActions, flopObligatoryActions))
                 {
                     fileteredList.Add(playerstatistic);
                 }
@@ -424,11 +424,12 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
 
             foreach (var playerstatistic in playerStatistics)
             {
-                List<HandAction> preflopActions = playerstatistic.HandHistory.HandActions
-                    .Where(x => x.Street == Street.Preflop && x.PlayerName == playerstatistic.Playerstatistic.PlayerName &&
-                        x.HandActionType != HandActionType.SMALL_BLIND && x.HandActionType != HandActionType.BIG_BLIND).ToList();
+                var preflopActions = playerstatistic.HandHistory.PreFlop.ToList();
+                var playerPreFlopActions = preflopActions
+                    .Where(x => x.PlayerName == playerstatistic.Playerstatistic.PlayerName &&
+                       x.HandActionType != HandActionType.SMALL_BLIND && x.HandActionType != HandActionType.BIG_BLIND).ToList();
 
-                if (CompareHandActionsWithObligatoryHandActions(preflopActions, preflopObligatoryActions))
+                if (CompareHandActionsWithObligatoryHandActions(playerPreFlopActions, preflopActions, preflopObligatoryActions))
                 {
                     fileteredList.Add(playerstatistic);
                 }
@@ -437,7 +438,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             return fileteredList;
         }
 
-        private static bool CompareHandActionsWithObligatoryHandActions(List<HandAction> heroHandActions, List<ActionTypeEnum> obligatoryHandActions)
+        private static bool CompareHandActionsWithObligatoryHandActions(List<HandAction> heroHandActions, List<HandAction> handActions, List<ObligatoryAction> obligatoryHandActions)
         {
             if (heroHandActions.Count < obligatoryHandActions.Count)
             {
@@ -446,8 +447,32 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
 
             for (int i = 0; i < obligatoryHandActions.Count; i++)
             {
-                if (heroHandActions[i].HandActionType == ToHandActionType(obligatoryHandActions[i]))
+                if (obligatoryHandActions[i].ActionType == ActionTypeEnum.Any ||
+                    heroHandActions[i].HandActionType == ToHandActionType(obligatoryHandActions[i].ActionType))
                 {
+                    if (obligatoryHandActions[i].MinValue != 0 || obligatoryHandActions[i].MaxValue != 0)
+                    {
+                        var potSize = 0m;
+
+                        foreach (var handAction in handActions)
+                        {
+                            if (handAction == heroHandActions[i])
+                            {
+                                var percentOfPotSize = (double)(handAction.Amount / potSize * 100m);
+
+                                if (percentOfPotSize >= obligatoryHandActions[i].MinValue &&
+                                    percentOfPotSize <= obligatoryHandActions[i].MaxValue)
+                                {
+                                    break;
+                                }
+
+                                return false;
+                            }
+
+                            potSize += handAction.Amount;
+                        }
+                    }
+
                     continue;
                 }
 
@@ -478,29 +503,67 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             }
         }
 
-        private static List<ActionTypeEnum> GetObligatoryActions(ActionSettings actionSettings)
+        private static List<ObligatoryAction> GetObligatoryActions(ActionSettings actionSettings)
         {
-            List<ActionTypeEnum> list = new List<ActionTypeEnum>();
+            var list = new List<ObligatoryAction>();
 
-            if (actionSettings.FirstType == ActionTypeEnum.Any && actionSettings.SecondType == ActionTypeEnum.Any && actionSettings.FirstType == ActionTypeEnum.Any && actionSettings.FourthType == ActionTypeEnum.Any)
+            if (actionSettings.FirstType == ActionTypeEnum.Any && actionSettings.SecondType == ActionTypeEnum.Any
+                && actionSettings.FirstType == ActionTypeEnum.Any && actionSettings.FourthType == ActionTypeEnum.Any)
+            {
                 return list;
+            }
 
-            list.Add(actionSettings.FirstType);
+            var firstAction = new ObligatoryAction
+            {
+                ActionType = actionSettings.FirstType,
+                MaxValue = actionSettings.FirstMaxValue,
+                MinValue = actionSettings.FirstMinValue
+            };
 
-            if (actionSettings.SecondType == ActionTypeEnum.Any && actionSettings.ThirdType == ActionTypeEnum.Any && actionSettings.FourthType == ActionTypeEnum.Any)
+            list.Add(firstAction);
+
+            if (actionSettings.SecondType == ActionTypeEnum.Any && actionSettings.ThirdType == ActionTypeEnum.Any &&
+                actionSettings.FourthType == ActionTypeEnum.Any)
+            {
                 return list;
+            }
 
-            list.Add(actionSettings.SecondType);
+            var secondAction = new ObligatoryAction
+            {
+                ActionType = actionSettings.SecondType,
+                MaxValue = actionSettings.SecondMaxValue,
+                MinValue = actionSettings.SecondMinValue
+            };
+
+            list.Add(secondAction);
 
             if (actionSettings.ThirdType == ActionTypeEnum.Any && actionSettings.FourthType == ActionTypeEnum.Any)
+            {
                 return list;
+            }
 
-            list.Add(actionSettings.ThirdType);
+            var thirdAction = new ObligatoryAction
+            {
+                ActionType = actionSettings.ThirdType,
+                MaxValue = actionSettings.ThirdMaxValue,
+                MinValue = actionSettings.ThirdMinValue
+            };
+
+            list.Add(thirdAction);
 
             if (actionSettings.FourthType == ActionTypeEnum.Any)
+            {
                 return list;
+            }
 
-            list.Add(actionSettings.FourthType);
+            var fourthdAction = new ObligatoryAction
+            {
+                ActionType = actionSettings.FourthType,
+                MaxValue = actionSettings.FourthMaxValue,
+                MinValue = actionSettings.FourthMinValue
+            };
+
+            list.Add(fourthdAction);
 
             return list;
         }
@@ -656,7 +719,6 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             return fileteredList;
         }
 
-
         private static List<PlayerstatisticExtended> FilterByPositionThreeBetCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
         {
             if (!settings.PositionBB3Bet && !settings.PositionSB3Bet && !settings.PositionButton3Bet &&
@@ -772,6 +834,19 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             return fileteredList;
         }
 
-        #endregion      
+        #endregion
+
+        #region Helpers 
+
+        private class ObligatoryAction
+        {
+            public ActionTypeEnum ActionType { get; set; }
+
+            public double MaxValue { get; set; }
+
+            public double MinValue { get; set; }
+        }
+
+        #endregion
     }
 }
