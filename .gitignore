@@ -264,3 +264,14 @@ __pycache__/
 *.pyc
 /.gitattributes
 /temp
+/DriveHUD.Common
+/DriveHUD.Common.Infrastructure
+/DriveHUD.Common.Resources
+/DriveHUD.Common.Wpf
+/DriveHUD.Controls
+/DriveHUD.Entities
+/DriveHUD.ViewModels
+/Model
+/PokerHandHistoryParser
+/tools/build/include
+/tools/build/modules
