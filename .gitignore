@@ -275,3 +275,7 @@ __pycache__/
 /PokerHandHistoryParser
 /tools/build/include
 /tools/build/modules
+/Certificates
+/DriveHUD.EquityCalculator
+/DriveHUD.EquityCalculator.Base
+/tools/BuildFileHash

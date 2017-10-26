@@ -39,7 +39,7 @@ param
     [ValidateSet('Debug', 'Info', 'Notice', 'Warning', 'Error')]
     [string] $LogLevel = 'Debug',
 
-    [int] $StartRevision = 512,
+    [int] $StartRevision = 1740,
 
     [string] $LicSolution = 'PlayerXRayReg.sln',
 
