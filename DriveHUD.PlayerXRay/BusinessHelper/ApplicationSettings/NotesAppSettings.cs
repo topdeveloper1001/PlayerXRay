@@ -43,6 +43,8 @@ namespace DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings
 
         public bool AllHoleCards { get; set; }
 
+        public bool IsAdvancedLogEnabled { get; set; }
+
         public int HoleCardsNumber { get; set; }
 
         public string ServerConnectionString { get; set; }

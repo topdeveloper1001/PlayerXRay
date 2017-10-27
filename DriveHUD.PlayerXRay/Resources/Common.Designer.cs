@@ -70,6 +70,15 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        internal static string XRay_LicenseType_None {
+            get {
+                return ResourceManager.GetString("XRay_LicenseType_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         internal static string XRay_RegistrationView_Back {

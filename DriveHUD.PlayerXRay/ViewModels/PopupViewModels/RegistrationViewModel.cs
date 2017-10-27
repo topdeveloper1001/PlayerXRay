@@ -611,6 +611,20 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
             }
         }
 
+        private Action callback;
+
+        public Action Callback
+        {
+            get
+            {
+                return callback;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref callback, value);
+            }
+        }
+
         #endregion      
 
         #region Implementation of IPopupInteractionAware
@@ -665,6 +679,7 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
                 return;
             }
 
+            Callback?.Invoke();
             FinishInteraction?.Invoke();
         }
 
@@ -785,7 +800,7 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
                 InitializeMessage("XRay_RegistrationView_InvalidSerial");
                 return false;
             }
-           
+
             return true;
         }
 
@@ -795,7 +810,7 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
             {
                 return;
             }
-            
+
             InitializeMessage("XRay_RegistrationView_Success", true);
         }
 

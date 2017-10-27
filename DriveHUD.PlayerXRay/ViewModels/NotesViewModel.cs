@@ -12,6 +12,7 @@
 
 using DriveHUD.Common.Linq;
 using DriveHUD.Common.Reflection;
+using DriveHUD.Common.Wpf.AttachedBehaviors;
 using DriveHUD.PlayerXRay.DataTypes;
 using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects;
 using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.ActionsObjects;
@@ -112,6 +113,8 @@ namespace DriveHUD.PlayerXRay.ViewModels
                         }
                     }
                 }
+
+                RaiseFilterBasedPropertyChanged();
             });
 
             selectedFiltersCollectionView = (CollectionView)CollectionViewSource.GetDefaultView(selectedFilters);
@@ -217,6 +220,75 @@ namespace DriveHUD.PlayerXRay.ViewModels
                     selectedFilters.Remove(selectedItem);
                 }
             });
+
+            NoteDragDropCommand = ReactiveCommand.Create();
+            NoteDragDropCommand.Subscribe(x =>
+            {
+                var dataObject = x as DragDropDataObject;
+
+                if (dataObject == null)
+                {
+                    return;
+                }
+
+                var note = dataObject.DropData as NoteObject;
+
+                if (note == null || ReferenceEquals(note, dataObject.Source))
+                {
+                    return;
+                }
+
+                var noteParent = FindNoteParent(note);
+
+                // remove note from parent object
+                if (noteParent is InnerGroupObject)
+                {
+                    (noteParent as InnerGroupObject).Notes.Remove(note);
+                }
+                else if (noteParent is StageObject)
+                {
+                    (noteParent as StageObject).Notes.Remove(note);
+                }
+
+                if (dataObject.Source is InnerGroupObject)
+                {
+                    (dataObject.Source as InnerGroupObject).Notes.Add(note);
+                }
+                else if (dataObject.Source is NoteObject)
+                {
+                    var sourceNoteParent = FindNoteParent(dataObject.Source as NoteObject);
+
+                    if (sourceNoteParent is InnerGroupObject)
+                    {
+                        (sourceNoteParent as InnerGroupObject).Notes.Add(note);
+                    }
+                    else if (sourceNoteParent is StageObject)
+                    {
+                        (sourceNoteParent as StageObject).Notes.Add(note);
+                    }
+                }
+            });
+        }
+
+        private NoteTreeObjectBase FindNoteParent(NoteObject note)
+        {
+            foreach (var stage in Stages)
+            {
+                if (stage.Notes.Any(x => ReferenceEquals(x, note)))
+                {
+                    return stage;
+                }
+
+                foreach (var group in stage.InnerGroups)
+                {
+                    if (group.Notes.Any(x => ReferenceEquals(x, note)))
+                    {
+                        return group;
+                    }
+                }
+            }
+
+            return null;
         }
 
         private void InitializeHoleCardsCollection()
@@ -298,7 +370,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
             flopHandValues = new ReactiveList<HandValueObject>(HandValuesHelper.GetHandValueObjects(NoteStageType.Flop));
             SubscribeOnHandValuesChanges(flopHandValues, ReflectionHelper.GetPath<NotesViewModel>(x => x.SelectedNote.Settings.FlopHvSettings.SelectedHv));
 
-            flopFlushDrawHandValues = new ReactiveList<HandValueObject>(HandValuesHelper.GetFlushHandValueObjects());
+            flopFlushDrawHandValues = new ReactiveList<HandValueObject>(HandValuesHelper.GetFlushHandValueObjects(NoteStageType.Flop));
             SubscribeOnHandValuesChanges(flopFlushDrawHandValues, ReflectionHelper.GetPath<NotesViewModel>(x => x.SelectedNote.Settings.FlopHvSettings.SelectedFlushDraws));
 
             flopStraightDrawHandValues = new ReactiveList<HandValueObject>(HandValuesHelper.GetStraightHandValueObjects());
@@ -307,7 +379,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
             turnHandValues = new ReactiveList<HandValueObject>(HandValuesHelper.GetHandValueObjects(NoteStageType.Turn));
             SubscribeOnHandValuesChanges(turnHandValues, ReflectionHelper.GetPath<NotesViewModel>(x => x.SelectedNote.Settings.TurnHvSettings.SelectedHv));
 
-            turnFlushDrawHandValues = new ReactiveList<HandValueObject>(HandValuesHelper.GetFlushHandValueObjects());
+            turnFlushDrawHandValues = new ReactiveList<HandValueObject>(HandValuesHelper.GetFlushHandValueObjects(NoteStageType.Turn));
             SubscribeOnHandValuesChanges(turnFlushDrawHandValues, ReflectionHelper.GetPath<NotesViewModel>(x => x.SelectedNote.Settings.TurnHvSettings.SelectedFlushDraws));
 
             turnStraightDrawHandValues = new ReactiveList<HandValueObject>(HandValuesHelper.GetStraightHandValueObjects());
@@ -366,6 +438,13 @@ namespace DriveHUD.PlayerXRay.ViewModels
             RefreshFiltersSettings();
             RefreshCurrentHandValuesSettings();
 
+            RaiseFilterBasedPropertyChanged();
+        }
+
+        private void RaiseFilterBasedPropertyChanged()
+        {
+            this.RaisePropertyChanged(nameof(MBCMinSizeOfPot));
+            this.RaisePropertyChanged(nameof(MBCMaxSizeOfPot));
             this.RaisePropertyChanged(nameof(MBCWentToShowdown));
             this.RaisePropertyChanged(nameof(MBCAllInPreFlop));
         }
@@ -687,6 +766,48 @@ namespace DriveHUD.PlayerXRay.ViewModels
                 SaveNote();
                 this.RaiseAndSetIfChanged(ref selectedNote, value);
                 LoadNote();
+            }
+        }
+
+        public double MBCMinSizeOfPot
+        {
+            get
+            {
+                return SelectedNote != null ? SelectedNote.Settings.MBCMinSizeOfPot : 0d;
+            }
+            set
+            {
+                if (value != 0)
+                {
+                    AddFilterItem(FilterEnum.FinalPotSizeinBBsisBiggerThan, value);
+                }
+                else
+                {
+                    RemoveFilterItem(FilterEnum.FinalPotSizeinBBsisBiggerThan);
+                }
+
+                this.RaisePropertyChanged();
+            }
+        }
+
+        public double MBCMaxSizeOfPot
+        {
+            get
+            {
+                return SelectedNote != null ? SelectedNote.Settings.MBCMaxSizeOfPot : 0d;
+            }
+            set
+            {
+                if (value != 0)
+                {
+                    AddFilterItem(FilterEnum.FinalPotSizeinBBsisLessThan, value);
+                }
+                else
+                {
+                    RemoveFilterItem(FilterEnum.FinalPotSizeinBBsisLessThan);
+                }
+
+                this.RaisePropertyChanged();
             }
         }
 
@@ -1067,6 +1188,8 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
         public ReactiveCommand<object> RemoveFromSelectedFiltersCommand { get; private set; }
 
+        public ReactiveCommand<object> NoteDragDropCommand { get; private set; }
+
         #endregion
 
         #region Commands implementation
@@ -1270,7 +1393,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
         #region Helpers
 
-        private void AddFilterItem(FilterEnum filter)
+        private void AddFilterItem(FilterEnum filter, double? filterValue = null)
         {
             var selectedfilterItem = selectedFilters.FirstOrDefault(x => x.Filter == filter);
 
@@ -1280,8 +1403,19 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
                 if (filterItem != null)
                 {
-                    selectedFilters.Add(filterItem.Clone());
+                    var selectedFilterItem = filterItem.Clone();
+
+                    if (filterValue.HasValue)
+                    {
+                        selectedFilterItem.Value = filterValue;
+                    }
+
+                    selectedFilters.Add(selectedFilterItem);
                 }
+            }
+            else if (filterValue != null)
+            {
+                selectedfilterItem.Value = filterValue;
             }
         }
 

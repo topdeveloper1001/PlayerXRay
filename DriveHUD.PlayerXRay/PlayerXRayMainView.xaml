@@ -23,6 +23,40 @@
                     Source="PlayerXRayStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <Style
+                x:Key="StackPanelStyle"
+                TargetType="{x:Type StackPanel}">
+                <Style.Triggers>
+                    <DataTrigger
+                        Binding="{Binding Workspace.OperationInfo.IsBusy}"
+                        Value="True">
+                        <Setter
+                            Property="IsEnabled"
+                            Value="False" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding PopupIsOpen}"
+                        Value="True">
+                        <Setter
+                            Property="IsEnabled"
+                            Value="False" />
+                    </DataTrigger>
+                    <MultiDataTrigger>
+                        <MultiDataTrigger.Conditions>
+                            <Condition
+                                Binding="{Binding Workspace.OperationInfo.IsBusy}"
+                                Value="False" />
+                            <Condition
+                                Binding="{Binding PopupIsOpen}"
+                                Value="False" />
+                        </MultiDataTrigger.Conditions>
+                        <Setter
+                            Property="IsEnabled"
+                            Value="True" />
+                    </MultiDataTrigger>
+                </Style.Triggers>
+            </Style>
+
             <DataTemplate
                 DataType="{x:Type vm:RunViewModel}">
                 <v:RunView />
@@ -51,7 +85,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid       
+    <Grid
         Background="{StaticResource WindowBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition
@@ -80,44 +114,11 @@
         </StackPanel>
 
         <StackPanel
+            Style="{StaticResource StackPanelStyle}"
             Margin="14,0,0,0"
             Orientation="Horizontal"
             HorizontalAlignment="Left"
             Grid.Row="0">
-            <StackPanel.Style>
-                <Style
-                    TargetType="StackPanel">
-                    <Style.Triggers>
-                        <DataTrigger
-                            Binding="{Binding Workspace.OperationInfo.IsBusy}"
-                            Value="True">
-                            <Setter
-                                Property="IsEnabled"
-                                Value="False" />
-                        </DataTrigger>
-                        <DataTrigger
-                            Binding="{Binding PopupIsOpen}"
-                            Value="True">
-                            <Setter
-                                Property="IsEnabled"
-                                Value="False" />
-                        </DataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition
-                                    Binding="{Binding Workspace.OperationInfo.IsBusy}"
-                                    Value="False" />
-                                <Condition
-                                    Binding="{Binding PopupIsOpen}"
-                                    Value="False" />
-                            </MultiDataTrigger.Conditions>
-                            <Setter
-                                Property="IsEnabled"
-                                Value="True" />
-                        </MultiDataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </StackPanel.Style>
 
             <ctl:MenuButton
                 Style="{StaticResource MenuButtonStyle}"
@@ -192,6 +193,7 @@
             BorderThickness="0,1,0,0">
 
             <StackPanel
+                Style="{StaticResource StackPanelStyle}"
                 Margin="12,0,0,0"
                 Orientation="Horizontal"
                 VerticalAlignment="Center">
@@ -227,6 +229,22 @@
                 <TextBlock
                     Style="{StaticResource BottomActiveTextStyle}"
                     Text="{Binding StorageModel.PlayerSelectedItem.Description}" />
+
+                <TextBlock
+                    Style="{StaticResource BottomTextStyle}"
+                    Text="License:" />
+
+                <TextBlock
+                    Style="{StaticResource BottomActiveTextStyle}"
+                    Margin="0,0,10,0"
+                    Text="{Binding LicenseType}" />
+
+                <Button
+                    Content="{ResX Common_Main_Upgrade}"
+                    Command="{Binding UpgradeCommand}"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Visibility="{Binding IsUpgradable, Converter={dh:BoolToVisibilityConverter}}" />
 
             </StackPanel>
 

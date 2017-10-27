@@ -779,6 +779,12 @@
                         IsChecked="{Binding TakesNotesOnHero}"
                         Content="Take notes on Hero" />
 
+                    <CheckBox
+                        Margin="0,10,0,0"
+                        Style="{StaticResource CheckBoxStyle}"
+                        IsChecked="{Binding IsAdvancedLogEnabled}"
+                        Content="Enable advanced log" />
+
                     <StackPanel
                         Margin="0,10,0,0"
                         Orientation="Horizontal">

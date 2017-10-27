@@ -22,7 +22,7 @@ namespace DriveHUD.PlayerXRay.DataTypes
         {
             [NoteStageType.Flop] = new[] { HandValueEnum.TwoPaironBoard, HandValueEnum.StraightStraightOnBoard, HandValueEnum.FlushOnBoardNutFlush,
                 HandValueEnum.FlushOnBoardHighFlush, HandValueEnum.FlushOnBoardLowFlush, HandValueEnum.FullHouseonBoard, HandValueEnum.FourofaKindonBoard,
-                HandValueEnum.StraightFlushonBoard },
+                HandValueEnum.StraightFlushonBoard, HandValueEnum.StraightOneCardNutStraight, HandValueEnum.StraightOneCardStraight },
             [NoteStageType.Turn] = new[] { HandValueEnum.StraightStraightOnBoard, HandValueEnum.FlushOnBoardNutFlush, HandValueEnum.FlushOnBoardHighFlush,
                 HandValueEnum.FlushOnBoardLowFlush, HandValueEnum.FullHouseonBoard, HandValueEnum.StraightFlushonBoard }
         };
@@ -103,7 +103,7 @@ namespace DriveHUD.PlayerXRay.DataTypes
             return results;
         }
 
-        public static IEnumerable<HandValueObject> GetFlushHandValueObjects()
+        public static IEnumerable<HandValueObject> GetFlushHandValueObjects(NoteStageType stageType)
         {
             return new[]
             {

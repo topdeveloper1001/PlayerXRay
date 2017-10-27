@@ -32,6 +32,7 @@ using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace DriveHUD.PlayerXRay
@@ -58,6 +59,9 @@ namespace DriveHUD.PlayerXRay
             NavigateCommand = ReactiveCommand.Create();
             NavigateCommand.Subscribe(x => Navigate((WorkspaceType)x));
 
+            UpgradeCommand = ReactiveCommand.Create();
+            UpgradeCommand.Subscribe(x => Upgrade());
+
             raisePopupSubscriptionToken = eventAggregator.GetEvent<RaisePopupEvent>().Subscribe(RaisePopup, false);
         }
 
@@ -73,16 +77,12 @@ namespace DriveHUD.PlayerXRay
                      (licenseService.IsRegistered && licenseService.IsExpiringSoon) ||
                      !licenseService.IsRegistered)
             {
-                var registrationViewModel = new RegistrationViewModel(false);
-
-                var popupEventArgs = new RaisePopupEventArgs()
-                {
-                    Title = CommonResourceManager.Instance.GetResourceString("XRay_RegistrationView_Title"),
-                    Content = new RegistrationView(registrationViewModel)
-                };
-
-                RaisePopup(popupEventArgs);
+                RaiseRegistrationPopup(false);
+                return;
             }
+
+            IsUpgradable = licenseService.IsUpgradable;
+            IsTrial = licenseService.IsTrial;
         }
 
         #region Properties        
@@ -184,11 +184,67 @@ namespace DriveHUD.PlayerXRay
 
         }
 
+        public string LicenseType
+        {
+            get
+            {
+                var licenseService = ServiceLocator.Current.GetInstance<ILicenseService>();
+
+                IEnumerable<string> licenseStrings;
+
+                if (licenseService.LicenseInfos.Any(x => x.IsRegistered && !x.IsTrial))
+                {
+                    licenseStrings = licenseService.LicenseInfos.Where(x => x.IsRegistered && !x.IsTrial).Select(x => x.License.Edition);
+                }
+                else
+                {
+                    licenseStrings = licenseService.LicenseInfos.Where(x => x.IsRegistered).Select(x => x.License.Edition);
+                }
+
+                if (licenseStrings == null || licenseStrings.Count() == 0)
+                {
+                    return CommonResourceManager.Instance.GetResourceString("XRay_LicenseType_None");
+                }
+
+                return string.Join(" & ", licenseStrings);
+            }
+        }
+
+        private bool isTrial;
+
+        public bool IsTrial
+        {
+            get
+            {
+                return isTrial;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref isTrial, value);
+            }
+        }
+
+        private bool isUpgradable;
+
+        public bool IsUpgradable
+        {
+            get
+            {
+                return isUpgradable;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref isUpgradable, value);
+            }
+        }
+
         #endregion
 
         #region Commands
 
         public ReactiveCommand<object> NavigateCommand { get; private set; }
+
+        public ReactiveCommand<object> UpgradeCommand { get; private set; }
 
         #endregion
 
@@ -279,6 +335,35 @@ namespace DriveHUD.PlayerXRay
 
             workspaces.Add(workspaceType, workspace);
             Workspace = workspace;
+        }
+
+        private void Upgrade()
+        {
+            RaiseRegistrationPopup(true);
+        }
+
+        private void RaiseRegistrationPopup(bool showRegister)
+        {
+            var registrationViewModel = new RegistrationViewModel(showRegister)
+            {
+                Callback = () =>
+                {
+                    var licenseService = ServiceLocator.Current.GetInstance<ILicenseService>();
+
+                    IsTrial = licenseService.IsTrial;
+                    IsUpgradable = licenseService.IsUpgradable;
+
+                    this.RaisePropertyChanged(nameof(LicenseType));
+                }
+            };
+
+            var popupEventArgs = new RaisePopupEventArgs()
+            {
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_RegistrationView_Title"),
+                Content = new RegistrationView(registrationViewModel)
+            };
+
+            RaisePopup(popupEventArgs);
         }
 
         private void RaisePopup(RaisePopupEventArgs e)

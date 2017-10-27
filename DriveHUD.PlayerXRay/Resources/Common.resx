@@ -120,6 +120,9 @@
   <data name="XRay_BuyLink" xml:space="preserve">
     <value>http://drivehud.com/product/player-xray</value>
   </data>
+  <data name="XRay_LicenseType_None" xml:space="preserve">
+    <value>None</value>
+  </data>
   <data name="XRay_RegistrationView_Back" xml:space="preserve">
     <value>Back</value>
   </data>

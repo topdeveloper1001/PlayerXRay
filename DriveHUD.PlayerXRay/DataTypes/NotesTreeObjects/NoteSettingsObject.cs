@@ -114,6 +114,8 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
         public bool Cash { get; set; }
         public bool Tournament { get; set; }
 
+        public bool IncludeBoard { get; set; }
+
         #region Number of players
 
         private bool playersNoHeadsUp;
@@ -245,7 +247,29 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
         public bool PositionMiddle3Bet { get; set; }
         public bool PositionButton3Bet { get; set; }
 
-        public double MBCMinSizeOfPot { get; set; }
+        [XmlIgnore]
+        public double MBCMinSizeOfPot
+        {
+            get
+            {
+                var filter = SelectedFilters.FirstOrDefault(p => p.Filter == FilterEnum.FinalPotSizeinBBsisBiggerThan);
+
+                return filter != null && filter.Value.HasValue ?
+                    filter.Value.Value : 0d;
+            }
+        }
+
+        [XmlIgnore]
+        public double MBCMaxSizeOfPot
+        {
+            get
+            {
+                var filter = SelectedFilters.FirstOrDefault(p => p.Filter == FilterEnum.FinalPotSizeinBBsisLessThan);
+
+                return filter != null && filter.Value.HasValue ?
+                    filter.Value.Value : 0d;
+            }
+        }
 
         [XmlIgnore]
         public bool MBCWentToShowdown
@@ -287,6 +311,7 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
 
             return x1.MBCAllInPreFlop == x2.MBCAllInPreFlop &&
                    x1.MBCMinSizeOfPot == x2.MBCMinSizeOfPot &&
+                   x2.MBCMaxSizeOfPot == x2.MBCMaxSizeOfPot &&
                    x1.MBCWentToShowdown == x2.MBCWentToShowdown &&
                    x1.PlayersNo34 == x2.PlayersNo34 &&
                    x1.PlayersNo56 == x2.PlayersNo56 &&

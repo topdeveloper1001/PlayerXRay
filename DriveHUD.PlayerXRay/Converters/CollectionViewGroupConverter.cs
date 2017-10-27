@@ -14,6 +14,7 @@ using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
@@ -35,6 +36,40 @@ namespace DriveHUD.PlayerXRay.Converters
             var collectionViewGroup = new ObservableCollection<CollectionViewGroupWrapper>(enumerable
                 .OfType<CollectionViewGroup>()
                 .Select(x => new CollectionViewGroupWrapper(x)));
+
+            var collection = value as INotifyCollectionChanged;
+
+            if (collection == null)
+            {
+                return collectionViewGroup;
+            }
+
+            collection.CollectionChanged += (s, e) =>
+            {
+                if (e.Action == NotifyCollectionChangedAction.Add && e.NewItems != null)
+                {
+                    var itemsToAdd = e.NewItems.OfType<CollectionViewGroup>().Select(x => new CollectionViewGroupWrapper(x));
+                    collectionViewGroup.AddRange(itemsToAdd);
+                }
+                else if (e.Action == NotifyCollectionChangedAction.Remove && e.OldItems != null)
+                {
+                    var itemsToRemove = e.OldItems.OfType<CollectionViewGroup>();
+
+                    foreach (var itemToRemove in itemsToRemove)
+                    {
+                        var collectionViewGroupItem = collectionViewGroup.FirstOrDefault(x => x.Name == itemToRemove.Name);
+
+                        if (collectionViewGroupItem != null)
+                        {
+                            collectionViewGroup.Remove(collectionViewGroupItem);
+                        }
+                    }
+                }
+                else if (e.Action == NotifyCollectionChangedAction.Reset)
+                {
+                    collectionViewGroup.Clear();
+                }
+            };
 
             return collectionViewGroup;
         }

@@ -82,6 +82,27 @@ namespace DriveHUD.PlayerXRay.ViewModels
             }
         }
 
+        public bool IsAdvancedLogEnabled
+        {
+            get
+            {
+                return NoteService.CurrentNotesAppSettings.IsAdvancedLogEnabled;
+            }
+            set
+            {
+                if (NoteService.CurrentNotesAppSettings.IsAdvancedLogEnabled == value)
+                {
+                    return;
+                }
+
+                NoteService.CurrentNotesAppSettings.IsAdvancedLogEnabled = value;
+
+                this.RaisePropertyChanged(nameof(IsAdvancedLogEnabled));
+
+                NoteService.SaveAppSettings();
+            }
+        }
+
         public bool IsNoteCreationSinceDate
         {
             get

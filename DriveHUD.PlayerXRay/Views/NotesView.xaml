@@ -366,6 +366,22 @@
 
             </Style>
 
+            <DataTemplate
+                x:Key="NoteAdornerTemplate">
+                <Border
+                    Padding="15,0,5,0"
+                    Height="30"
+                    MinWidth="200"
+                    Background="{StaticResource WindowBackgroundBrush}"
+                    Opacity="0.5">
+                    <TextBlock
+                        Foreground="{StaticResource ForegroundBrush}"
+                        VerticalAlignment="Center"
+                        Text="{Binding Name}" />
+                </Border>
+            </DataTemplate>
+
+
             <cnv:ActionToBetweenVisibilityConverter
                 x:Key="ActionToBetweenVisibilityConverter" />
 
@@ -482,12 +498,19 @@
                             DataType="{x:Type nt:InnerGroupObject}"
                             ItemsSource="{Binding Notes}">
                             <TextBlock
+                                dh:DragDrop.IsDragTarget="True"
+                                dh:DragDrop.DragDropCommand="{Binding DataContext.NoteDragDropCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                                 Text="{Binding Name}"
                                 Margin="3,0,0,0" />
                         </HierarchicalDataTemplate>
                         <DataTemplate
                             DataType="{x:Type nt:NoteObject}">
                             <TextBlock
+                                dh:DragDrop.IsDragSource="True"
+                                dh:DragDrop.IsDragTarget="True"
+                                dh:DragDrop.DragAdornerTemplate="{StaticResource NoteAdornerTemplate}"
+                                dh:DragDrop.DragDropCommand="{Binding DataContext.NoteDragDropCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                                dh:DragDrop.DragDropData="{Binding .}"
                                 Text="{Binding Name}" />
                         </DataTemplate>
                     </TreeView.Resources>
@@ -1121,10 +1144,14 @@
                                                 Height="{StaticResource SpaceBetweenRows}" />
                                             <RowDefinition
                                                 Height="Auto" />
+                                            <RowDefinition
+                                                Height="{StaticResource SpaceBetweenRows}" />
+                                            <RowDefinition
+                                                Height="Auto" />
                                         </Grid.RowDefinitions>
 
                                         <StackPanel
-                                            Grid.ColumnSpan="2"
+                                            Grid.ColumnSpan="4"
                                             Orientation="Horizontal">
 
                                             <TextBlock
@@ -1137,7 +1164,30 @@
                                                 FormatString="F2"
                                                 Increment="0.01"
                                                 Maximum="1000"
-                                                Value="{Binding SelectedNote.Settings.MBCMinSizeOfPot}" />
+                                                Value="{Binding MBCMinSizeOfPot}" />
+
+                                            <TextBlock
+                                                FontSize="12"
+                                                Text="BBs" />
+
+                                        </StackPanel>
+
+                                        <StackPanel
+                                            Grid.Row="2"
+                                            Grid.ColumnSpan="4"
+                                            Orientation="Horizontal">
+
+                                            <TextBlock
+                                                FontSize="12"
+                                                Text="Maximum size of pot" />
+
+                                            <xctk:DoubleUpDown
+                                                Margin="3,0,3,0"
+                                                Minimum="0"
+                                                FormatString="F2"
+                                                Increment="0.01"
+                                                Maximum="1000"
+                                                Value="{Binding MBCMaxSizeOfPot}" />
 
                                             <TextBlock
                                                 FontSize="12"
@@ -1147,28 +1197,28 @@
 
                                         <CheckBox
                                             Grid.Column="0"
-                                            Grid.Row="2"
+                                            Grid.Row="4"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding MBCWentToShowdown}"
                                             Content="Went to showdown" />
 
                                         <CheckBox
                                             Grid.Column="1"
-                                            Grid.Row="2"
+                                            Grid.Row="4"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.Cash}"
                                             Content="Cash" />
 
                                         <CheckBox
                                             Grid.Column="0"
-                                            Grid.Row="4"
+                                            Grid.Row="6"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding MBCAllInPreFlop}"
                                             Content="All-in Pre-flop" />
 
                                         <CheckBox
                                             Grid.Column="1"
-                                            Grid.Row="4"
+                                            Grid.Row="6"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.Tournament}"
                                             Content="Tournaments" />
@@ -1343,20 +1393,29 @@
                         Width="120"
                         Header="DISPLAYED NOTE">
 
-                        <TextBox
-                            Margin="7,0,7,0"
-                            Height="100"
-                            AcceptsReturn="True"
-                            VerticalAlignment="Top"
-                            Text="{Binding SelectedNote.DisplayedNote}"
-                            TextWrapping="Wrap">
-                            <TextBox.Effect>
-                                <DropShadowEffect
-                                    BlurRadius="7"
-                                    ShadowDepth="0"
-                                    Color="{DynamicResource DropShadowColor}" />
-                            </TextBox.Effect>
-                        </TextBox>
+                        <StackPanel
+                            Margin="7,0,7,0">
+
+                            <CheckBox
+                                Style="{StaticResource CheckBoxStyle}"
+                                IsChecked="{Binding SelectedNote.Settings.IncludeBoard}"
+                                Content="Include board" />
+
+                            <TextBox
+                                Margin="0,7,0,0"
+                                Height="100"
+                                AcceptsReturn="True"
+                                VerticalAlignment="Top"
+                                Text="{Binding SelectedNote.DisplayedNote}"
+                                TextWrapping="Wrap">
+                                <TextBox.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="7"
+                                        ShadowDepth="0"
+                                        Color="{DynamicResource DropShadowColor}" />
+                                </TextBox.Effect>
+                            </TextBox>
+                        </StackPanel>
 
                     </TabItem>
                 </TabControl>
@@ -1769,7 +1828,7 @@
                                 <TreeView
                                     Foreground="{StaticResource ForegroundBrush}"
                                     FontFamily="/Fonts/#Roboto Regular"
-                                    ItemsSource="{Binding SelectedFiltersCollectionView.Groups}"
+                                    ItemsSource="{Binding SelectedFiltersCollectionView.Groups, Converter={StaticResource CollectionViewGroupConverter}}"
                                     Margin="0"
                                     FontSize="12">
                                     <i:Interaction.Triggers>

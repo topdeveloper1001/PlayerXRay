@@ -454,7 +454,7 @@ namespace DriveHUD.PlayerXRay.Licensing
         {
             get
             {
-                return !licenseInfos.Any(x => x.IsRegistered && !x.IsExpired && x.Serial.StartsWith("DHCP"));
+                return !licenseInfos.Any(x => x.IsRegistered && !x.IsExpired && x.Serial.StartsWith("XRCP"));
             }
         }
 
