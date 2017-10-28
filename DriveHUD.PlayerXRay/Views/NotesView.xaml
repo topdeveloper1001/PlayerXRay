@@ -499,6 +499,7 @@
                             ItemsSource="{Binding Notes}">
                             <TextBlock
                                 dh:DragDrop.IsDragTarget="True"
+                                dh:DragDrop.PassClickEventToParent="True"
                                 dh:DragDrop.DragDropCommand="{Binding DataContext.NoteDragDropCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                                 Text="{Binding Name}"
                                 Margin="3,0,0,0" />
@@ -508,6 +509,7 @@
                             <TextBlock
                                 dh:DragDrop.IsDragSource="True"
                                 dh:DragDrop.IsDragTarget="True"
+                                dh:DragDrop.PassClickEventToParent="True"
                                 dh:DragDrop.DragAdornerTemplate="{StaticResource NoteAdornerTemplate}"
                                 dh:DragDrop.DragDropCommand="{Binding DataContext.NoteDragDropCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                                 dh:DragDrop.DragDropData="{Binding .}"
