@@ -158,13 +158,13 @@
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.2.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="XRCReg, Version=1.0.0.1743, Culture=neutral, PublicKeyToken=a269fc7fad0e0645, processorArchitecture=MSIL">
+    <Reference Include="XRCReg, Version=1.0.0.1747, Culture=neutral, PublicKeyToken=a269fc7fad0e0645, processorArchitecture=MSIL">
       <HintPath>..\dependencies\XRCReg.dll</HintPath>
     </Reference>
-    <Reference Include="XRHReg, Version=1.0.0.1743, Culture=neutral, PublicKeyToken=a269fc7fad0e0645, processorArchitecture=MSIL">
+    <Reference Include="XRHReg, Version=1.0.0.1747, Culture=neutral, PublicKeyToken=a269fc7fad0e0645, processorArchitecture=MSIL">
       <HintPath>..\dependencies\XRHReg.dll</HintPath>
     </Reference>
-    <Reference Include="XROReg, Version=1.0.0.1743, Culture=neutral, PublicKeyToken=a269fc7fad0e0645, processorArchitecture=MSIL">
+    <Reference Include="XROReg, Version=1.0.0.1747, Culture=neutral, PublicKeyToken=a269fc7fad0e0645, processorArchitecture=MSIL">
       <HintPath>..\dependencies\XROReg.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -488,6 +488,11 @@
     <Folder Include="Log\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>tasklist /fi "imagename eq DriveHUD.HUD.exe" | find ":" &gt; nul
+if errorlevel 1 taskkill /f /t /im "DriveHUD.HUD.exe"
+exit</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
