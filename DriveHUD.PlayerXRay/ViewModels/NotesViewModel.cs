@@ -240,16 +240,6 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
                 var noteParent = FindNoteParent(note);
 
-                // remove note from parent object
-                if (noteParent is InnerGroupObject)
-                {
-                    (noteParent as InnerGroupObject).Notes.Remove(note);
-                }
-                else if (noteParent is StageObject)
-                {
-                    (noteParent as StageObject).Notes.Remove(note);
-                }
-
                 if (dataObject.Source is InnerGroupObject)
                 {
                     (dataObject.Source as InnerGroupObject).Notes.Add(note);
@@ -257,6 +247,11 @@ namespace DriveHUD.PlayerXRay.ViewModels
                 else if (dataObject.Source is NoteObject)
                 {
                     var sourceNoteParent = FindNoteParent(dataObject.Source as NoteObject);
+
+                    if (ReferenceEquals(sourceNoteParent, noteParent))
+                    {
+                        return;
+                    }
 
                     if (sourceNoteParent is InnerGroupObject)
                     {
@@ -266,6 +261,16 @@ namespace DriveHUD.PlayerXRay.ViewModels
                     {
                         (sourceNoteParent as StageObject).Notes.Add(note);
                     }
+                }
+
+                // remove note from parent object
+                if (noteParent is InnerGroupObject)
+                {
+                    (noteParent as InnerGroupObject).Notes.Remove(note);
+                }
+                else if (noteParent is StageObject)
+                {
+                    (noteParent as StageObject).Notes.Remove(note);
                 }
             });
         }
