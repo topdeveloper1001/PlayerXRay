@@ -139,7 +139,7 @@
                             IsChecked="{Binding RunMode, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static vm:RunMode.ByProfile}}"
                             Style="{StaticResource RadioButtonNormalStyle}"
                             GroupName="RunByGroup"
-                            Content="By Profile" />
+                            Content="{ResX Key=XRay_RunView_ByProfile}" />
 
                         <ctl:ResizableRadioButton
                             Grid.Column="1"
@@ -147,7 +147,7 @@
                             IsChecked="{Binding RunMode, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static vm:RunMode.ByNote}}"
                             Style="{StaticResource RadioButtonNormalStyle}"
                             GroupName="RunByGroup"
-                            Content="By Note" />
+                            Content="{ResX Key=XRay_RunView_ByNote}" />
 
                         <ctl:ResizableRadioButton
                             Grid.Column="2"
@@ -155,7 +155,7 @@
                             IsChecked="{Binding RunMode, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static vm:RunMode.AllNotes}}"
                             Style="{StaticResource RadioButtonNormalStyle}"
                             GroupName="RunByGroup"
-                            Content="All Notes" />
+                            Content="{ResX Key=XRay_RunView_AllNotes}" />
 
                     </Grid>
 
@@ -163,7 +163,7 @@
 
                 <Button
                     Grid.Row="2"
-                    Content="START"
+                    Content="{ResX Key=XRay_RunView_Start}"
                     Margin="0,0,0,5"
                     Width="152"
                     Height="49"
@@ -208,7 +208,7 @@
 
                             <TextBlock
                                 FontSize="12"
-                                Text="Profiles" />
+                                Text="{ResX Key=XRay_RunView_Profiles}" />
 
                         </Border>
                         <ListBox
@@ -271,28 +271,28 @@
                                 Width="70"
                                 GroupName="NoteStageGroup"
                                 IsChecked="{Binding NoteStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.PreFlop}}"
-                                Content="PRE-FLOP" />
+                                Content="{ResX Key=XRay_RunView_PreFlop}" />
 
                             <ctl:MenuButton
                                 Style="{StaticResource StreetMenuButtonStyle}"
                                 Width="50"
                                 GroupName="NoteStageGroup"
                                 IsChecked="{Binding NoteStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.Flop}}"
-                                Content="FLOP" />
+                                Content="{ResX Key=XRay_RunView_Flop}" />
 
                             <ctl:MenuButton
                                 Style="{StaticResource StreetMenuButtonStyle}"
                                 Width="50"
                                 GroupName="NoteStageGroup"
                                 IsChecked="{Binding NoteStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.Turn}}"
-                                Content="TURN" />
+                                Content="{ResX Key=XRay_RunView_Turn}" />
 
                             <ctl:MenuButton
                                 Style="{StaticResource StreetMenuButtonStyle}"
                                 Width="50"
                                 GroupName="NoteStageGroup"
                                 IsChecked="{Binding NoteStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.River}}"
-                                Content="RIVER" />
+                                Content="{ResX Key=XRay_RunView_River}" />
 
                         </StackPanel>
 
@@ -370,7 +370,7 @@
                                 VerticalAlignment="Center"
                                 Orientation="Horizontal">
                                 <TextBlock
-                                    Text="Status: " />
+                                    Text="{ResX Key=XRay_RunView_Status}" />
 
                                 <TextBlock
                                     Foreground="{Binding Status, Converter={StaticResource StatusToColorConverter}}"

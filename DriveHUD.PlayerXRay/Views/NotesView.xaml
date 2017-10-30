@@ -443,25 +443,25 @@
                         Style="{StaticResource StreetHeaderMenuButtonStyle}"
                         Width="70"
                         IsChecked="{Binding NoteStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.PreFlop}}"
-                        Content="PRE-FLOP" />
+                        Content="{ResX Key=XRay_NotesView_PreFlop}" />
 
                     <ctl:MenuButton
                         Style="{StaticResource StreetHeaderMenuButtonStyle}"
                         Width="60"
                         IsChecked="{Binding NoteStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.Flop}}"
-                        Content="FLOP" />
+                        Content="{ResX Key=XRay_NotesView_Flop}" />
 
                     <ctl:MenuButton
                         Style="{StaticResource StreetHeaderMenuButtonStyle}"
                         Width="60"
                         IsChecked="{Binding NoteStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.Turn}}"
-                        Content="TURN" />
+                        Content="{ResX Key=XRay_NotesView_Turn}" />
 
                     <ctl:MenuButton
                         Style="{StaticResource StreetHeaderMenuButtonStyle}"
                         Width="65"
                         IsChecked="{Binding NoteStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.River}}"
-                        Content="RIVER" />
+                        Content="{ResX Key=XRay_NotesView_River}" />
 
                 </StackPanel>
 
@@ -556,7 +556,7 @@
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     FontSize="12"
-                                    Text="ADD" />
+                                    Text="{ResX Key=XRay_NotesView_Add}" />
                             </StackPanel>
                         </Button>
 
@@ -575,7 +575,7 @@
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     FontSize="12"
-                                    Text="EDIT" />
+                                    Text="{ResX Key=XRay_NotesView_Edit}" />
                             </StackPanel>
                         </Button>
 
@@ -593,7 +593,7 @@
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     FontSize="12"
-                                    Text="EXPORT" />
+                                    Text="{ResX Key=XRay_NotesView_Export}" />
                             </StackPanel>
                         </Button>
 
@@ -612,7 +612,7 @@
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     FontSize="12"
-                                    Text="DELETE" />
+                                    Text="{ResX Key=XRay_NotesView_Delete}" />
                             </StackPanel>
                         </Button>
 
@@ -660,7 +660,7 @@
                     <TabItem
                         Width="90"
                         VerticalContentAlignment="Top"
-                        Header="GENERAL">
+                        Header="{ResX Key=XRay_NotesView_General}">
                         <ScrollViewer
                             VerticalScrollBarVisibility="Auto"
                             VerticalAlignment="Top">
@@ -698,17 +698,17 @@
                                     <CheckBox
                                         Style="{StaticResource CheckBoxStyle}"
                                         IsChecked="{Binding SelectedNote.Settings.TypeNoLimit}"
-                                        Content="No-Limits" />
+                                        Content="{ResX Key=XRay_NotesView_NoLimit}" />
                                     <CheckBox
                                         Style="{StaticResource CheckBoxStyle}"
                                         IsChecked="{Binding SelectedNote.Settings.TypePotLimit}"
                                         Margin="15,0,0,0"
-                                        Content="Pot-Limits" />
+                                        Content="{ResX Key=XRay_NotesView_PotLimit}" />
                                     <CheckBox
                                         Style="{StaticResource CheckBoxStyle}"
                                         IsChecked="{Binding SelectedNote.Settings.TypeLimit}"
                                         Margin="15,0,0,0"
-                                        Content="Limits" />
+                                        Content="{ResX Key=XRay_NotesView_Limit}" />
                                 </StackPanel>
 
                                 <!--<GroupBox
@@ -760,7 +760,7 @@
                                     Grid.Row="2"
                                     Height="110"
                                     Style="{StaticResource BoxStyle}"
-                                    Header="Number of players">
+                                    Header="{ResX Key=XRay_NotesView_NumberOfPlayers}">
 
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -786,28 +786,28 @@
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PlayersNoHeadsUp}"
                                             IsEnabled="{Binding SelectedNote.Settings.PlayersNoCustom, Converter={dh:BoolNotConverter}}"
-                                            Content="Heads-Up" />
+                                            Content="{ResX Key=XRay_NotesView_HeadsUp}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PlayersNo34}"
                                             IsEnabled="{Binding SelectedNote.Settings.PlayersNoCustom, Converter={dh:BoolNotConverter}}"
-                                            Content="3-4 handed" />
+                                            Content="{ResX Key=XRay_NotesView_34Handed}" />
 
                                         <CheckBox
                                             Grid.Column="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PlayersNo56}"
                                             IsEnabled="{Binding SelectedNote.Settings.PlayersNoCustom, Converter={dh:BoolNotConverter}}"
-                                            Content="5-6" />
+                                            Content="{ResX Key=XRay_NotesView_56Handed}" />
 
                                         <CheckBox
                                             Grid.Column="3"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PlayersNoMax}"
                                             IsEnabled="{Binding SelectedNote.Settings.PlayersNoCustom, Converter={dh:BoolNotConverter}}"
-                                            Content="7-10" />
+                                            Content="{ResX Key=XRay_NotesView_710Handed}" />
 
                                         <CheckBox
                                             x:Name="cbCustom"
@@ -815,7 +815,7 @@
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PlayersNoCustom}"
-                                            Content="Custom" />
+                                            Content="{ResX Key=XRay_NotesView_Custom}" />
 
                                         <StackPanel
                                             Grid.Column="1"
@@ -827,7 +827,7 @@
 
                                             <TextBlock
                                                 FontSize="12"
-                                                Text="Between" />
+                                                Text="{ResX Key=XRay_NotesView_Between}" />
 
                                             <xctk:ByteUpDown
                                                 Margin="9,0,9,0"
@@ -838,7 +838,7 @@
 
                                             <TextBlock
                                                 FontSize="12"
-                                                Text="and" />
+                                                Text="{ResX Key=XRay_NotesView_And}" />
 
                                             <xctk:ByteUpDown
                                                 Margin="9,0,9,0"
@@ -849,7 +849,7 @@
 
                                             <TextBlock
                                                 FontSize="12"
-                                                Text="number of players" />
+                                                Text="{ResX Key=XRay_NotesView_NumberOfPlayersNotCapital}" />
 
                                         </StackPanel>
 
@@ -860,7 +860,7 @@
                                 <GroupBox
                                     Grid.Row="3"
                                     Style="{StaticResource BoxStyle}"
-                                    Header="Position">
+                                    Header="{ResX Key=XRay_NotesView_Position}">
 
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -883,40 +883,40 @@
                                             Grid.Column="0"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionSB}"
-                                            Content="Small Blind" />
+                                            Content="{ResX Key=XRay_NotesView_SmallBlind}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionEarly}"
-                                            Content="Early" />
+                                            Content="{ResX Key=XRay_NotesView_Early}" />
 
                                         <CheckBox
                                             Grid.Column="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionCutoff}"
-                                            Content="Cutoff" />
+                                            Content="{ResX Key=XRay_NotesView_Cutoff}" />
 
                                         <CheckBox
                                             Grid.Column="0"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionBB}"
-                                            Content="Big Blind" />
+                                            Content="{ResX Key=XRay_NotesView_BigBlind}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionMiddle}"
-                                            Content="Middle" />
+                                            Content="{ResX Key=XRay_NotesView_Middle}" />
 
                                         <CheckBox
                                             Grid.Column="2"
                                             Grid.Row="2"
                                             IsChecked="{Binding SelectedNote.Settings.PositionButton}"
                                             Style="{StaticResource CheckBoxStyle}"
-                                            Content="Button" />
+                                            Content="{ResX Key=XRay_NotesView_Button}" />
 
                                     </Grid>
 
@@ -925,7 +925,7 @@
                                 <GroupBox
                                     Grid.Row="4"
                                     Style="{StaticResource BoxStyle}"
-                                    Header="Preflop Action Facing Player">
+                                    Header="{ResX Key=XRay_NotesView_PreflopActionFacingPlayer}">
 
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -948,41 +948,41 @@
                                             Grid.Column="0"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.FacingUnopened}"
-                                            Content="Unopened" />
+                                            Content="{ResX Key=XRay_NotesView_Unopened}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.Facing2PlusLimpers}"
-                                            Content="2+ Limpers" />
+                                            Content="{ResX Key=XRay_NotesView_2Limpers}" />
 
                                         <CheckBox
                                             Grid.Column="2"
                                             Grid.ColumnSpan="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.FacingRaisersCallers}"
-                                            Content="Raisers+Caller(s)" />
+                                            Content="{ResX Key=XRay_NotesView_RaisersCallers}" />
 
                                         <CheckBox
                                             Grid.Column="0"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.Facing1Limper}"
-                                            Content="1 Limper" />
+                                            Content="{ResX Key=XRay_NotesView_1Limper}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.Facing1Raiser}"
-                                            Content="1 Raiser" />
+                                            Content="{ResX Key=XRay_NotesView_1Raiser}" />
 
                                         <CheckBox
                                             Grid.Column="2"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.Facing2Raisers}"
-                                            Content="2 Raisers" />
+                                            Content="{ResX Key=XRay_NotesView_2Raisers}" />
 
                                     </Grid>
 
@@ -991,7 +991,7 @@
                                 <GroupBox
                                     Grid.Row="5"
                                     Style="{StaticResource BoxStyle}"
-                                    Header="Position of 1st Raiser">
+                                    Header="{ResX Key=XRay_NotesView_Positionof1stRaiser}">
 
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -1014,40 +1014,40 @@
                                             Grid.Column="0"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionSBRaiser}"
-                                            Content="Small Blind" />
+                                            Content="{ResX Key=XRay_NotesView_SmallBlind}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionEarlyRaiser}"
-                                            Content="Early" />
+                                            Content="{ResX Key=XRay_NotesView_Early}" />
 
                                         <CheckBox
                                             Grid.Column="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionCutoffRaiser}"
-                                            Content="Cutoff" />
+                                            Content="{ResX Key=XRay_NotesView_Cutoff}" />
 
                                         <CheckBox
                                             Grid.Column="0"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionBBRaiser}"
-                                            Content="Big Blind" />
+                                            Content="{ResX Key=XRay_NotesView_BigBlind}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionMiddleRaiser}"
-                                            Content="Middle" />
+                                            Content="{ResX Key=XRay_NotesView_Middle}" />
 
                                         <CheckBox
                                             Grid.Column="2"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionButtonRaiser}"
-                                            Content="Button" />
+                                            Content="{ResX Key=XRay_NotesView_Button}" />
 
                                     </Grid>
 
@@ -1056,7 +1056,7 @@
                                 <GroupBox
                                     Grid.Row="6"
                                     Style="{StaticResource BoxStyle}"
-                                    Header="Position of 3-bet">
+                                    Header="{ResX Key=XRay_NotesView_Positionof3Bet}">
 
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -1079,40 +1079,40 @@
                                             Grid.Column="0"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionSB3Bet}"
-                                            Content="Small Blind" />
+                                            Content="{ResX Key=XRay_NotesView_SmallBlind}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionEarly3Bet}"
-                                            Content="Early" />
+                                            Content="{ResX Key=XRay_NotesView_Early}" />
 
                                         <CheckBox
                                             Grid.Column="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionCutoff3Bet}"
-                                            Content="Cutoff" />
+                                            Content="{ResX Key=XRay_NotesView_Cutoff}" />
 
                                         <CheckBox
                                             Grid.Column="0"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionBB3Bet}"
-                                            Content="Big Blind" />
+                                            Content="{ResX Key=XRay_NotesView_BigBlind}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionMiddle3Bet}"
-                                            Content="Middle" />
+                                            Content="{ResX Key=XRay_NotesView_Middle}" />
 
                                         <CheckBox
                                             Grid.Column="2"
                                             Grid.Row="2"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.PositionButton3Bet}"
-                                            Content="Button" />
+                                            Content="{ResX Key=XRay_NotesView_Button}" />
 
                                     </Grid>
 
@@ -1120,9 +1120,9 @@
 
                                 <GroupBox
                                     Grid.Row="7"
-                                    Height="145"
+                                    Height="177"
                                     Style="{StaticResource BoxStyle}"
-                                    Header="Misc">
+                                    Header="{ResX Key=XRay_NotesView_Misc}">
 
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -1158,7 +1158,7 @@
 
                                             <TextBlock
                                                 FontSize="12"
-                                                Text="Minimum size of pot" />
+                                                Text="{ResX Key=XRay_NotesView_MinimumSizeOfPot}" />
 
                                             <xctk:DoubleUpDown
                                                 Margin="3,0,3,0"
@@ -1170,7 +1170,7 @@
 
                                             <TextBlock
                                                 FontSize="12"
-                                                Text="BBs" />
+                                                Text="{ResX Key=XRay_NotesView_BBs}" />
 
                                         </StackPanel>
 
@@ -1181,7 +1181,7 @@
 
                                             <TextBlock
                                                 FontSize="12"
-                                                Text="Maximum size of pot" />
+                                                Text="{ResX Key=XRay_NotesView_MaximumSizeOfPot}" />
 
                                             <xctk:DoubleUpDown
                                                 Margin="3,0,3,0"
@@ -1193,7 +1193,7 @@
 
                                             <TextBlock
                                                 FontSize="12"
-                                                Text="BBs" />
+                                                Text="{ResX Key=XRay_NotesView_BBs}" />
 
                                         </StackPanel>
 
@@ -1202,28 +1202,28 @@
                                             Grid.Row="4"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding MBCWentToShowdown}"
-                                            Content="Went to showdown" />
+                                            Content="{ResX Key=XRay_NotesView_WentToShowdown}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Grid.Row="4"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.Cash}"
-                                            Content="Cash" />
+                                            Content="{ResX Key=XRay_NotesView_Cash}" />
 
                                         <CheckBox
                                             Grid.Column="0"
                                             Grid.Row="6"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding MBCAllInPreFlop}"
-                                            Content="All-in Pre-flop" />
+                                            Content="{ResX Key=XRay_NotesView_AllinPreflop}" />
 
                                         <CheckBox
                                             Grid.Column="1"
                                             Grid.Row="6"
                                             Style="{StaticResource CheckBoxStyle}"
                                             IsChecked="{Binding SelectedNote.Settings.Tournament}"
-                                            Content="Tournaments" />
+                                            Content="{ResX Key=XRay_NotesView_Tournaments}" />
 
                                     </Grid>
 
@@ -1235,7 +1235,7 @@
 
                     <TabItem
                         Width="100"
-                        Header="HOLE CARDS">
+                        Header="{ResX Key=XRay_NotesView_HoleCards}">
 
                         <ScrollViewer
                             VerticalScrollBarVisibility="Auto"
@@ -1259,20 +1259,20 @@
                                     Orientation="Horizontal">
 
                                     <Button
-                                        Content="SUITED 1 GAPPERS"
+                                        Content="{ResX Key=XRay_NotesView_Suited1Gappers}"
                                         Width="140"
                                         Style="{StaticResource SwitchModeButtonStyleNoBackground}"
                                         Command="{Binding HoleCardsSelectSuitedGappersCommand}" />
 
                                     <Button
-                                        Content="SUITED CONNECTORS"
+                                        Content="{ResX Key=XRay_NotesView_SuitedConnectors}"
                                         Width="155"
                                         Margin="5,0,0,0"
                                         Style="{StaticResource SwitchModeButtonStyleNoBackground}"
                                         Command="{Binding HoleCardsSelectSuitedConnectorsCommand}" />
 
                                     <Button
-                                        Content="POCKET PAIRS"
+                                        Content="{ResX Key=XRay_NotesView_PocketPairs}"
                                         Width="95"
                                         Margin="5,0,0,0"
                                         Style="{StaticResource SwitchModeButtonStyleNoBackground}"
@@ -1286,13 +1286,13 @@
                                     Orientation="Horizontal">
 
                                     <Button
-                                        Content="OFF SUITED 1 GAPPERS"
+                                        Content="{ResX Key=XRay_NotesView_OffSuited1Gappers}"
                                         Width="140"
                                         Style="{StaticResource SwitchModeButtonStyleNoBackground}"
                                         Command="{Binding HoleCardsSelectOffSuitedGappersCommand}" />
 
                                     <Button
-                                        Content="OFF SUITED CONNECTORS"
+                                        Content="{ResX Key=XRay_NotesView_OffSuitedConnectors}"
                                         Width="155"
                                         Margin="5,0,0,0"
                                         Style="{StaticResource SwitchModeButtonStyleNoBackground}"
@@ -1303,14 +1303,14 @@
                                 <Button
                                     Grid.Column="1"
                                     Grid.Row="0"
-                                    Content="SELECT ALL"
+                                    Content="{ResX Key=XRay_NotesView_SelectAll}"
                                     Width="125"
                                     Style="{StaticResource SwitchModeButtonStyle}"
                                     Command="{Binding HoleCardsSelectAllCommand}" />
                                 <Button
                                     Grid.Column="1"
                                     Grid.Row="1"
-                                    Content="SELECT NONE"
+                                    Content="{ResX Key=XRay_NotesView_SelectNone}"
                                     Width="125"
                                     Margin="0,5,0,0"
                                     Command="{Binding HoleCardsSelectNoneCommand}"
@@ -1393,7 +1393,7 @@
 
                     <TabItem
                         Width="120"
-                        Header="DISPLAYED NOTE">
+                        Header="{ResX Key=XRay_NotesView_DisplayedNote}">
 
                         <StackPanel
                             Margin="7,0,7,0">
@@ -1401,7 +1401,7 @@
                             <CheckBox
                                 Style="{StaticResource CheckBoxStyle}"
                                 IsChecked="{Binding SelectedNote.Settings.IncludeBoard}"
-                                Content="Include board" />
+                                Content="{ResX Key=XRay_NotesView_IncludeBoard}" />
 
                             <TextBox
                                 Margin="0,7,0,0"
@@ -1433,7 +1433,7 @@
 
                     <TabItem
                         Width="85"
-                        Header="ACTIONS">
+                        Header="{ResX Key=XRay_NotesView_Actions}">
 
                         <Border
                             BorderBrush="{StaticResource BorderBrush}"
@@ -1509,46 +1509,46 @@
                                         Width="70"
                                         GroupName="ActionStageGroup"
                                         IsChecked="{Binding ActionStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.PreFlop}}"
-                                        Content="PRE-FLOP" />
+                                        Content="{ResX Key=XRay_NotesView_PreFlop}" />
 
                                     <ctl:MenuButton
                                         Style="{StaticResource StreetMenuButtonStyle}"
                                         Width="50"
                                         GroupName="ActionStageGroup"
                                         IsChecked="{Binding ActionStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.Flop}}"
-                                        Content="FLOP" />
+                                        Content="{ResX Key=XRay_NotesView_Flop}" />
 
                                     <ctl:MenuButton
                                         Style="{StaticResource StreetMenuButtonStyle}"
                                         Width="50"
                                         GroupName="ActionStageGroup"
                                         IsChecked="{Binding ActionStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.Turn}}"
-                                        Content="TURN" />
+                                        Content="{ResX Key=XRay_NotesView_Turn}" />
 
                                     <ctl:MenuButton
                                         Style="{StaticResource StreetMenuButtonStyle}"
                                         Width="50"
                                         GroupName="ActionStageGroup"
                                         IsChecked="{Binding ActionStageType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:NoteStageType.River}}"
-                                        Content="RIVER" />
+                                        Content="{ResX Key=XRay_NotesView_River}" />
 
                                 </StackPanel>
 
                                 <TextBlock
                                     Grid.Row="2"
-                                    Text="First Action:" />
+                                    Text="{ResX Key=XRay_NotesView_FirstAction}" />
 
                                 <TextBlock
                                     Grid.Row="3"
-                                    Text="Second Action:" />
+                                    Text="{ResX Key=XRay_NotesView_SecondAction}" />
 
                                 <TextBlock
                                     Grid.Row="4"
-                                    Text="Third Action:" />
+                                    Text="{ResX Key=XRay_NotesView_ThirdAction}" />
 
                                 <TextBlock
                                     Grid.Row="5"
-                                    Text="Fourth Action:" />
+                                    Text="{ResX Key=XRay_NotesView_FourthAction}" />
 
                                 <ComboBox
                                     Grid.Row="2"
@@ -1585,7 +1585,7 @@
                                     Visibility="{Binding CurrentActionSettings.FirstType, Converter={StaticResource ActionToBetweenVisibilityConverter}}">
 
                                     <TextBlock
-                                        Text="between" />
+                                        Text="{ResX Key=XRay_NotesView_BetweenLowerCase}" />
 
                                     <xctk:DoubleUpDown
                                         Margin="3,0,3,0"
@@ -1598,7 +1598,7 @@
 
                                     <TextBlock
                                         Margin="0"
-                                        Text="and" />
+                                        Text="{ResX Key=XRay_NotesView_And}" />
 
                                     <xctk:DoubleUpDown
                                         Margin="3,0,3,0"
@@ -1611,7 +1611,7 @@
 
                                     <TextBlock
                                         Margin="0"
-                                        Text="% of the pot" />
+                                        Text="{ResX Key=XRay_NotesView_PercentOfThePot}" />
 
                                 </StackPanel>
 
@@ -1622,7 +1622,7 @@
                                     Visibility="{Binding CurrentActionSettings.SecondType, Converter={StaticResource ActionToBetweenVisibilityConverter}}">
 
                                     <TextBlock
-                                        Text="between" />
+                                        Text="{ResX Key=XRay_NotesView_BetweenLowerCase}" />
 
                                     <xctk:DoubleUpDown
                                         Margin="3,0,3,0"
@@ -1635,7 +1635,7 @@
 
                                     <TextBlock
                                         Margin="0"
-                                        Text="and" />
+                                        Text="{ResX Key=XRay_NotesView_And}" />
 
                                     <xctk:DoubleUpDown
                                         Margin="3,0,3,0"
@@ -1648,7 +1648,7 @@
 
                                     <TextBlock
                                         Margin="0"
-                                        Text="% of the pot" />
+                                        Text="{ResX Key=XRay_NotesView_PercentOfThePot}" />
 
                                 </StackPanel>
 
@@ -1659,7 +1659,7 @@
                                     Visibility="{Binding CurrentActionSettings.ThirdType, Converter={StaticResource ActionToBetweenVisibilityConverter}}">
 
                                     <TextBlock
-                                        Text="between" />
+                                        Text="{ResX Key=XRay_NotesView_BetweenLowerCase}" />
 
                                     <xctk:DoubleUpDown
                                         Margin="3,0,3,0"
@@ -1672,7 +1672,7 @@
 
                                     <TextBlock
                                         Margin="0"
-                                        Text="and" />
+                                        Text="{ResX Key=XRay_NotesView_And}" />
 
                                     <xctk:DoubleUpDown
                                         Margin="3,0,3,0"
@@ -1685,7 +1685,7 @@
 
                                     <TextBlock
                                         Margin="0"
-                                        Text="% of the pot" />
+                                        Text="{ResX Key=XRay_NotesView_PercentOfThePot}" />
 
                                 </StackPanel>
 
@@ -1696,7 +1696,7 @@
                                     Visibility="{Binding CurrentActionSettings.FourthType, Converter={StaticResource ActionToBetweenVisibilityConverter}}">
 
                                     <TextBlock
-                                        Text="between" />
+                                        Text="{ResX Key=XRay_NotesView_BetweenLowerCase}" />
 
                                     <xctk:DoubleUpDown
                                         Margin="3,0,3,0"
@@ -1709,7 +1709,7 @@
 
                                     <TextBlock
                                         Margin="0"
-                                        Text="and" />
+                                        Text="{ResX Key=XRay_NotesView_And}" />
 
                                     <xctk:DoubleUpDown
                                         Margin="3,0,3,0"
@@ -1722,7 +1722,7 @@
 
                                     <TextBlock
                                         Margin="0"
-                                        Text="% of the pot" />
+                                        Text="{ResX Key=XRay_NotesView_PercentOfThePot}" />
 
                                 </StackPanel>
 
@@ -1734,7 +1734,7 @@
 
                     <TabItem
                         Width="85"
-                        Header="FILTERS">
+                        Header="{ResX Key=XRay_NotesView_Filters}">
 
                         <Grid>
 
@@ -1751,7 +1751,7 @@
                                 Style="{StaticResource BoxStyle}"
                                 Margin="15,0,0,0"
                                 Padding="0"
-                                Header="Filters">
+                                Header="{ResX Key=XRay_NotesView_FiltersGroupBox}">
                                 <GroupBox.Height>
                                     <sys:Double>NaN</sys:Double>
                                 </GroupBox.Height>
@@ -1822,7 +1822,7 @@
                                 Margin="0,0,15,0"
                                 Style="{StaticResource BoxStyle}"
                                 Padding="0"
-                                Header="Selected Filters">
+                                Header="{ResX Key=XRay_NotesView_SelectedFilters}">
                                 <GroupBox.Height>
                                     <sys:Double>NaN</sys:Double>
                                 </GroupBox.Height>
@@ -1880,7 +1880,7 @@
 
                     <TabItem
                         Width="100"
-                        Header="HAND VALUES">
+                        Header="{ResX Key=XRay_NotesView_HandValues}">
 
                         <Border
                             BorderBrush="{StaticResource BorderBrush}"
@@ -1912,14 +1912,14 @@
 
                                     <TabItem
                                         Width="70"
-                                        Header="FLOP">
+                                        Header="{ResX Key=XRay_NotesView_Flop}">
 
                                         <StackPanel
                                             Margin="10,0,0,0">
 
                                             <CheckBox
                                                 Style="{StaticResource CheckBoxStyle}"
-                                                Content="Any Hand Value"
+                                                Content="{ResX Key=XRay_NotesView_AnyHandValue}"
                                                 IsChecked="{Binding FlopAnyHandValue}" />
 
                                             <ListBox
@@ -1942,7 +1942,7 @@
                                             <CheckBox
                                                 Margin="0,5,0,0"
                                                 Style="{StaticResource CheckBoxStyle}"
-                                                Content="Any Flush Draw Value"
+                                                Content="{ResX Key=XRay_NotesView_AnyFlushDrawValue}"
                                                 IsChecked="{Binding FlopAnyFlushDrawsHandValue}" />
 
                                             <ListBox
@@ -1964,7 +1964,7 @@
                                             <CheckBox
                                                 Margin="0,5,0,0"
                                                 Style="{StaticResource CheckBoxStyle}"
-                                                Content="Any Straight Draw Value"
+                                                Content="{ResX Key=XRay_NotesView_AnyStraightDrawValue}"
                                                 IsChecked="{Binding FlopAnyStraightDrawsHandValue}" />
 
                                             <ListBox
@@ -1989,14 +1989,14 @@
 
                                     <TabItem
                                         Width="70"
-                                        Header="TURN">
+                                        Header="{ResX Key=XRay_NotesView_Turn}">
 
                                         <StackPanel
                                             Margin="10,0,0,0">
 
                                             <CheckBox
                                                 Style="{StaticResource CheckBoxStyle}"
-                                                Content="Any Hand Value"
+                                                Content="{ResX Key=XRay_NotesView_AnyHandValue}"
                                                 IsChecked="{Binding TurnAnyHandValue}" />
 
                                             <ListBox
@@ -2019,7 +2019,7 @@
                                             <CheckBox
                                                 Margin="0,5,0,0"
                                                 Style="{StaticResource CheckBoxStyle}"
-                                                Content="Any Flush Draw Value"
+                                                Content="{ResX Key=XRay_NotesView_AnyFlushDrawValue}"
                                                 IsChecked="{Binding TurnAnyFlushDrawsHandValue}" />
 
                                             <ListBox
@@ -2041,7 +2041,7 @@
                                             <CheckBox
                                                 Margin="0,5,0,0"
                                                 Style="{StaticResource CheckBoxStyle}"
-                                                Content="Any Straight Draw Value"
+                                                Content="{ResX Key=XRay_NotesView_AnyStraightDrawValue}"
                                                 IsChecked="{Binding TurnAnyStraightDrawsHandValue}" />
 
                                             <ListBox
@@ -2066,7 +2066,7 @@
 
                                     <TabItem
                                         Width="70"
-                                        Header="RIVER">
+                                        Header="{ResX Key=XRay_NotesView_River}">
 
                                         <Grid
                                             Margin="10,0,0,0">
@@ -2081,7 +2081,7 @@
                                             <CheckBox
                                                 Grid.Row="0"
                                                 Style="{StaticResource CheckBoxStyle}"
-                                                Content="Any Hand Value"
+                                                Content="{ResX Key=XRay_NotesView_AnyHandValue}"
                                                 IsChecked="{Binding RiverAnyHandValue}" />
 
                                             <ListBox
@@ -2117,7 +2117,7 @@
 
                     <TabItem
                         Width="110"
-                        Header="BOARD TEXTURE">
+                        Header="{ResX Key=XRay_NotesView_BoardTexture}">
 
                         <Border
                             BorderBrush="{StaticResource BorderBrush}"
@@ -2149,7 +2149,7 @@
 
                                     <TabItem
                                         Width="70"
-                                        Header="FLOP">
+                                        Header="{ResX Key=XRay_NotesView_Flop}">
 
                                         <local:BoardTextureView
                                             VerticalAlignment="Top"
@@ -2160,7 +2160,7 @@
 
                                     <TabItem
                                         Width="70"
-                                        Header="TURN">
+                                        Header="{ResX Key=XRay_NotesView_Turn}">
 
                                         <local:BoardTextureView
                                             VerticalAlignment="Top"
@@ -2171,7 +2171,7 @@
 
                                     <TabItem
                                         Width="70"
-                                        Header="RIVER">
+                                        Header="{ResX Key=XRay_NotesView_River}">
 
                                         <local:BoardTextureView
                                             VerticalAlignment="Top"
@@ -2195,13 +2195,13 @@
                     VerticalAlignment="Top">
 
                     <Button
-                        Content="ADVANCED MODE"
+                        Content="{ResX Key=XRay_NotesView_AdvancedMode}"
                         Style="{StaticResource SwitchModeButtonStyle}"
                         Visibility="{Binding IsAdvancedMode, Converter={dh:BoolToVisibilityConverter}, ConverterParameter=1}"
                         Command="{Binding SwitchModeCommand}" />
 
                     <Button
-                        Content="SIMPLE MODE"
+                        Content="{ResX Key=XRay_NotesView_SimpleMode}"
                         Style="{StaticResource SwitchModeButtonStyle}"
                         Visibility="{Binding IsAdvancedMode, Converter={dh:BoolToVisibilityConverter}}"
                         Command="{Binding SwitchModeCommand}" />

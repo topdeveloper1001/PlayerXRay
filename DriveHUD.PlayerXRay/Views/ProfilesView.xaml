@@ -125,7 +125,7 @@
                 <TextBlock
                     Margin="10,0,0,0"
                     VerticalAlignment="Center"
-                    Text="PROFILES" />
+                    Text="{ResX Key=XRay_ProfilesView_Profiles}" />
 
                 <ListBox
                     Grid.Row="1"
@@ -179,7 +179,7 @@
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     FontSize="12"
-                                    Text="ADD" />
+                                    Text="{ResX Key=XRay_ProfilesView_Add}" />
                             </StackPanel>
                         </Button>
 
@@ -198,7 +198,7 @@
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     FontSize="12"
-                                    Text="EDIT" />
+                                    Text="{ResX Key=XRay_ProfilesView_Edit}" />
                             </StackPanel>
                         </Button>
 
@@ -217,7 +217,7 @@
                                 <TextBlock
                                     Margin="8,0,0,0"
                                     FontSize="12"
-                                    Text="DELETE" />
+                                    Text="{ResX Key=XRay_ProfilesView_Delete}" />
                             </StackPanel>
                         </Button>
 
@@ -275,7 +275,7 @@
                         Style="{StaticResource BoxStyle}"
                         Margin="15,0,0,0"
                         Padding="0"
-                        Header="Notes">
+                        Header="{ResX Key=XRay_ProfilesView_Notes}">
                         <GroupBox.Height>
                             <sys:Double>NaN</sys:Double>
                         </GroupBox.Height>
@@ -363,7 +363,7 @@
                         Margin="0,0,15,0"
                         Style="{StaticResource BoxStyle}"
                         Padding="0"
-                        Header="Selected Notes">
+                        Header="{ResX Key=XRay_ProfilesView_SelectedNotes}">
                         <GroupBox.Height>
                             <sys:Double>NaN</sys:Double>
                         </GroupBox.Height>

@@ -123,6 +123,246 @@
   <data name="XRay_LicenseType_None" xml:space="preserve">
     <value>None</value>
   </data>
+  <data name="XRay_MainView_BuildDate" xml:space="preserve">
+    <value>Build Date:</value>
+  </data>
+  <data name="XRay_MainView_Help" xml:space="preserve">
+    <value>HELP</value>
+  </data>
+  <data name="XRay_MainView_License" xml:space="preserve">
+    <value>License:</value>
+  </data>
+  <data name="XRay_MainView_Notes" xml:space="preserve">
+    <value>NOTES</value>
+  </data>
+  <data name="XRay_MainView_Player" xml:space="preserve">
+    <value>Player:</value>
+  </data>
+  <data name="XRay_MainView_Profile" xml:space="preserve">
+    <value>PROFILES</value>
+  </data>
+  <data name="XRay_MainView_Run" xml:space="preserve">
+    <value>RUN</value>
+  </data>
+  <data name="XRay_MainView_Settings" xml:space="preserve">
+    <value>SETTINGS</value>
+  </data>
+  <data name="XRay_MainView_Site" xml:space="preserve">
+    <value>Site:</value>
+  </data>
+  <data name="XRay_MainView_Upgrade" xml:space="preserve">
+    <value>UPGRADE</value>
+  </data>
+  <data name="XRay_MainView_Version" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="XRay_NotesView_1Limper" xml:space="preserve">
+    <value>1 Limper</value>
+  </data>
+  <data name="XRay_NotesView_1Raiser" xml:space="preserve">
+    <value>1 Raiser</value>
+  </data>
+  <data name="XRay_NotesView_2Limpers" xml:space="preserve">
+    <value>2+ Limpers</value>
+  </data>
+  <data name="XRay_NotesView_2Raisers" xml:space="preserve">
+    <value>2 Raisers</value>
+  </data>
+  <data name="XRay_NotesView_34Handed" xml:space="preserve">
+    <value>3-4 handed</value>
+  </data>
+  <data name="XRay_NotesView_56Handed" xml:space="preserve">
+    <value>5-6</value>
+  </data>
+  <data name="XRay_NotesView_710Handed" xml:space="preserve">
+    <value>7-10</value>
+  </data>
+  <data name="XRay_NotesView_Actions" xml:space="preserve">
+    <value>ACTIONS</value>
+  </data>
+  <data name="XRay_NotesView_Add" xml:space="preserve">
+    <value>ADD</value>
+  </data>
+  <data name="XRay_NotesView_AllinPreflop" xml:space="preserve">
+    <value>All-in Pre-flop</value>
+  </data>
+  <data name="XRay_NotesView_And" xml:space="preserve">
+    <value>and</value>
+  </data>
+  <data name="XRay_NotesView_AnyFlushDrawValue" xml:space="preserve">
+    <value>Any Flush Draw Value</value>
+  </data>
+  <data name="XRay_NotesView_AnyHandValue" xml:space="preserve">
+    <value>Any Hand Value</value>
+  </data>
+  <data name="XRay_NotesView_AnyStraightDrawValue" xml:space="preserve">
+    <value>Any Straight Draw Value</value>
+  </data>
+  <data name="XRay_NotesView_BBs" xml:space="preserve">
+    <value>BBs</value>
+  </data>
+  <data name="XRay_NotesView_Between" xml:space="preserve">
+    <value>Between</value>
+  </data>
+  <data name="XRay_NotesView_BetweenLowerCase" xml:space="preserve">
+    <value>between</value>
+  </data>
+  <data name="XRay_NotesView_BigBlind" xml:space="preserve">
+    <value>Big Blind</value>
+  </data>
+  <data name="XRay_NotesView_Button" xml:space="preserve">
+    <value>Button</value>
+  </data>
+  <data name="XRay_NotesView_Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="XRay_NotesView_Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="XRay_NotesView_Cutoff" xml:space="preserve">
+    <value>Cutoff</value>
+  </data>
+  <data name="XRay_NotesView_Delete" xml:space="preserve">
+    <value>DELETE</value>
+  </data>
+  <data name="XRay_NotesView_DisplayedNote" xml:space="preserve">
+    <value>DISPLAYED NOTE</value>
+  </data>
+  <data name="XRay_NotesView_Early" xml:space="preserve">
+    <value>Early</value>
+  </data>
+  <data name="XRay_NotesView_Edit" xml:space="preserve">
+    <value>EDIT</value>
+  </data>
+  <data name="XRay_NotesView_Export" xml:space="preserve">
+    <value>EXPORT</value>
+  </data>
+  <data name="XRay_NotesView_Filters" xml:space="preserve">
+    <value>FILTERS</value>
+  </data>
+  <data name="XRay_NotesView_FiltersGroupBox" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="XRay_NotesView_FirstAction" xml:space="preserve">
+    <value>First Action:</value>
+  </data>
+  <data name="XRay_NotesView_Flop" xml:space="preserve">
+    <value>FLOP</value>
+  </data>
+  <data name="XRay_NotesView_FourthAction" xml:space="preserve">
+    <value>Fourth Action:</value>
+  </data>
+  <data name="XRay_NotesView_General" xml:space="preserve">
+    <value>GENERAL</value>
+  </data>
+  <data name="XRay_NotesView_HandValues" xml:space="preserve">
+    <value>HAND VALUES</value>
+  </data>
+  <data name="XRay_NotesView_HeadsUp" xml:space="preserve">
+    <value>Heads-Up</value>
+  </data>
+  <data name="XRay_NotesView_HoleCards" xml:space="preserve">
+    <value>HOLE CARDS</value>
+  </data>
+  <data name="XRay_NotesView_IncludeBoard" xml:space="preserve">
+    <value>Include board</value>
+  </data>
+  <data name="XRay_NotesView_Limit" xml:space="preserve">
+    <value>Limit</value>
+  </data>
+  <data name="XRay_NotesView_MaximumSizeOfPot" xml:space="preserve">
+    <value>Maximum size of pot</value>
+  </data>
+  <data name="XRay_NotesView_Middle" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="XRay_NotesView_MinimumSizeOfPot" xml:space="preserve">
+    <value>Minimum size of pot</value>
+  </data>
+  <data name="XRay_NotesView_Misc" xml:space="preserve">
+    <value>Misc</value>
+  </data>
+  <data name="XRay_NotesView_NoLimit" xml:space="preserve">
+    <value>No-Limit</value>
+  </data>
+  <data name="XRay_NotesView_NumberOfPlayers" xml:space="preserve">
+    <value>Number of players</value>
+  </data>
+  <data name="XRay_NotesView_NumberOfPlayersNotCapital" xml:space="preserve">
+    <value>number of players</value>
+  </data>
+  <data name="XRay_NotesView_OffSuited1Gappers" xml:space="preserve">
+    <value>OFF SUITED 1 GAPPERS</value>
+  </data>
+  <data name="XRay_NotesView_OffSuitedConnectors" xml:space="preserve">
+    <value>OFF SUITED CONNECTORS</value>
+  </data>
+  <data name="XRay_NotesView_PercentOfThePot" xml:space="preserve">
+    <value>% of the pot</value>
+  </data>
+  <data name="XRay_NotesView_PocketPairs" xml:space="preserve">
+    <value>POCKET PAIRS</value>
+  </data>
+  <data name="XRay_NotesView_Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="XRay_NotesView_Positionof1stRaiser" xml:space="preserve">
+    <value>Position of 1st Raiser</value>
+  </data>
+  <data name="XRay_NotesView_Positionof3Bet" xml:space="preserve">
+    <value>Position of 3-bet</value>
+  </data>
+  <data name="XRay_NotesView_PotLimit" xml:space="preserve">
+    <value>Pot-Limit</value>
+  </data>
+  <data name="XRay_NotesView_PreFlop" xml:space="preserve">
+    <value>PRE-FLOP</value>
+  </data>
+  <data name="XRay_NotesView_PreflopActionFacingPlayer" xml:space="preserve">
+    <value>Preflop Action Facing Player</value>
+  </data>
+  <data name="XRay_NotesView_RaisersCallers" xml:space="preserve">
+    <value>Raisers+Caller(s)</value>
+  </data>
+  <data name="XRay_NotesView_River" xml:space="preserve">
+    <value>RIVER</value>
+  </data>
+  <data name="XRay_NotesView_SecondAction" xml:space="preserve">
+    <value>Second Action:</value>
+  </data>
+  <data name="XRay_NotesView_SelectAll" xml:space="preserve">
+    <value>SELECT ALL</value>
+  </data>
+  <data name="XRay_NotesView_SelectedFilters" xml:space="preserve">
+    <value>Selected Filters</value>
+  </data>
+  <data name="XRay_NotesView_SelectNone" xml:space="preserve">
+    <value>SELECT NONE</value>
+  </data>
+  <data name="XRay_NotesView_SmallBlind" xml:space="preserve">
+    <value>Small Blind</value>
+  </data>
+  <data name="XRay_NotesView_Suited1Gappers" xml:space="preserve">
+    <value>SUITED 1 GAPPERS</value>
+  </data>
+  <data name="XRay_NotesView_SuitedConnectors" xml:space="preserve">
+    <value>SUITED CONNECTORS</value>
+  </data>
+  <data name="XRay_NotesView_ThirdAction" xml:space="preserve">
+    <value>Third Action:</value>
+  </data>
+  <data name="XRay_NotesView_Tournaments" xml:space="preserve">
+    <value>Tournaments</value>
+  </data>
+  <data name="XRay_NotesView_Turn" xml:space="preserve">
+    <value>TURN</value>
+  </data>
+  <data name="XRay_NotesView_Unopened" xml:space="preserve">
+    <value>Unopened</value>
+  </data>
+  <data name="XRay_NotesView_WentToShowdown" xml:space="preserve">
+    <value>Went to showdown</value>
+  </data>
   <data name="XRay_RegistrationView_Back" xml:space="preserve">
     <value>Back</value>
   </data>
@@ -170,5 +410,137 @@
   </data>
   <data name="XRay_RegistrationView_TrialRegisterText" xml:space="preserve">
     <value>Please enter the following data to activate your trial period:</value>
+  </data>
+  <data name="XRay_RunView_AllNotes" xml:space="preserve">
+    <value>All Notes</value>
+  </data>
+  <data name="XRay_RunView_ByNote" xml:space="preserve">
+    <value>By Note</value>
+  </data>
+  <data name="XRay_RunView_ByProfile" xml:space="preserve">
+    <value>By Profile</value>
+  </data>
+  <data name="XRay_RunView_Flop" xml:space="preserve">
+    <value>FLOP</value>
+  </data>
+  <data name="XRay_RunView_PreFlop" xml:space="preserve">
+    <value>PRE-FLOP</value>
+  </data>
+  <data name="XRay_RunView_Profiles" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="XRay_RunView_River" xml:space="preserve">
+    <value>RIVER</value>
+  </data>
+  <data name="XRay_RunView_Start" xml:space="preserve">
+    <value>START</value>
+  </data>
+  <data name="XRay_RunView_Status" xml:space="preserve">
+    <value>Status: </value>
+  </data>
+  <data name="XRay_RunView_Turn" xml:space="preserve">
+    <value>TURN</value>
+  </data>
+  <data name="XRay_AddEditNoteView_AddProfileTitle" xml:space="preserve">
+    <value>Add Profile</value>
+  </data>
+  <data name="XRay_AddEditNoteView_AddTitle" xml:space="preserve">
+    <value>Add Note/Group</value>
+  </data>
+  <data name="XRay_AddEditNoteView_Cancel" xml:space="preserve">
+    <value>CANCEL</value>
+  </data>
+  <data name="XRay_AddEditNoteView_EditNoteGroup" xml:space="preserve">
+    <value>Edit Group</value>
+  </data>
+  <data name="XRay_AddEditNoteView_EditNoteTitle" xml:space="preserve">
+    <value>Edit Note</value>
+  </data>
+  <data name="XRay_AddEditNoteView_EditProfileTitle" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="XRay_AddEditNoteView_Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="XRay_AddEditNoteView_Name" xml:space="preserve">
+    <value>Name: </value>
+  </data>
+  <data name="XRay_AddEditNoteView_Save" xml:space="preserve">
+    <value>SAVE</value>
+  </data>
+  <data name="XRay_NotesView_AdvancedMode" xml:space="preserve">
+    <value>ADVANCED MODE</value>
+  </data>
+  <data name="XRay_NotesView_BoardTexture" xml:space="preserve">
+    <value>BOARD TEXTURE</value>
+  </data>
+  <data name="XRay_NotesView_SimpleMode" xml:space="preserve">
+    <value>SIMPLE MODE</value>
+  </data>
+  <data name="XRay_ProfilesView_Add" xml:space="preserve">
+    <value>ADD</value>
+  </data>
+  <data name="XRay_ProfilesView_Delete" xml:space="preserve">
+    <value>DELETE</value>
+  </data>
+  <data name="XRay_ProfilesView_Edit" xml:space="preserve">
+    <value>EDIT</value>
+  </data>
+  <data name="XRay_ProfilesView_Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="XRay_ProfilesView_Profiles" xml:space="preserve">
+    <value>PROFILES</value>
+  </data>
+  <data name="XRay_ProfilesView_SelectedNotes" xml:space="preserve">
+    <value>Selected Notes</value>
+  </data>
+  <data name="XRay_SetFilterValueView_EnterTheAmountFor" xml:space="preserve">
+    <value>Enter the amount for:</value>
+  </data>
+  <data name="XRay_SetFilterValueView_Title" xml:space="preserve">
+    <value>Set filter value</value>
+  </data>
+  <data name="XRay_SettingsView_CreateNotesForHandsSince" xml:space="preserve">
+    <value>Create notes for hands since:</value>
+  </data>
+  <data name="XRay_SettingsView_DeleteAllNotes" xml:space="preserve">
+    <value>Delete all notes</value>
+  </data>
+  <data name="XRay_SettingsView_DeleteNotes" xml:space="preserve">
+    <value>Delete notes</value>
+  </data>
+  <data name="XRay_SettingsView_DeleteNotesOlderThan" xml:space="preserve">
+    <value>Delete notes older than:</value>
+  </data>
+  <data name="XRay_SettingsView_EnableAdvancedLog" xml:space="preserve">
+    <value>Enable advanced log</value>
+  </data>
+  <data name="XRay_SettingsView_EnableAutoNotes" xml:space="preserve">
+    <value>Enable auto-notes</value>
+  </data>
+  <data name="XRay_SettingsView_Settings" xml:space="preserve">
+    <value>SETTINGS</value>
+  </data>
+  <data name="XRay_SettingsView_TakeNotesOnHero" xml:space="preserve">
+    <value>Take notes on Hero</value>
+  </data>
+  <data name="XRay_YesNoConfirmationView_DeleteAllNotesMessage" xml:space="preserve">
+    <value>Are you sure you want to delete all notes?</value>
+  </data>
+  <data name="XRay_YesNoConfirmationView_DeleteItemMessage" xml:space="preserve">
+    <value>Are you sure you want to delete the selected item?</value>
+  </data>
+  <data name="XRay_YesNoConfirmationView_DeleteNotesMessage" xml:space="preserve">
+    <value>Are you sure you want to delete all notes older than {0:d}?</value>
+  </data>
+  <data name="XRay_YesNoConfirmationView_DeleteTitle" xml:space="preserve">
+    <value>Confirm Delete</value>
+  </data>
+  <data name="XRay_YesNoConfirmationView_No" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="XRay_YesNoConfirmationView_Yes" xml:space="preserve">
+    <value>YES</value>
   </data>
 </root>

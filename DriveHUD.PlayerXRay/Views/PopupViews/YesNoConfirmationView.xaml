@@ -48,14 +48,14 @@
                 Height="25"
                 Width="70"
                 Command="{Binding YesCommand}"
-                Content="YES" />
+                Content="{ResX Key=XRay_YesNoConfirmationView_Yes}" />
 
             <Button
                 Margin="10,0,0,0"
                 Height="25"
                 Width="70"
                 Command="{Binding NoCommand}"
-                Content="NO" />
+                Content="{ResX Key=XRay_YesNoConfirmationView_No}" />
 
         </StackPanel>
     </Grid>

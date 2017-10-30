@@ -10,6 +10,7 @@
 // </copyright>
 //----------------------------------------------------------------------
 
+using DriveHUD.Common.Resources;
 using DriveHUD.PlayerXRay.Events;
 using DriveHUD.PlayerXRay.Services;
 using DriveHUD.PlayerXRay.ViewModels.PopupViewModels;
@@ -211,7 +212,9 @@ namespace DriveHUD.PlayerXRay.ViewModels
         {
             var confirmationViewModel = new YesNoConfirmationViewModel
             {
-                ConfirmationMessage = "Are you sure you want to delete all notes?"
+                ConfirmationMessage = date.HasValue ?
+                    string.Format(CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_DeleteNotesMessage"), date.Value) :
+                    CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_DeleteAllNotesMessage")
             };
 
             confirmationViewModel.OnYesAction = () =>
@@ -235,7 +238,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
             var popupEventArgs = new RaisePopupEventArgs()
             {
-                Title = "Confirm Delete",
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_DeleteTitle"),
                 Content = new YesNoConfirmationView(confirmationViewModel)
             };
 

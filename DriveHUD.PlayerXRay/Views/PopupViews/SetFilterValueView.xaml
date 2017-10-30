@@ -33,7 +33,7 @@
         <TextBlock
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Text="Enter the amount for:" />
+            Text="{ResX Key=XRay_SetFilterValueView_EnterTheAmountFor}" />
 
         <TextBlock
             Grid.Row="1"

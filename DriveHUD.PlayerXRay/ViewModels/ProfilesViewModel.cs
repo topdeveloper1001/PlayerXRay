@@ -11,6 +11,7 @@
 //----------------------------------------------------------------------
 
 using DriveHUD.Common.Linq;
+using DriveHUD.Common.Resources;
 using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects;
 using DriveHUD.PlayerXRay.Events;
 using DriveHUD.PlayerXRay.ViewModels.PopupViewModels;
@@ -285,7 +286,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
             var popupEventArgs = new RaisePopupEventArgs()
             {
-                Title = "Add Profile",
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_AddEditNoteView_AddProfileTitle"),
                 Content = new AddEditNoteView(addNoteViewModel)
             };
 
@@ -307,7 +308,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
             var popupEventArgs = new RaisePopupEventArgs()
             {
-                Title = "Edit Profile",
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_AddEditNoteView_EditProfileTitle"),
                 Content = new AddEditNoteView(addNoteViewModel)
             };
 
@@ -318,7 +319,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
         {
             var confirmationViewModel = new YesNoConfirmationViewModel
             {
-                ConfirmationMessage = "Are you sure you want to delete the selected item?"
+                ConfirmationMessage = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_DeleteItemMessage")
             };
 
             confirmationViewModel.OnYesAction = () =>
@@ -330,7 +331,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
             var popupEventArgs = new RaisePopupEventArgs()
             {
-                Title = "Confirm Delete",
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_DeleteTitle"),
                 Content = new YesNoConfirmationView(confirmationViewModel)
             };
 

@@ -730,8 +730,7 @@
     <Grid
         IsEnabled="{Binding OperationInfo.IsBusy, Converter={dh:BoolNotConverter}}"
         Margin="8,9,8,9">
-
-        <!-- Profiles -->
+        
         <Border
             BorderBrush="{StaticResource BorderBrush}"
             BorderThickness="1"
@@ -761,7 +760,7 @@
                 <TextBlock
                     Margin="10,0,0,0"
                     VerticalAlignment="Center"
-                    Text="SETTINGS" />
+                    Text="{ResX Key=XRay_SettingsView_Settings}" />
 
                 <StackPanel
                     Grid.Row="1"
@@ -771,19 +770,19 @@
                     <CheckBox
                         Style="{StaticResource CheckBoxStyle}"
                         IsChecked="{Binding AutoNotesEnabled}"
-                        Content="Enable auto-notes" />
+                        Content="{ResX Key=XRay_SettingsView_EnableAutoNotes}" />
 
                     <CheckBox
                         Margin="0,10,0,0"
                         Style="{StaticResource CheckBoxStyle}"
                         IsChecked="{Binding TakesNotesOnHero}"
-                        Content="Take notes on Hero" />
+                        Content="{ResX Key=XRay_SettingsView_TakeNotesOnHero}" />
 
                     <CheckBox
                         Margin="0,10,0,0"
                         Style="{StaticResource CheckBoxStyle}"
                         IsChecked="{Binding IsAdvancedLogEnabled}"
-                        Content="Enable advanced log" />
+                        Content="{ResX Key=XRay_SettingsView_EnableAdvancedLog}" />
 
                     <StackPanel
                         Margin="0,10,0,0"
@@ -792,7 +791,7 @@
                         <CheckBox
                             Style="{StaticResource CheckBoxStyle}"
                             IsChecked="{Binding IsNoteCreationSinceDate}"
-                            Content="Create notes for hands since: " />
+                            Content="{ResX Key=XRay_SettingsView_CreateNotesForHandsSince}" />
 
                         <xctk:DateTimePicker
                             Margin="5,0,0,0"
@@ -816,7 +815,7 @@
                         Orientation="Horizontal">
 
                         <TextBlock
-                            Text="Delete notes older than: " />
+                            Text="{ResX Key=XRay_SettingsView_DeleteNotesOlderThan}" />
 
                         <xctk:DateTimePicker
                             Margin="5,0,0,0"
@@ -839,7 +838,7 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Command="{Binding DeleteNotesCommand}"
-                            Content="Delete notes" />
+                            Content="{ResX Key=XRay_SettingsView_DeleteNotes}" />
 
                         <Button
                             Margin="5,0,0,0"
@@ -848,7 +847,7 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Command="{Binding DeleteAllNotesCommand}"
-                            Content="Delete all notes" />
+                            Content="{ResX Key=XRay_SettingsView_DeleteAllNotes}" />
 
                     </StackPanel>
                   

@@ -61,6 +61,87 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Profile.
+        /// </summary>
+        internal static string XRay_AddEditNoteView_AddProfileTitle {
+            get {
+                return ResourceManager.GetString("XRay_AddEditNoteView_AddProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Note/Group.
+        /// </summary>
+        internal static string XRay_AddEditNoteView_AddTitle {
+            get {
+                return ResourceManager.GetString("XRay_AddEditNoteView_AddTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CANCEL.
+        /// </summary>
+        internal static string XRay_AddEditNoteView_Cancel {
+            get {
+                return ResourceManager.GetString("XRay_AddEditNoteView_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Group.
+        /// </summary>
+        internal static string XRay_AddEditNoteView_EditNoteGroup {
+            get {
+                return ResourceManager.GetString("XRay_AddEditNoteView_EditNoteGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Note.
+        /// </summary>
+        internal static string XRay_AddEditNoteView_EditNoteTitle {
+            get {
+                return ResourceManager.GetString("XRay_AddEditNoteView_EditNoteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Profile.
+        /// </summary>
+        internal static string XRay_AddEditNoteView_EditProfileTitle {
+            get {
+                return ResourceManager.GetString("XRay_AddEditNoteView_EditProfileTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group.
+        /// </summary>
+        internal static string XRay_AddEditNoteView_Group {
+            get {
+                return ResourceManager.GetString("XRay_AddEditNoteView_Group", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: .
+        /// </summary>
+        internal static string XRay_AddEditNoteView_Name {
+            get {
+                return ResourceManager.GetString("XRay_AddEditNoteView_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAVE.
+        /// </summary>
+        internal static string XRay_AddEditNoteView_Save {
+            get {
+                return ResourceManager.GetString("XRay_AddEditNoteView_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://drivehud.com/product/player-xray.
         /// </summary>
         internal static string XRay_BuyLink {
@@ -75,6 +156,807 @@ namespace DriveHUD.PlayerXRay.Resources {
         internal static string XRay_LicenseType_None {
             get {
                 return ResourceManager.GetString("XRay_LicenseType_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Build Date:.
+        /// </summary>
+        internal static string XRay_MainView_BuildDate {
+            get {
+                return ResourceManager.GetString("XRay_MainView_BuildDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HELP.
+        /// </summary>
+        internal static string XRay_MainView_Help {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License:.
+        /// </summary>
+        internal static string XRay_MainView_License {
+            get {
+                return ResourceManager.GetString("XRay_MainView_License", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NOTES.
+        /// </summary>
+        internal static string XRay_MainView_Notes {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player:.
+        /// </summary>
+        internal static string XRay_MainView_Player {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Player", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PROFILES.
+        /// </summary>
+        internal static string XRay_MainView_Profile {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RUN.
+        /// </summary>
+        internal static string XRay_MainView_Run {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Run", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SETTINGS.
+        /// </summary>
+        internal static string XRay_MainView_Settings {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Site:.
+        /// </summary>
+        internal static string XRay_MainView_Site {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Site", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPGRADE.
+        /// </summary>
+        internal static string XRay_MainView_Upgrade {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Upgrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version:.
+        /// </summary>
+        internal static string XRay_MainView_Version {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 Limper.
+        /// </summary>
+        internal static string XRay_NotesView_1Limper {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_1Limper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 Raiser.
+        /// </summary>
+        internal static string XRay_NotesView_1Raiser {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_1Raiser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2+ Limpers.
+        /// </summary>
+        internal static string XRay_NotesView_2Limpers {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_2Limpers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 Raisers.
+        /// </summary>
+        internal static string XRay_NotesView_2Raisers {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_2Raisers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3-4 handed.
+        /// </summary>
+        internal static string XRay_NotesView_34Handed {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_34Handed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5-6.
+        /// </summary>
+        internal static string XRay_NotesView_56Handed {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_56Handed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 7-10.
+        /// </summary>
+        internal static string XRay_NotesView_710Handed {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_710Handed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ACTIONS.
+        /// </summary>
+        internal static string XRay_NotesView_Actions {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ADD.
+        /// </summary>
+        internal static string XRay_NotesView_Add {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ADVANCED MODE.
+        /// </summary>
+        internal static string XRay_NotesView_AdvancedMode {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_AdvancedMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All-in Pre-flop.
+        /// </summary>
+        internal static string XRay_NotesView_AllinPreflop {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_AllinPreflop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to and.
+        /// </summary>
+        internal static string XRay_NotesView_And {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_And", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any Flush Draw Value.
+        /// </summary>
+        internal static string XRay_NotesView_AnyFlushDrawValue {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_AnyFlushDrawValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any Hand Value.
+        /// </summary>
+        internal static string XRay_NotesView_AnyHandValue {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_AnyHandValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any Straight Draw Value.
+        /// </summary>
+        internal static string XRay_NotesView_AnyStraightDrawValue {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_AnyStraightDrawValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BBs.
+        /// </summary>
+        internal static string XRay_NotesView_BBs {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_BBs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Between.
+        /// </summary>
+        internal static string XRay_NotesView_Between {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Between", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to between.
+        /// </summary>
+        internal static string XRay_NotesView_BetweenLowerCase {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_BetweenLowerCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Big Blind.
+        /// </summary>
+        internal static string XRay_NotesView_BigBlind {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_BigBlind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BOARD TEXTURE.
+        /// </summary>
+        internal static string XRay_NotesView_BoardTexture {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_BoardTexture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Button.
+        /// </summary>
+        internal static string XRay_NotesView_Button {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cash.
+        /// </summary>
+        internal static string XRay_NotesView_Cash {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Cash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom.
+        /// </summary>
+        internal static string XRay_NotesView_Custom {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Custom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cutoff.
+        /// </summary>
+        internal static string XRay_NotesView_Cutoff {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Cutoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE.
+        /// </summary>
+        internal static string XRay_NotesView_Delete {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DISPLAYED NOTE.
+        /// </summary>
+        internal static string XRay_NotesView_DisplayedNote {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_DisplayedNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Early.
+        /// </summary>
+        internal static string XRay_NotesView_Early {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Early", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EDIT.
+        /// </summary>
+        internal static string XRay_NotesView_Edit {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EXPORT.
+        /// </summary>
+        internal static string XRay_NotesView_Export {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FILTERS.
+        /// </summary>
+        internal static string XRay_NotesView_Filters {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Filters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filters.
+        /// </summary>
+        internal static string XRay_NotesView_FiltersGroupBox {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_FiltersGroupBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Action:.
+        /// </summary>
+        internal static string XRay_NotesView_FirstAction {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_FirstAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FLOP.
+        /// </summary>
+        internal static string XRay_NotesView_Flop {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Flop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fourth Action:.
+        /// </summary>
+        internal static string XRay_NotesView_FourthAction {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_FourthAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GENERAL.
+        /// </summary>
+        internal static string XRay_NotesView_General {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HAND VALUES.
+        /// </summary>
+        internal static string XRay_NotesView_HandValues {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_HandValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heads-Up.
+        /// </summary>
+        internal static string XRay_NotesView_HeadsUp {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_HeadsUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HOLE CARDS.
+        /// </summary>
+        internal static string XRay_NotesView_HoleCards {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_HoleCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include board.
+        /// </summary>
+        internal static string XRay_NotesView_IncludeBoard {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_IncludeBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limit.
+        /// </summary>
+        internal static string XRay_NotesView_Limit {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Limit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum size of pot.
+        /// </summary>
+        internal static string XRay_NotesView_MaximumSizeOfPot {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_MaximumSizeOfPot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middle.
+        /// </summary>
+        internal static string XRay_NotesView_Middle {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Middle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum size of pot.
+        /// </summary>
+        internal static string XRay_NotesView_MinimumSizeOfPot {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_MinimumSizeOfPot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Misc.
+        /// </summary>
+        internal static string XRay_NotesView_Misc {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Misc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No-Limit.
+        /// </summary>
+        internal static string XRay_NotesView_NoLimit {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_NoLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of players.
+        /// </summary>
+        internal static string XRay_NotesView_NumberOfPlayers {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_NumberOfPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to number of players.
+        /// </summary>
+        internal static string XRay_NotesView_NumberOfPlayersNotCapital {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_NumberOfPlayersNotCapital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OFF SUITED 1 GAPPERS.
+        /// </summary>
+        internal static string XRay_NotesView_OffSuited1Gappers {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_OffSuited1Gappers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OFF SUITED CONNECTORS.
+        /// </summary>
+        internal static string XRay_NotesView_OffSuitedConnectors {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_OffSuitedConnectors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to % of the pot.
+        /// </summary>
+        internal static string XRay_NotesView_PercentOfThePot {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_PercentOfThePot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to POCKET PAIRS.
+        /// </summary>
+        internal static string XRay_NotesView_PocketPairs {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_PocketPairs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        internal static string XRay_NotesView_Position {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position of 1st Raiser.
+        /// </summary>
+        internal static string XRay_NotesView_Positionof1stRaiser {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Positionof1stRaiser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position of 3-bet.
+        /// </summary>
+        internal static string XRay_NotesView_Positionof3Bet {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Positionof3Bet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pot-Limit.
+        /// </summary>
+        internal static string XRay_NotesView_PotLimit {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_PotLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRE-FLOP.
+        /// </summary>
+        internal static string XRay_NotesView_PreFlop {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_PreFlop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preflop Action Facing Player.
+        /// </summary>
+        internal static string XRay_NotesView_PreflopActionFacingPlayer {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_PreflopActionFacingPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Raisers+Caller(s).
+        /// </summary>
+        internal static string XRay_NotesView_RaisersCallers {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_RaisersCallers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RIVER.
+        /// </summary>
+        internal static string XRay_NotesView_River {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_River", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Second Action:.
+        /// </summary>
+        internal static string XRay_NotesView_SecondAction {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_SecondAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT ALL.
+        /// </summary>
+        internal static string XRay_NotesView_SelectAll {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected Filters.
+        /// </summary>
+        internal static string XRay_NotesView_SelectedFilters {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_SelectedFilters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT NONE.
+        /// </summary>
+        internal static string XRay_NotesView_SelectNone {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_SelectNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SIMPLE MODE.
+        /// </summary>
+        internal static string XRay_NotesView_SimpleMode {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_SimpleMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Small Blind.
+        /// </summary>
+        internal static string XRay_NotesView_SmallBlind {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_SmallBlind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUITED 1 GAPPERS.
+        /// </summary>
+        internal static string XRay_NotesView_Suited1Gappers {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Suited1Gappers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUITED CONNECTORS.
+        /// </summary>
+        internal static string XRay_NotesView_SuitedConnectors {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_SuitedConnectors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Third Action:.
+        /// </summary>
+        internal static string XRay_NotesView_ThirdAction {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_ThirdAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tournaments.
+        /// </summary>
+        internal static string XRay_NotesView_Tournaments {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Tournaments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TURN.
+        /// </summary>
+        internal static string XRay_NotesView_Turn {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Turn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unopened.
+        /// </summary>
+        internal static string XRay_NotesView_Unopened {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_Unopened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Went to showdown.
+        /// </summary>
+        internal static string XRay_NotesView_WentToShowdown {
+            get {
+                return ResourceManager.GetString("XRay_NotesView_WentToShowdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ADD.
+        /// </summary>
+        internal static string XRay_ProfilesView_Add {
+            get {
+                return ResourceManager.GetString("XRay_ProfilesView_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE.
+        /// </summary>
+        internal static string XRay_ProfilesView_Delete {
+            get {
+                return ResourceManager.GetString("XRay_ProfilesView_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EDIT.
+        /// </summary>
+        internal static string XRay_ProfilesView_Edit {
+            get {
+                return ResourceManager.GetString("XRay_ProfilesView_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes.
+        /// </summary>
+        internal static string XRay_ProfilesView_Notes {
+            get {
+                return ResourceManager.GetString("XRay_ProfilesView_Notes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PROFILES.
+        /// </summary>
+        internal static string XRay_ProfilesView_Profiles {
+            get {
+                return ResourceManager.GetString("XRay_ProfilesView_Profiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected Notes.
+        /// </summary>
+        internal static string XRay_ProfilesView_SelectedNotes {
+            get {
+                return ResourceManager.GetString("XRay_ProfilesView_SelectedNotes", resourceCulture);
             }
         }
         
@@ -219,6 +1101,240 @@ namespace DriveHUD.PlayerXRay.Resources {
         internal static string XRay_RegistrationView_TrialRegisterText {
             get {
                 return ResourceManager.GetString("XRay_RegistrationView_TrialRegisterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Notes.
+        /// </summary>
+        internal static string XRay_RunView_AllNotes {
+            get {
+                return ResourceManager.GetString("XRay_RunView_AllNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Note.
+        /// </summary>
+        internal static string XRay_RunView_ByNote {
+            get {
+                return ResourceManager.GetString("XRay_RunView_ByNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to By Profile.
+        /// </summary>
+        internal static string XRay_RunView_ByProfile {
+            get {
+                return ResourceManager.GetString("XRay_RunView_ByProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FLOP.
+        /// </summary>
+        internal static string XRay_RunView_Flop {
+            get {
+                return ResourceManager.GetString("XRay_RunView_Flop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRE-FLOP.
+        /// </summary>
+        internal static string XRay_RunView_PreFlop {
+            get {
+                return ResourceManager.GetString("XRay_RunView_PreFlop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profiles.
+        /// </summary>
+        internal static string XRay_RunView_Profiles {
+            get {
+                return ResourceManager.GetString("XRay_RunView_Profiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RIVER.
+        /// </summary>
+        internal static string XRay_RunView_River {
+            get {
+                return ResourceManager.GetString("XRay_RunView_River", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to START.
+        /// </summary>
+        internal static string XRay_RunView_Start {
+            get {
+                return ResourceManager.GetString("XRay_RunView_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status: .
+        /// </summary>
+        internal static string XRay_RunView_Status {
+            get {
+                return ResourceManager.GetString("XRay_RunView_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TURN.
+        /// </summary>
+        internal static string XRay_RunView_Turn {
+            get {
+                return ResourceManager.GetString("XRay_RunView_Turn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the amount for:.
+        /// </summary>
+        internal static string XRay_SetFilterValueView_EnterTheAmountFor {
+            get {
+                return ResourceManager.GetString("XRay_SetFilterValueView_EnterTheAmountFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set filter value.
+        /// </summary>
+        internal static string XRay_SetFilterValueView_Title {
+            get {
+                return ResourceManager.GetString("XRay_SetFilterValueView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create notes for hands since:.
+        /// </summary>
+        internal static string XRay_SettingsView_CreateNotesForHandsSince {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_CreateNotesForHandsSince", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete all notes.
+        /// </summary>
+        internal static string XRay_SettingsView_DeleteAllNotes {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_DeleteAllNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete notes.
+        /// </summary>
+        internal static string XRay_SettingsView_DeleteNotes {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_DeleteNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete notes older than:.
+        /// </summary>
+        internal static string XRay_SettingsView_DeleteNotesOlderThan {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_DeleteNotesOlderThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable advanced log.
+        /// </summary>
+        internal static string XRay_SettingsView_EnableAdvancedLog {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_EnableAdvancedLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable auto-notes.
+        /// </summary>
+        internal static string XRay_SettingsView_EnableAutoNotes {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_EnableAutoNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SETTINGS.
+        /// </summary>
+        internal static string XRay_SettingsView_Settings {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take notes on Hero.
+        /// </summary>
+        internal static string XRay_SettingsView_TakeNotesOnHero {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_TakeNotesOnHero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete all notes?.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_DeleteAllNotesMessage {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_DeleteAllNotesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the selected item?.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_DeleteItemMessage {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_DeleteItemMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete all notes older than {0:d}?.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_DeleteNotesMessage {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_DeleteNotesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Delete.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_DeleteTitle {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_DeleteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NO.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_No {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YES.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_Yes {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_Yes", resourceCulture);
             }
         }
     }

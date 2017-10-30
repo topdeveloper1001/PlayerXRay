@@ -130,7 +130,7 @@
                 IsChecked="{Binding Workspace.WorkspaceType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static local:WorkspaceType.Run}, Mode=OneWay}"
                 Command="{Binding NavigateCommand}"
                 CommandParameter="{x:Static local:WorkspaceType.Run}"
-                Content="RUN" />
+                Content="{ResX Key=XRay_MainView_Run}" />
 
             <ctl:MenuButton
                 Style="{StaticResource MenuButtonStyle}"
@@ -142,7 +142,7 @@
                 IsChecked="{Binding Workspace.WorkspaceType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static local:WorkspaceType.Notes}, Mode=OneWay}"
                 Command="{Binding NavigateCommand}"
                 CommandParameter="{x:Static local:WorkspaceType.Notes}"
-                Content="NOTES" />
+                Content="{ResX Key=XRay_MainView_Notes}" />
 
             <ctl:MenuButton
                 Style="{StaticResource MenuButtonStyle}"
@@ -154,7 +154,7 @@
                 IsChecked="{Binding Workspace.WorkspaceType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static local:WorkspaceType.Profiles}, Mode=OneWay}"
                 Command="{Binding NavigateCommand}"
                 CommandParameter="{x:Static local:WorkspaceType.Profiles}"
-                Content="PROFILES" />
+                Content="{ResX Key=XRay_MainView_Profile}" />
 
             <ctl:MenuButton
                 Style="{StaticResource MenuButtonStyle}"
@@ -166,7 +166,7 @@
                 IsChecked="{Binding Workspace.WorkspaceType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static local:WorkspaceType.Settings}, Mode=OneWay}"
                 Command="{Binding NavigateCommand}"
                 CommandParameter="{x:Static local:WorkspaceType.Settings}"
-                Content="SETTINGS" />
+                Content="{ResX Key=XRay_MainView_Settings}" />
 
             <ctl:MenuButton
                 Style="{StaticResource MenuButtonStyle}"
@@ -178,7 +178,7 @@
                 IsChecked="{Binding Workspace.WorkspaceType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static local:WorkspaceType.Help}, Mode=OneWay}"
                 Command="{Binding NavigateCommand}"
                 CommandParameter="{x:Static local:WorkspaceType.Help}"
-                Content="HELP" />
+                Content="{ResX Key=XRay_MainView_Help}" />
 
         </StackPanel>
 
@@ -200,7 +200,7 @@
 
                 <TextBlock
                     Style="{StaticResource BottomTextStyle}"
-                    Text="Version:" />
+                    Text="{ResX Key=XRay_MainView_Version}" />
 
                 <TextBlock
                     Style="{StaticResource BottomActiveTextStyle}"
@@ -208,7 +208,7 @@
 
                 <TextBlock
                     Style="{StaticResource BottomTextStyle}"
-                    Text="Build Date:" />
+                    Text="{ResX Key=XRay_MainView_BuildDate}" />
 
                 <TextBlock
                     Style="{StaticResource BottomActiveTextStyle}"
@@ -216,7 +216,7 @@
 
                 <TextBlock
                     Style="{StaticResource BottomTextStyle}"
-                    Text="Player:" />
+                    Text="{ResX Key=XRay_MainView_Player}" />
 
                 <TextBlock
                     Style="{StaticResource BottomActiveTextStyle}"
@@ -224,7 +224,7 @@
 
                 <TextBlock
                     Style="{StaticResource BottomTextStyle}"
-                    Text="Site:" />
+                    Text="{ResX Key=XRay_MainView_Site}" />
 
                 <TextBlock
                     Style="{StaticResource BottomActiveTextStyle}"
@@ -232,7 +232,7 @@
 
                 <TextBlock
                     Style="{StaticResource BottomTextStyle}"
-                    Text="License:" />
+                    Text="{ResX Key=XRay_MainView_License}" />
 
                 <TextBlock
                     Style="{StaticResource BottomActiveTextStyle}"
@@ -240,7 +240,7 @@
                     Text="{Binding LicenseType}" />
 
                 <Button
-                    Content="{ResX Common_Main_Upgrade}"
+                    Content="{ResX XRay_MainView_Upgrade}"
                     Command="{Binding UpgradeCommand}"
                     Background="Transparent"
                     BorderThickness="0"

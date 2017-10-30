@@ -12,6 +12,7 @@
 
 using DriveHUD.Common.Linq;
 using DriveHUD.Common.Reflection;
+using DriveHUD.Common.Resources;
 using DriveHUD.Common.Wpf.AttachedBehaviors;
 using DriveHUD.PlayerXRay.DataTypes;
 using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects;
@@ -197,7 +198,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
                         var popupEventArgs = new RaisePopupEventArgs()
                         {
-                            Title = "Set filter value",
+                            Title = CommonResourceManager.Instance.GetResourceString("XRay_SetFilterValueView_Title"),
                             Content = new SetFilterValueView(setFilterValueViewModel)
                         };
 
@@ -1319,7 +1320,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
             var popupEventArgs = new RaisePopupEventArgs()
             {
-                Title = "Add Note/Group",
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_AddEditNoteView_AddTitle"),
                 Content = new AddEditNoteView(addNoteViewModel)
             };
 
@@ -1347,7 +1348,9 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
             var popupEventArgs = new RaisePopupEventArgs()
             {
-                Title = treeEditableObject is NoteObject ? "Edit Note" : "Edit Group",
+                Title = treeEditableObject is NoteObject ?
+                    CommonResourceManager.Instance.GetResourceString("XRay_AddEditNoteView_EditNoteTitle") :
+                    CommonResourceManager.Instance.GetResourceString("XRay_AddEditNoteView_EditNoteGroup"),
                 Content = new AddEditNoteView(addNoteViewModel)
             };
 
@@ -1358,7 +1361,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
         {
             var confirmationViewModel = new YesNoConfirmationViewModel
             {
-                ConfirmationMessage = "Are you sure you want to delete the selected item?"
+                ConfirmationMessage = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_DeleteItemMessage")
             };
 
             confirmationViewModel.OnYesAction = () =>
@@ -1387,7 +1390,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
             var popupEventArgs = new RaisePopupEventArgs()
             {
-                Title = "Confirm Delete",
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_DeleteTitle"),
                 Content = new YesNoConfirmationView(confirmationViewModel)
             };
 

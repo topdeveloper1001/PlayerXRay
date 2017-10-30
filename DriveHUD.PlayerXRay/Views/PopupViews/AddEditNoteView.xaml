@@ -34,7 +34,7 @@
 
         <TextBlock
             FontSize="12"
-            Text="Name: " />
+            Text="{ResX Key=XRay_AddEditNoteView_Name}" />
 
         <TextBox            
             Grid.Column="2"
@@ -52,7 +52,7 @@
             Style="{StaticResource CheckBoxStyle}"
             IsChecked="{Binding IsGroup}"
             Visibility="{Binding IsGroupPossible, Converter={dh:BoolToVisibilityConverter}}"
-            Content="Group" />
+            Content="{ResX Key=XRay_AddEditNoteView_Group}" />
 
         <StackPanel
             Grid.ColumnSpan="2"
@@ -65,14 +65,14 @@
                 Height="25"
                 Width="70"
                 Command="{Binding SaveCommand}"
-                Content="SAVE" />
+                Content="{ResX Key=XRay_AddEditNoteView_Save}" />
 
             <Button
                 Margin="10,0,0,0"
                 Height="25"
                 Width="70"
                 Command="{Binding CancelCommand}"
-                Content="CANCEL" />
+                Content="{ResX Key=XRay_AddEditNoteView_Cancel}" />
 
         </StackPanel>
     </Grid>
