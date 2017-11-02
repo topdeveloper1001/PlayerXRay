@@ -191,6 +191,8 @@
     <Compile Include="DeployLXKeys.cs" />
     <Compile Include="Events\RaisePopupEvent.cs" />
     <Compile Include="Events\RaisePopupEventArgs.cs" />
+    <Compile Include="Events\RefreshSettingsEvent.cs" />
+    <Compile Include="Events\RefreshSettingsEventArgs.cs" />
     <Compile Include="Licensing\DeployLXLicensingServer.cs" />
     <Compile Include="Licensing\ILicenseInfo.cs" />
     <Compile Include="Licensing\ILicenseService.cs" />

@@ -14,12 +14,14 @@ using DriveHUD.Common.Log;
 using DriveHUD.Entities;
 using DriveHUD.PlayerXRay.BusinessHelper;
 using DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings;
+using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects;
 using HandHistories.Objects.Hand;
 using Microsoft.Practices.ServiceLocation;
 using Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace DriveHUD.PlayerXRay.Services
@@ -47,7 +49,22 @@ namespace DriveHUD.PlayerXRay.Services
 
             try
             {
-                var playerNotes = noteProcessingService.ProcessHand(CurrentNotesAppSettings.AllNotes, stats, handHistory);
+                var profile = CurrentNotesAppSettings.Profiles?.FirstOrDefault(x => x.Name == CurrentNotesAppSettings.AutoNoteProfile);
+
+                IEnumerable<NoteObject> notes;
+
+                if (profile != null)
+                {
+                    notes = (from noteId in profile.ContainingNotes
+                             join note in CurrentNotesAppSettings.AllNotes on noteId equals note.ID
+                             select note).ToList();
+                }
+                else
+                {
+                    notes = CurrentNotesAppSettings.AllNotes;
+                }
+
+                var playerNotes = noteProcessingService.ProcessHand(notes, stats, handHistory);
                 return playerNotes;
             }
             catch (Exception e)

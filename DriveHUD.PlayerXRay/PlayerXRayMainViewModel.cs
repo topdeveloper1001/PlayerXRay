@@ -12,6 +12,7 @@
 
 using DriveHUD.Common.Exceptions;
 using DriveHUD.Common.Infrastructure.CustomServices;
+using DriveHUD.Common.Linq;
 using DriveHUD.Common.Log;
 using DriveHUD.Common.Resources;
 using DriveHUD.Common.Security;
@@ -290,7 +291,7 @@ namespace DriveHUD.PlayerXRay
 
             eventAggregator.GetEvent<RaisePopupEvent>().Unsubscribe(raisePopupSubscriptionToken);
 
-            Workspace?.Dispose();
+            workspaces.Values.ForEach(workspace => workspace.Dispose());         
 
             base.Disposing();
         }

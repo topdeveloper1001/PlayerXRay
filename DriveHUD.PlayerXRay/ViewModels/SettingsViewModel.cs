@@ -11,6 +11,7 @@
 //----------------------------------------------------------------------
 
 using DriveHUD.Common.Resources;
+using DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings;
 using DriveHUD.PlayerXRay.Events;
 using DriveHUD.PlayerXRay.Services;
 using DriveHUD.PlayerXRay.ViewModels.PopupViewModels;
@@ -19,12 +20,15 @@ using Microsoft.Practices.ServiceLocation;
 using Prism.Events;
 using ReactiveUI;
 using System;
+using System.Linq;
 
 namespace DriveHUD.PlayerXRay.ViewModels
 {
     public class SettingsViewModel : WorkspaceViewModel
     {
         private readonly IEventAggregator eventAggregator;
+
+        private readonly SubscriptionToken refreshSettingsSubscriptionToken;
 
         public SettingsViewModel()
         {
@@ -37,6 +41,29 @@ namespace DriveHUD.PlayerXRay.ViewModels
             DeleteNotesCommand.Subscribe(x => DeleteNotes(OlderThanDate));
 
             olderThanDate = DateTime.Today;
+
+            profiles = new ReactiveList<AutoNoteProfile>();
+
+            RefreshSettings();
+
+            refreshSettingsSubscriptionToken = eventAggregator.GetEvent<RefreshSettingsEvent>().Subscribe(x => RefreshSettings());
+        }
+
+        private void RefreshSettings()
+        {
+            profiles.Clear();
+
+            profiles.Add(
+                new AutoNoteProfile(CommonResourceManager.Instance.GetResourceString("XRay_SettingsView_AllNotes"))
+                {
+                    IsAll = true
+                }
+            );
+
+            NoteService.CurrentNotesAppSettings.Profiles.ForEach(x => profiles.Add(new AutoNoteProfile(x.Name)));
+
+            selectedProfile = profiles.FirstOrDefault(x => x.Name == NoteService.CurrentNotesAppSettings.AutoNoteProfile ||
+                (string.IsNullOrEmpty(NoteService.CurrentNotesAppSettings.AutoNoteProfile) && x.IsAll));
         }
 
         #region Properties 
@@ -196,6 +223,36 @@ namespace DriveHUD.PlayerXRay.ViewModels
             }
         }
 
+        private ReactiveList<AutoNoteProfile> profiles;
+
+        public ReactiveList<AutoNoteProfile> Profiles
+        {
+            get
+            {
+                return profiles;
+            }
+        }
+
+        private AutoNoteProfile selectedProfile;
+
+        public AutoNoteProfile SelectedProfile
+        {
+            get
+            {
+                return selectedProfile;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref selectedProfile, value);
+
+                NoteService.CurrentNotesAppSettings.AutoNoteProfile = !selectedProfile.IsAll ?
+                    selectedProfile.Name :
+                    null;
+
+                NoteService.SaveAppSettings();
+            }
+        }
+
         #endregion
 
         #region Commands
@@ -243,6 +300,44 @@ namespace DriveHUD.PlayerXRay.ViewModels
             };
 
             eventAggregator.GetEvent<RaisePopupEvent>().Publish(popupEventArgs);
+        }
+
+        #endregion
+
+        #region IDisposable
+
+        protected override void Disposing()
+        {
+            base.Disposing();
+
+            if (refreshSettingsSubscriptionToken != null)
+            {
+                eventAggregator.GetEvent<RefreshSettingsEvent>().Unsubscribe(refreshSettingsSubscriptionToken);
+            }
+        }
+
+        #endregion
+
+        #region Helpers 
+
+        public class AutoNoteProfile : ReactiveObject
+        {
+            public AutoNoteProfile(string name)
+            {
+                Name = name;
+            }
+
+            public string Name
+            {
+                get;
+                set;
+            }
+
+            public bool IsAll
+            {
+                get;
+                set;
+            }
         }
 
         #endregion

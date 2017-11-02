@@ -19,7 +19,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings
 {
     [Serializable]
     public class NotesAppSettings
-    {
+    {       
         public NotesAppSettings()
         {
             LastBackupDate = DateTime.MinValue;
@@ -27,11 +27,13 @@ namespace DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings
             StagesList = new List<StageObject>();
             ShowHoleCards = true;
             HoleCardsNumber = 3;
-            AutoNotesEnabled = true;
+            AutoNotesEnabled = true;            
             NoteCreationSinceDate = DateTime.Today.AddMonths(-2);
         }
 
         public bool AutoNotesEnabled { get; set; }
+
+        public string AutoNoteProfile { get; set; }
 
         public bool TakesNotesOnHero { get; set; }
 

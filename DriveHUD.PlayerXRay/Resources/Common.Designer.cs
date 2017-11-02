@@ -1213,6 +1213,15 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All notes.
+        /// </summary>
+        internal static string XRay_SettingsView_AllNotes {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_AllNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create notes for hands since:.
         /// </summary>
         internal static string XRay_SettingsView_CreateNotesForHandsSince {

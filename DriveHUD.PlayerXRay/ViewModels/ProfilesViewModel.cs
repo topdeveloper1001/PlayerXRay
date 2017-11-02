@@ -302,8 +302,16 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
             addNoteViewModel.OnSaveAction = () =>
             {
+                if (NoteService.CurrentNotesAppSettings.AutoNoteProfile == SelectedProfile.Name)
+                {
+                    NoteService.CurrentNotesAppSettings.AutoNoteProfile = addNoteViewModel.Name;
+                }
+
                 SelectedProfile.Name = addNoteViewModel.Name;
+
                 NoteService.SaveAppSettings();
+
+                eventAggregator.GetEvent<RefreshSettingsEvent>().Publish(new RefreshSettingsEventArgs());
             };
 
             var popupEventArgs = new RaisePopupEventArgs()

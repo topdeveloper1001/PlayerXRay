@@ -543,4 +543,7 @@
   <data name="XRay_YesNoConfirmationView_Yes" xml:space="preserve">
     <value>YES</value>
   </data>
+  <data name="XRay_SettingsView_AllNotes" xml:space="preserve">
+    <value>All notes</value>
+  </data>
 </root>
