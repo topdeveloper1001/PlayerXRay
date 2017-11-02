@@ -279,3 +279,5 @@ __pycache__/
 /DriveHUD.EquityCalculator
 /DriveHUD.EquityCalculator.Base
 /tools/BuildFileHash
+/dependencies/Npgsql.dll
+/dependencies/HandEvaluator.dll

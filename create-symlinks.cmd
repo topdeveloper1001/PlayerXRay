@@ -14,3 +14,5 @@ mklink /D .\tools\build\include ..\..\..\DriveHUD\tools\build\include
 mklink /D .\tools\build\modules ..\..\..\DriveHUD\tools\build\modules
 mklink /D .\tools\BuildFileHash ..\..\DriveHUD\tools\BuildFileHash
 mklink /D Certificates ..\DriveHUD\Certificates
+mklink .\dependencies\HandEvaluator.dll ..\..\DriveHUD\dependencies\HandEvaluator.dll
+mklink .\dependencies\Npgsql.dll ..\..\DriveHUD\dependencies\Npgsql.dll
