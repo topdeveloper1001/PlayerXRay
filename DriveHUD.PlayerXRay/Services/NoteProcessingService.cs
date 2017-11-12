@@ -83,14 +83,14 @@ namespace DriveHUD.PlayerXRay.Services
 
             switch (licenseType)
             {
-                case LicenseType.Holdem:
+                case LicenseType.XRayHoldem:
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.CapNoLimitHoldem);
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.FixedLimitHoldem);
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.NoLimitHoldem);
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.PotLimitHoldem);
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.SpreadLimitHoldem);
                     break;
-                case LicenseType.Omaha:
+                case LicenseType.XRayOmaha:
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.CapPotLimitOmaha);
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.FiveCardPotLimitOmaha);
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.FiveCardPotLimitOmahaHiLo);
@@ -102,8 +102,8 @@ namespace DriveHUD.PlayerXRay.Services
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.PotLimitOmaha);
                     gameTypes.Add(HandHistories.Objects.GameDescription.GameType.PotLimitOmahaHiLo);
                     break;
-                case LicenseType.Combo:
-                case LicenseType.Trial:
+                case LicenseType.XRayCombo:
+                case LicenseType.XRayTrial:
                     foreach (HandHistories.Objects.GameDescription.GameType gameType in Enum.GetValues(typeof(HandHistories.Objects.GameDescription.GameType)))
                     {
                         gameTypes.Add(gameType);

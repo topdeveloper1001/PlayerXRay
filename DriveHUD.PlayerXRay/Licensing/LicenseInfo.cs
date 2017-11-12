@@ -80,7 +80,7 @@ namespace DriveHUD.PlayerXRay.Licensing
         {
             get
             {
-                return license != null && license.SerialNumber != null && (license.SerialNumber.StartsWith("XRCT", StringComparison.InvariantCulture) || licenseType == LicenseType.Trial);
+                return license != null && license.SerialNumber != null && (license.SerialNumber.StartsWith("XRCT", StringComparison.InvariantCulture) || licenseType == LicenseType.XRayTrial);
             }
         }
 

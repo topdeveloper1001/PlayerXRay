@@ -17,9 +17,9 @@ namespace DriveHUD.PlayerXRay.Licensing
     /// </summary>
     internal enum LicenseType
     {
-        Trial,
-        Holdem,
-        Omaha,
-        Combo
+        XRayTrial,
+        XRayHoldem,
+        XRayOmaha,
+        XRayCombo
     }
 }

@@ -783,7 +783,7 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
             {
                 var licenseType = licenseService.GetTypeFromSerial(serial);
 
-                if (licenseType == LicenseType.Trial)
+                if (licenseType == LicenseType.XRayTrial)
                 {
                     InitializeMessage("XRay_RegistrationView_TrialExpiredText");
                 }

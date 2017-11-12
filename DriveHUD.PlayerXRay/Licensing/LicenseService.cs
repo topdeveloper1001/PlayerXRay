@@ -51,10 +51,10 @@ namespace DriveHUD.PlayerXRay.Licensing
             // workaround for obfuscation
             var licenseTypes = new LicenseType[]
             {
-                LicenseType.Trial,
-                LicenseType.Holdem,
-                LicenseType.Omaha,
-                LicenseType.Combo
+                LicenseType.XRayTrial,
+                LicenseType.XRayHoldem,
+                LicenseType.XRayOmaha,
+                LicenseType.XRayCombo
             };
 
             // validate each possible type 
@@ -467,22 +467,22 @@ namespace DriveHUD.PlayerXRay.Licensing
         {
             if (serial.StartsWith("XRH", StringComparison.InvariantCulture))
             {
-                return LicenseType.Holdem;
+                return LicenseType.XRayHoldem;
             }
 
             if (serial.StartsWith("XRO", StringComparison.InvariantCulture))
             {
-                return LicenseType.Omaha;
+                return LicenseType.XRayOmaha;
             }
 
             if (serial.StartsWith("XRCT", StringComparison.InvariantCulture))
             {
-                return LicenseType.Trial;
+                return LicenseType.XRayTrial;
             }
 
             if (serial.StartsWith("XRC", StringComparison.InvariantCulture))
             {
-                return LicenseType.Combo;
+                return LicenseType.XRayCombo;
             }
 
             return null;
