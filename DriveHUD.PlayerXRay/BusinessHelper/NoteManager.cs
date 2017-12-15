@@ -80,19 +80,19 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             if (settings.RiverHvSettings.AnyHv && settings.RiverHvSettings.AnyFlushDraws && settings.RiverHvSettings.AnyStraightDraws)
                 return playerStatistics;
 
-            List<PlayerstatisticExtended> fileteredList = playerStatistics;
+            List<PlayerstatisticExtended> fileteredList = new List<PlayerstatisticExtended>();
 
             if (!settings.RiverHvSettings.AnyHv && settings.RiverHvSettings.SelectedHv.Count > 0)
             {
                 foreach (int i in settings.RiverHvSettings.SelectedHv)
                 {
                     HandValueEnum handValueEnum = (HandValueEnum)i;
-                    fileteredList = NoteManagerHelper.HandValueFilterHelper(fileteredList, handValueEnum, Street.River);
+                    fileteredList.AddRange(NoteManagerHelper.HandValueFilterHelper(playerStatistics, handValueEnum, Street.River));
                 }
 
             }
 
-            return fileteredList;
+            return fileteredList.Distinct().ToList();
         }
 
         private static List<PlayerstatisticExtended> FilterByFlopHandTextureCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
@@ -100,16 +100,15 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             if (settings.FlopHvSettings.AnyHv && settings.FlopHvSettings.AnyFlushDraws && settings.FlopHvSettings.AnyStraightDraws)
                 return playerStatistics;
 
-            List<PlayerstatisticExtended> fileteredList = playerStatistics;
+            List<PlayerstatisticExtended> filteredList = new List<PlayerstatisticExtended>();
 
             if (!settings.FlopHvSettings.AnyHv && settings.FlopHvSettings.SelectedHv.Count > 0)
             {
                 foreach (int i in settings.FlopHvSettings.SelectedHv)
                 {
                     HandValueEnum handValueEnum = (HandValueEnum)i;
-                    fileteredList = NoteManagerHelper.HandValueFilterHelper(fileteredList, handValueEnum, Street.Flop);
+                    filteredList.AddRange(NoteManagerHelper.HandValueFilterHelper(playerStatistics, handValueEnum, Street.Flop));
                 }
-
             }
 
             if (!settings.FlopHvSettings.AnyFlushDraws && settings.FlopHvSettings.SelectedFlushDraws.Count > 0)
@@ -117,7 +116,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                 foreach (int i in settings.FlopHvSettings.SelectedFlushDraws)
                 {
                     HandValueFlushDrawEnum handValueFlushDrawEnum = (HandValueFlushDrawEnum)i;
-                    fileteredList = NoteManagerHelper.HandValueFilterFlushDrawHelper(fileteredList, handValueFlushDrawEnum, Street.Flop);
+                    filteredList.AddRange(NoteManagerHelper.HandValueFilterFlushDrawHelper(playerStatistics, handValueFlushDrawEnum, Street.Flop));
                 }
             }
 
@@ -126,11 +125,11 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                 foreach (int i in settings.FlopHvSettings.SelectedStraighDraws)
                 {
                     HandValueStraightDraw handValueStraightDrawEnum = (HandValueStraightDraw)i;
-                    fileteredList = NoteManagerHelper.HandValueFilterStraightDrawHelper(fileteredList, handValueStraightDrawEnum, Street.Flop);
+                    filteredList.AddRange(NoteManagerHelper.HandValueFilterStraightDrawHelper(playerStatistics, handValueStraightDrawEnum, Street.Flop));
                 }
             }
 
-            return fileteredList;
+            return filteredList.Distinct().ToList();
         }
 
         private static List<PlayerstatisticExtended> FilterByTurnHandTextureCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
@@ -138,14 +137,14 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             if (settings.TurnHvSettings.AnyHv && settings.TurnHvSettings.AnyFlushDraws && settings.TurnHvSettings.AnyStraightDraws)
                 return playerStatistics;
 
-            List<PlayerstatisticExtended> fileteredList = playerStatistics;
+            List<PlayerstatisticExtended> filteredList = new List<PlayerstatisticExtended>(); ;
 
             if (!settings.TurnHvSettings.AnyHv && settings.TurnHvSettings.SelectedHv.Count > 0)
             {
                 foreach (int i in settings.TurnHvSettings.SelectedHv)
                 {
                     HandValueEnum handValueEnum = (HandValueEnum)i;
-                    fileteredList = NoteManagerHelper.HandValueFilterHelper(fileteredList, handValueEnum, Street.Turn);
+                    filteredList.AddRange(NoteManagerHelper.HandValueFilterHelper(playerStatistics, handValueEnum, Street.Turn));
                 }
 
             }
@@ -155,7 +154,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                 foreach (int i in settings.TurnHvSettings.SelectedFlushDraws)
                 {
                     HandValueFlushDrawEnum handValueFlushDrawEnum = (HandValueFlushDrawEnum)i;
-                    fileteredList = NoteManagerHelper.HandValueFilterFlushDrawHelper(fileteredList, handValueFlushDrawEnum, Street.Turn);
+                    filteredList.AddRange(NoteManagerHelper.HandValueFilterFlushDrawHelper(playerStatistics, handValueFlushDrawEnum, Street.Turn));
                 }
             }
 
@@ -164,11 +163,11 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                 foreach (int i in settings.TurnHvSettings.SelectedStraighDraws)
                 {
                     HandValueStraightDraw handValueStraightDrawEnum = (HandValueStraightDraw)i;
-                    fileteredList = NoteManagerHelper.HandValueFilterStraightDrawHelper(fileteredList, handValueStraightDrawEnum, Street.Turn);
+                    filteredList.AddRange(NoteManagerHelper.HandValueFilterStraightDrawHelper(playerStatistics, handValueStraightDrawEnum, Street.Turn));
                 }
             }
 
-            return fileteredList;
+            return filteredList.Distinct().ToList();
         }
         #endregion
 
@@ -665,7 +664,10 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             // if everything is unchecked return entry list of Playerstatistics
             if (!settings.PositionBBRaiser && !settings.PositionButtonRaiser &&
                 !settings.PositionCutoffRaiser && !settings.PositionEarlyRaiser &&
-                !settings.PositionMiddleRaiser && !settings.PositionSBRaiser)
+                !settings.PositionMiddleRaiser && !settings.PositionSBRaiser ||
+                settings.PositionBBRaiser && settings.PositionButtonRaiser &&
+                settings.PositionCutoffRaiser && settings.PositionEarlyRaiser &&
+                settings.PositionMiddleRaiser && settings.PositionSBRaiser)
             {
                 return playerStatistics;
             }
@@ -722,7 +724,9 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
         private static List<PlayerstatisticExtended> FilterByPositionThreeBetCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
         {
             if (!settings.PositionBB3Bet && !settings.PositionSB3Bet && !settings.PositionButton3Bet &&
-                    !settings.PositionCutoff3Bet && !settings.PositionEarly3Bet && !settings.PositionMiddle3Bet)
+                    !settings.PositionCutoff3Bet && !settings.PositionEarly3Bet && !settings.PositionMiddle3Bet ||
+                   settings.PositionBB3Bet && settings.PositionSB3Bet && settings.PositionButton3Bet &&
+                   settings.PositionCutoff3Bet && settings.PositionEarly3Bet && settings.PositionMiddle3Bet)
             {
                 return playerStatistics;
             }

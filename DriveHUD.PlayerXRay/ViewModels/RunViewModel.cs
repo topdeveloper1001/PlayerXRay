@@ -12,12 +12,13 @@
 
 using DriveHUD.Common.Linq;
 using DriveHUD.Common.Log;
-using DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings;
 using DriveHUD.PlayerXRay.DataTypes;
 using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects;
+using DriveHUD.PlayerXRay.Events;
 using DriveHUD.PlayerXRay.Services;
 using Microsoft.Practices.ServiceLocation;
 using Model;
+using Prism.Events;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -30,10 +31,16 @@ namespace DriveHUD.PlayerXRay.ViewModels
 {
     public class RunViewModel : WorkspaceViewModel
     {
+        private readonly IEventAggregator eventAggregator;
+
         private CancellationTokenSource cancellationTokenSource;
+
+        private readonly SubscriptionToken refreshProfilesSubscriptionToken;
 
         public RunViewModel()
         {
+            eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
+
             profiles = new ObservableCollection<ProfileObject>(NoteService.CurrentNotesAppSettings.Profiles);
             stages = new ObservableCollection<StageObject>();
 
@@ -48,6 +55,12 @@ namespace DriveHUD.PlayerXRay.ViewModels
             ReloadStages();
 
             RunMode = RunMode.AllNotes;
+
+            refreshProfilesSubscriptionToken = eventAggregator.GetEvent<RefreshSettingsEvent>().Subscribe(x =>
+            {
+                Profiles.Clear();
+                Profiles.AddRange(NoteService.CurrentNotesAppSettings.Profiles);
+            });
         }
 
         public override WorkspaceType WorkspaceType
@@ -274,6 +287,11 @@ namespace DriveHUD.PlayerXRay.ViewModels
             if (cancellationTokenSource != null)
             {
                 cancellationTokenSource.Cancel();
+            }
+
+            if (refreshProfilesSubscriptionToken != null)
+            {
+                eventAggregator.GetEvent<RefreshSettingsEvent>().Unsubscribe(refreshProfilesSubscriptionToken);
             }
 
             base.Disposing();

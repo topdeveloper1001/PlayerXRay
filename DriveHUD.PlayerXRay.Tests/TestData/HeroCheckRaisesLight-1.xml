@@ -1,0 +1,69 @@
+<session sessioncode="270868396456">
+	<general>
+		<mode>real</mode>
+		<gametype>Holdem NL $0.05/$0.1</gametype>
+		<tablename>NL Hold’em: $0.05/$0.10 - 6 Seater #6811</tablename>
+		<duration>N/A</duration>
+		<gamecount>0</gamecount>
+		<startdate>2017-02-25 18:46:19</startdate>
+		<currency>USD</currency>
+		<nickname>UbuntuFoo</nickname>
+		<bets>0</bets>
+		<wins>0</wins>
+		<chipsin>0</chipsin>
+		<chipsout>0</chipsout>
+		<ipoints>0</ipoints>
+		<statuspoints>0</statuspoints>
+		<awardpoints>0</awardpoints>
+		<place>0</place>
+		<buyin>0</buyin>
+		<totalbuyin>0</totalbuyin>
+		<win>0</win>
+	</general>
+	<game gamecode="102758296">
+		<general>
+			<startdate>2017-02-25 18:46:19</startdate>
+			<players>
+				<player seat="5" name="UbuntuFoo" chips="9.9" dealer="0" win="5.5" bet="9.9" rebuy="0" addon="0" />
+				<player seat="6" name="The Salt" chips="4.4" dealer="0" win="8.67" bet="4.4" rebuy="0" addon="0" />
+				<player seat="1" name="Poopy_Pants" chips="14.1" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+				<player seat="2" name="kumario" chips="10.04" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+				<player seat="3" name="Shamsher" chips="10.34" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+				<player seat="4" name="denzelwash" chips="6.73" dealer="1" win="0" bet="0.38" rebuy="0" addon="0" />
+			</players>
+		</general>
+		<round no="0">
+			<action no="1" player="UbuntuFoo" type="1" sum="0.05" cards="" />
+			<action no="2" player="The Salt" type="2" sum="0.1" cards="" />
+		</round>
+		<round no="1">
+			<cards type="Pocket" player="UbuntuFoo">C4 CA</cards>
+			<cards type="Pocket" player="The Salt">H2 D9</cards>
+			<cards type="Pocket" player="Poopy_Pants">X X</cards>
+			<cards type="Pocket" player="kumario">X X</cards>
+			<cards type="Pocket" player="Shamsher">X X</cards>
+			<cards type="Pocket" player="denzelwash">X X</cards>
+			<action no="3" player="Poopy_Pants" type="0" sum="0" cards="" />
+			<action no="4" player="kumario" type="0" sum="0" cards="" />
+			<action no="5" player="Shamsher" type="0" sum="0" cards="" />
+			<action no="6" player="denzelwash" type="3" sum="0.1" cards="" />
+			<action no="7" player="UbuntuFoo" type="3" sum="0.05" cards="" />
+			<action no="8" player="The Salt" type="4" sum="0" cards="" />
+		</round>
+		<round no="2">
+			<cards type="Flop" player="">S2 C5 C2</cards>
+			<action no="9" player="UbuntuFoo" type="4" sum="0" cards="" />
+			<action no="10" player="The Salt" type="5" sum="0.14" cards="" />
+			<action no="11" player="denzelwash" type="23" sum="0.28" cards="" />
+			<action no="12" player="UbuntuFoo" type="23" sum="9.8" cards="" />
+			<action no="13" player="The Salt" type="3" sum="4.16" cards="" />
+			<action no="14" player="denzelwash" type="0" sum="0" cards="" />
+		</round>
+		<round no="3">
+			<cards type="Turn" player="">H10</cards>
+		</round>
+		<round no="4">
+			<cards type="River" player="">S8</cards>
+		</round>
+	</game>
+</session>

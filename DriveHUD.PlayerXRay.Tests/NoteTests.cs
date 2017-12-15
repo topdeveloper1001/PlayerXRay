@@ -30,6 +30,8 @@ using NSubstitute;
 using DriveHUD.PlayerXRay.Licensing;
 using DriveHUD.PlayerXRay.DataTypes;
 using System.IO;
+using System.Xml.Serialization;
+using DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings;
 
 namespace DriveHUD.PlayerXRay.Tests
 {
@@ -50,6 +52,8 @@ namespace DriveHUD.PlayerXRay.Tests
         #endregion
 
         private const string testDataFolder = @"..\..\TestData";
+
+        private NotesAppSettings PredefinedNotesAppSettings { get; set; }
 
         protected override string TestDataFolder
         {
@@ -73,7 +77,7 @@ namespace DriveHUD.PlayerXRay.Tests
             licenseInfo.IsRegistered.Returns(true);
             licenseInfo.CashLimit.Returns(int.MaxValue);
             licenseInfo.TournamentLimit.Returns(int.MaxValue);
-            licenseInfo.LicenseType.Returns(LicenseType.Combo);
+            licenseInfo.LicenseType.Returns(LicenseType.XRayCombo);
 
             var licenceService = Substitute.For<ILicenseService>();
             licenceService.IsRegistered.Returns(true);
@@ -81,15 +85,34 @@ namespace DriveHUD.PlayerXRay.Tests
             unityContainer.RegisterInstance(licenceService);
         }
 
+        protected override void Initalize()
+        {
+            base.Initalize();
+            ReadAllNotes();
+        }
+
+        protected void ReadAllNotes()
+        {
+            var resourcesAssembly = typeof(PlayerXRayNoteService).Assembly;
+
+            var resourceName = "DriveHUD.PlayerXRay.Resources.DefaultNotes.xml";
+
+            using (var stream = resourcesAssembly.GetManifestResourceStream(resourceName))
+            {
+                var xmlSerializer = new XmlSerializer(typeof(NotesAppSettings));
+                PredefinedNotesAppSettings = xmlSerializer.Deserialize(stream) as NotesAppSettings;
+            }
+        }
+
         [Test]
-     
+
         [TestCase("HeroFirstPreflopActionIsCall.txt", EnumPokerSites.PokerStars, "DURKADURDUR", ActionTypeEnum.Call, 10, 60, true)]
         [TestCase("HeroFirstPreflopActionIsCall.txt", EnumPokerSites.PokerStars, "DURKADURDUR", ActionTypeEnum.Call, 60, 80, false)]
         public void TestFirstPreflopPlayerAction(string handHistoryFile, EnumPokerSites pokerSite, string playerName, ActionTypeEnum actionType, double min, double max, bool expected)
         {
             var handHistoryObject = CreateHandHistoryObject(handHistoryFile, pokerSite, playerName);
 
-            var note = new NoteObject();     
+            var note = new NoteObject();
             note.Settings.PreflopActions.FirstType = actionType;
             note.Settings.PreflopActions.FirstMaxValue = max;
             note.Settings.PreflopActions.FirstMinValue = min;
@@ -113,12 +136,30 @@ namespace DriveHUD.PlayerXRay.Tests
         {
             var handHistoryObject = CreateHandHistoryObject(handHistoryFile, pokerSite, playerName);
 
-            var note = new NoteObject();          
+            var note = new NoteObject();
             note.Settings.PreflopActions.SecondType = actionType;
             note.Settings.PreflopActions.SecondMaxValue = max;
             note.Settings.PreflopActions.SecondMinValue = min;
 
             var noteProcessingService = new NoteProcessingService();
+
+            var playernotes = noteProcessingService.ProcessHand(new[] { note }, handHistoryObject.Stat, handHistoryObject.HandHistory);
+
+            Assert.IsNotNull(playernotes, "Notes must be not null");
+            Assert.That(playernotes.Any(), Is.EqualTo(expected));
+        }
+
+        [Test]
+        [TestCase("HeroCheckRaisesLight-1.xml", EnumPokerSites.IPoker, "UbuntuFoo", "Check raises light", true)]
+        public void TestPredefinedNotes(string handHistoryFile, EnumPokerSites pokerSite, string playerName, string noteName, bool expected)
+        {
+            var handHistoryObject = CreateHandHistoryObject(handHistoryFile, pokerSite, playerName);
+
+            var noteProcessingService = new NoteProcessingService();
+
+            var note = ReadNote(noteName);
+
+            Assert.IsNotNull(note, $"Note [{noteName}] must be in predefined data set.");
 
             var playernotes = noteProcessingService.ProcessHand(new[] { note }, handHistoryObject.Stat, handHistoryObject.HandHistory);
 
@@ -190,6 +231,15 @@ namespace DriveHUD.PlayerXRay.Tests
             };
 
             return parsingResult;
+        }
+
+        private NoteObject ReadNote(string noteName)
+        {
+            var note = PredefinedNotesAppSettings
+                .AllNotes
+                .SingleOrDefault(x => x.Name == noteName);
+
+            return note;
         }
 
         private class HandHistoryObject

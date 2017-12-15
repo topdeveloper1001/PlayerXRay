@@ -193,13 +193,16 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
                 selectedProfileNotes.Clear();
 
-                NoteService.CurrentNotesAppSettings.AllNotes.ForEach(x =>
+                if (selectedProfile != null)
                 {
-                    if (selectedProfile.ContainingNotes.Contains(x.ID))
+                    NoteService.CurrentNotesAppSettings.AllNotes.ForEach(x =>
                     {
-                        selectedProfileNotes.Add(x);
-                    }
-                });
+                        if (selectedProfile.ContainingNotes.Contains(x.ID))
+                        {
+                            selectedProfileNotes.Add(x);
+                        }
+                    });
+                }
             }
         }
 
@@ -282,6 +285,8 @@ namespace DriveHUD.PlayerXRay.ViewModels
                 SelectedProfile = profile;
 
                 NoteService.SaveAppSettings();
+
+                eventAggregator.GetEvent<RefreshSettingsEvent>().Publish(new RefreshSettingsEventArgs());
             };
 
             var popupEventArgs = new RaisePopupEventArgs()
@@ -335,6 +340,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
                 profiles.Remove(SelectedProfile);
                 SelectedProfile = profiles.FirstOrDefault();
                 NoteService.SaveAppSettings();
+                eventAggregator.GetEvent<RefreshSettingsEvent>().Publish(new RefreshSettingsEventArgs());
             };
 
             var popupEventArgs = new RaisePopupEventArgs()
