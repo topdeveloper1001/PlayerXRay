@@ -961,6 +961,15 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activate.
+        /// </summary>
+        internal static string XRay_RegistrationView_Activate {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_Activate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
         internal static string XRay_RegistrationView_Back {
@@ -988,6 +997,15 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not activate license. Please try again or contact support..
+        /// </summary>
+        internal static string XRay_RegistrationView_CouldNotBeActivated {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_CouldNotBeActivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} day(s) left:.
         /// </summary>
         internal static string XRay_RegistrationView_DaysLeft {
@@ -1006,11 +1024,74 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ,.
+        /// </summary>
+        internal static string XRay_RegistrationView_ExpiredSerialSplitter {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_ExpiredSerialSplitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your license(s) has expired ({0}). Please renew..
+        /// </summary>
+        internal static string XRay_RegistrationView_ExpiredText {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_ExpiredText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: {1} day(s) left.
+        /// </summary>
+        internal static string XRay_RegistrationView_ExpiringLicenseTitle {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_ExpiringLicenseTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your license(s) are expiring soon. Please renew..
+        /// </summary>
+        internal static string XRay_RegistrationView_ExpiringSoonText {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_ExpiringSoonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome to Player X-Ray - An automated note taking application that will allow you to see right through your opponents strategies in order to make the best possible adjustments to their game. No need to write tedious notes while multi-tabling online. Sit back and allow Play X-Ray to do all of the hard work and make the essential reads you might be missing otherwise..
         /// </summary>
         internal static string XRay_RegistrationView_GreetingText {
             get {
                 return ResourceManager.GetString("XRay_RegistrationView_GreetingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not register software. Invalid serial number. Please enter valid serial or contact support..
+        /// </summary>
+        internal static string XRay_RegistrationView_InvalidSerial {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_InvalidSerial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t register Player X-Ray. Unexpected error occured. Please contact support..
+        /// </summary>
+        internal static string XRay_RegistrationView_LicenseError {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_LicenseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not connect to license server. Please check your internet connection..
+        /// </summary>
+        internal static string XRay_RegistrationView_NoConnection {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_NoConnection", resourceCulture);
             }
         }
         
@@ -1092,6 +1173,24 @@ namespace DriveHUD.PlayerXRay.Resources {
         internal static string XRay_RegistrationView_Trial {
             get {
                 return ResourceManager.GetString("XRay_RegistrationView_Trial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You trial period is over. Please register your version of Player X-Ray..
+        /// </summary>
+        internal static string XRay_RegistrationView_TrialExpiredText {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_TrialExpiredText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not register error. Internal error occurred. Please contact support..
+        /// </summary>
+        internal static string XRay_RegistrationView_TrialRegisterError {
+            get {
+                return ResourceManager.GetString("XRay_RegistrationView_TrialRegisterError", resourceCulture);
             }
         }
         

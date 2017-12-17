@@ -546,4 +546,37 @@
   <data name="XRay_SettingsView_AllNotes" xml:space="preserve">
     <value>All notes</value>
   </data>
+  <data name="XRay_RegistrationView_Activate" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="XRay_RegistrationView_CouldNotBeActivated" xml:space="preserve">
+    <value>Could not activate license. Please try again or contact support.</value>
+  </data>
+  <data name="XRay_RegistrationView_ExpiredSerialSplitter" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="XRay_RegistrationView_ExpiredText" xml:space="preserve">
+    <value>Your license(s) has expired ({0}). Please renew.</value>
+  </data>
+  <data name="XRay_RegistrationView_ExpiringLicenseTitle" xml:space="preserve">
+    <value>{0}: {1} day(s) left</value>
+  </data>
+  <data name="XRay_RegistrationView_ExpiringSoonText" xml:space="preserve">
+    <value>Your license(s) are expiring soon. Please renew.</value>
+  </data>
+  <data name="XRay_RegistrationView_InvalidSerial" xml:space="preserve">
+    <value>Could not register software. Invalid serial number. Please enter valid serial or contact support.</value>
+  </data>
+  <data name="XRay_RegistrationView_LicenseError" xml:space="preserve">
+    <value>Couldn't register Player X-Ray. Unexpected error occured. Please contact support.</value>
+  </data>
+  <data name="XRay_RegistrationView_NoConnection" xml:space="preserve">
+    <value>Could not connect to license server. Please check your internet connection.</value>
+  </data>
+  <data name="XRay_RegistrationView_TrialExpiredText" xml:space="preserve">
+    <value>You trial period is over. Please register your version of Player X-Ray.</value>
+  </data>
+  <data name="XRay_RegistrationView_TrialRegisterError" xml:space="preserve">
+    <value>Could not register error. Internal error occurred. Please contact support.</value>
+  </data>
 </root>
