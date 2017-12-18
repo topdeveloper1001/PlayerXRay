@@ -86,6 +86,21 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
             }
         }
 
+        private NoteStageType parentStageType;
+
+        [XmlIgnore]
+        public NoteStageType ParentStageType
+        {
+            get
+            {
+                return parentStageType;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref parentStageType, value);
+            }
+        }
+
         private bool modified;
 
         [XmlIgnore]
@@ -115,7 +130,7 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
 
             disposableList.Add(
                 Changed
-                    .Where(x => x.PropertyName != nameof(Modified) && x.PropertyName != nameof(IsSelected))
+                    .Where(x => x.PropertyName != nameof(Modified) && x.PropertyName != nameof(IsSelected) && x.PropertyName != nameof(ParentStageType))
                     .Subscribe(x => SetModified()));
 
             if (Settings == null)
@@ -228,7 +243,7 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
         }
 
         private void SetModified()
-        {            
+        {
             Modified = true;
         }
 
@@ -286,52 +301,52 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
 
             if (Settings.FlopHvSettings != null)
             {
-                existingNote.Settings.FlopHvSettings = Settings.FlopHvSettings.Copy();
+                Settings.FlopHvSettings.CopyTo(existingNote.Settings.FlopHvSettings);
             }
 
             if (Settings.TurnHvSettings != null)
             {
-                existingNote.Settings.TurnHvSettings = Settings.TurnHvSettings.Copy();
+                Settings.TurnHvSettings.CopyTo(existingNote.Settings.TurnHvSettings);
             }
 
             if (Settings.RiverHvSettings != null)
             {
-                existingNote.Settings.RiverHvSettings = Settings.RiverHvSettings.Copy();
+                Settings.RiverHvSettings.CopyTo(existingNote.Settings.RiverHvSettings);
             }
 
             if (Settings.FlopTextureSettings != null)
             {
-                existingNote.Settings.FlopTextureSettings = (FlopTextureSettings)Settings.FlopTextureSettings.Copy();
+                Settings.FlopTextureSettings.CopyTo(existingNote.Settings.FlopTextureSettings);
             }
 
             if (Settings.TurnTextureSettings != null)
             {
-                existingNote.Settings.TurnTextureSettings = (TurnTextureSettings)Settings.TurnTextureSettings.Copy();
+                Settings.TurnTextureSettings.CopyTo(existingNote.Settings.TurnTextureSettings);
             }
 
             if (Settings.RiverTextureSettings != null)
             {
-                existingNote.Settings.RiverTextureSettings = (RiverTextureSettings)Settings.RiverTextureSettings.Copy();
+                Settings.RiverTextureSettings.CopyTo(existingNote.Settings.RiverTextureSettings);
             }
 
             if (Settings.PreflopActions != null)
             {
-                existingNote.Settings.PreflopActions = Settings.PreflopActions.Copy();
+                Settings.PreflopActions.CopyTo(existingNote.Settings.PreflopActions);
             }
 
             if (Settings.FlopActions != null)
             {
-                existingNote.Settings.FlopActions = Settings.FlopActions.Copy();
+                Settings.FlopActions.CopyTo(existingNote.Settings.FlopActions);
             }
 
             if (Settings.TurnActions != null)
             {
-                existingNote.Settings.TurnActions = Settings.TurnActions.Copy();
+                Settings.TurnActions.CopyTo(existingNote.Settings.TurnActions);
             }
 
             if (Settings.RiverActions != null)
             {
-                existingNote.Settings.RiverActions = Settings.RiverActions.Copy();
+                Settings.RiverActions.CopyTo(existingNote.Settings.RiverActions);
             }
 
             return existingNote;

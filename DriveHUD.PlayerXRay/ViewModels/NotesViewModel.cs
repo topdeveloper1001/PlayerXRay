@@ -1364,10 +1364,13 @@ namespace DriveHUD.PlayerXRay.ViewModels
                 var note = new NoteObject
                 {
                     ID = ObjectsHelper.GetNextID(NoteService.CurrentNotesAppSettings.AllNotes),
+                    ParentStageType = NoteStageType,
                     Name = addNoteViewModel.Name,
                     DisplayedNote = addNoteViewModel.Name,
                     IsSelected = true
                 };
+
+                note.TrackChanges(true);
 
                 noteList.Add(note);
 
@@ -1435,6 +1438,8 @@ namespace DriveHUD.PlayerXRay.ViewModels
                         {
                             group.Notes.Remove(noteToRemove);
                         }
+
+                        noteToRemove.TrackChanges(false);
                     }
                     else if (SelectedStage is InnerGroupObject)
                     {

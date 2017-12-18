@@ -11,7 +11,6 @@
 //----------------------------------------------------------------------
 
 using ReactiveUI;
-using System.Collections.ObjectModel;
 
 namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
 {

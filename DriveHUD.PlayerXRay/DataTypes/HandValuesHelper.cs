@@ -22,7 +22,8 @@ namespace DriveHUD.PlayerXRay.DataTypes
         {
             [NoteStageType.Flop] = new[] { HandValueEnum.TwoPaironBoard, HandValueEnum.StraightStraightOnBoard, HandValueEnum.FlushOnBoardNutFlush,
                 HandValueEnum.FlushOnBoardHighFlush, HandValueEnum.FlushOnBoardLowFlush, HandValueEnum.FullHouseonBoard, HandValueEnum.FourofaKindonBoard,
-                HandValueEnum.StraightFlushonBoard, HandValueEnum.StraightOneCardNutStraight, HandValueEnum.StraightOneCardStraight },
+                HandValueEnum.StraightFlushonBoard, HandValueEnum.StraightOneCardNutStraight, HandValueEnum.StraightOneCardStraight, HandValueEnum.Flush4FlushCardsNutFlush,
+                HandValueEnum.Flush4FlushCardsHighFlush, HandValueEnum.Flush4FlushCardsLowFlush },
             [NoteStageType.Turn] = new[] { HandValueEnum.StraightStraightOnBoard, HandValueEnum.FlushOnBoardNutFlush, HandValueEnum.FlushOnBoardHighFlush,
                 HandValueEnum.FlushOnBoardLowFlush, HandValueEnum.FullHouseonBoard, HandValueEnum.StraightFlushonBoard }
         };

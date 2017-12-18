@@ -10,6 +10,7 @@
 // </copyright>
 //----------------------------------------------------------------------
 
+using DriveHUD.Common.Linq;
 using DriveHUD.Common.Log;
 using DriveHUD.Entities;
 using DriveHUD.PlayerXRay.BusinessHelper;
@@ -85,7 +86,7 @@ namespace DriveHUD.PlayerXRay.Services
             lock (locker)
             {
                 try
-                {                   
+                {
                     var xml = Serializer.ToXml(CurrentNotesAppSettings, typeof(NotesAppSettings));
                     File.WriteAllText(configurationFile, xml);
                     CurrentNotesAppSettings.AllNotes.ForEach(x => x.Modified = false);
@@ -124,6 +125,8 @@ namespace DriveHUD.PlayerXRay.Services
                 {
                     InitializeDefaultNotes();
                 }
+
+                SetStageParents();
             }
         }
 
@@ -149,6 +152,33 @@ namespace DriveHUD.PlayerXRay.Services
             }
 
             SaveAppSettings();
+        }
+
+        private void SetStageParents()
+        {
+            if (CurrentNotesAppSettings == null || CurrentNotesAppSettings.StagesList == null)
+            {
+                return;
+            }
+
+            foreach (var stage in CurrentNotesAppSettings.StagesList)
+            {
+                if (stage.InnerGroups != null)
+                {
+                    stage.InnerGroups.ForEach(x =>
+                    {
+                        if (x.Notes != null)
+                        {
+                            x.Notes.ForEach(n => n.ParentStageType = stage.StageType);
+                        }
+                    });
+                }
+
+                if (stage.Notes != null)
+                {
+                    stage.Notes.ForEach(x => x.ParentStageType = stage.StageType);
+                }
+            }
         }
     }
 }

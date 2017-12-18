@@ -522,7 +522,7 @@
                                                 Value="True">
                                                 <Setter
                                                     Property="Text"
-                                                    Value="{Binding Name, StringFormat=*{0}}" />
+                                                    Value="{Binding Name, StringFormat='{}{0} *'}" />
                                             </DataTrigger>
                                             <DataTrigger
                                                 Binding="{Binding Modified}"

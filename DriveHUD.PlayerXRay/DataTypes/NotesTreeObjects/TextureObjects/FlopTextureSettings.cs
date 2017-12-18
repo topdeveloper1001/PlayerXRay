@@ -67,12 +67,14 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
             }
         }
 
-        protected override TextureSettings InternalCopy()
+        protected override TextureSettings InternalCopyTo(TextureSettings textureSettings)
         {
-            var textureSettings = new FlopTextureSettings
+            if (!(textureSettings is FlopTextureSettings))
             {
-                FlushCard = FlushCard
-            };
+                return textureSettings;
+            }
+
+            ((FlopTextureSettings)textureSettings).FlushCard = FlushCard;
 
             return textureSettings;
         }

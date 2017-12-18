@@ -15,7 +15,7 @@ using ReactiveUI;
 namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
 {
     public class RiverTextureSettings : TextureSettings
-    {       
+    {
         private RiverFlushCardsEnum flushCard;
 
         public RiverFlushCardsEnum FlushCard
@@ -61,12 +61,14 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
             }
         }
 
-        protected override TextureSettings InternalCopy()
+        protected override TextureSettings InternalCopyTo(TextureSettings textureSettings)
         {
-            var textureSettings = new RiverTextureSettings
+            if (!(textureSettings is RiverTextureSettings))
             {
-                FlushCard = FlushCard
-            };
+                return textureSettings;
+            }
+
+            ((RiverTextureSettings)textureSettings).FlushCard = FlushCard;
 
             return textureSettings;
         }

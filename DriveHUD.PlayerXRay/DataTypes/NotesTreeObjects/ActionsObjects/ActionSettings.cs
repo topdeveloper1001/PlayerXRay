@@ -649,23 +649,25 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.ActionsObjects
             return result;
         }
 
-        public ActionSettings Copy()
+        public ActionSettings CopyTo(ActionSettings actionSettings)
         {
-            var actionSettings = new ActionSettings
+            if (actionSettings == null)
             {
-                FirstMaxValue = FirstMaxValue,
-                FirstMinValue = FirstMinValue,
-                FirstType = FirstType,
-                SecondMaxValue = SecondMaxValue,
-                SecondMinValue = SecondMinValue,
-                SecondType = SecondType,
-                ThirdMaxValue = ThirdMaxValue,
-                ThirdMinValue = ThirdMinValue,
-                ThirdType = ThirdType,
-                FourthMaxValue = FourthMaxValue,
-                FourthMinValue = FourthMinValue,
-                FourthType = FourthType,
-            };
+                return null;
+            }
+
+            actionSettings.FirstMaxValue = FirstMaxValue;
+            actionSettings.FirstMinValue = FirstMinValue;
+            actionSettings.FirstType = FirstType;
+            actionSettings.SecondMaxValue = SecondMaxValue;
+            actionSettings.SecondMinValue = SecondMinValue;
+            actionSettings.SecondType = SecondType;
+            actionSettings.ThirdMaxValue = ThirdMaxValue;
+            actionSettings.ThirdMinValue = ThirdMinValue;
+            actionSettings.ThirdType = ThirdType;
+            actionSettings.FourthMaxValue = FourthMaxValue;
+            actionSettings.FourthMinValue = FourthMinValue;
+            actionSettings.FourthType = FourthType;
 
             return actionSettings;
         }

@@ -430,12 +430,16 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
             }
         }
 
-        protected abstract TextureSettings InternalCopy();
+        protected abstract TextureSettings InternalCopyTo(TextureSettings textureSettings);
 
-        public virtual TextureSettings Copy()
+        public virtual TextureSettings CopyTo(TextureSettings textureSettings)
         {
-            var textureSettings = InternalCopy();
+            if (textureSettings == null)
+            {
+                return null;
+            }
 
+            textureSettings = InternalCopyTo(textureSettings);
             textureSettings.IsFlushCardFilter = IsFlushCardFilter;
             textureSettings.IsOpenEndedStraightDrawsFilter = IsOpenEndedStraightDrawsFilter;
             textureSettings.OpenEndedStraightDraws = OpenEndedStraightDraws;

@@ -155,7 +155,7 @@ namespace DriveHUD.PlayerXRay.Services
                     {
                         PlayerId = stats.PlayerId,
                         PokersiteId = (short)stats.PokersiteId,
-                        Note = note.DisplayedNote,
+                        Note = $"[{note.ParentStageType}] {note.DisplayedNote}",
                         CardRange = note.Settings.IncludeBoard && !string.IsNullOrEmpty(playerstatistic.Playerstatistic.Board) ?
                             $"{playerstatistic.Playerstatistic.Cards}({playerstatistic.Playerstatistic.Board})" :
                             playerstatistic.Playerstatistic.Cards,

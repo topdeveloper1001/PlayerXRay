@@ -123,19 +123,27 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
             }
         }
 
-        public HandValueSettings Copy()
+        public HandValueSettings CopyTo(HandValueSettings existingSettings)
         {
-            var handValueSettings = new HandValueSettings
+            if (existingSettings == null)
             {
-                AnyHv = AnyHv,
-                AnyFlushDraws = AnyFlushDraws,
-                AnyStraightDraws = AnyStraightDraws,
-                SelectedHv = new ObservableCollection<int>(SelectedHv),
-                SelectedFlushDraws = new ObservableCollection<int>(SelectedFlushDraws),
-                SelectedStraighDraws = new ObservableCollection<int>(SelectedStraighDraws)
-            };
+                return null;
+            }
 
-            return handValueSettings;
+            existingSettings.AnyHv = AnyHv;
+            existingSettings.AnyFlushDraws = AnyFlushDraws;
+            existingSettings.AnyStraightDraws = AnyStraightDraws;
+
+            existingSettings.SelectedHv.Clear();
+            existingSettings.SelectedHv.AddRange(SelectedHv);
+
+            existingSettings.SelectedFlushDraws.Clear();
+            existingSettings.SelectedFlushDraws.AddRange(SelectedFlushDraws);
+
+            existingSettings.SelectedStraighDraws.Clear();
+            existingSettings.SelectedStraighDraws.AddRange(SelectedStraighDraws);
+
+            return existingSettings;
         }
     }
 }
