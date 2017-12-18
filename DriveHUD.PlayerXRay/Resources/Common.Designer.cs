@@ -1375,6 +1375,15 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restore defaults.
+        /// </summary>
+        internal static string XRay_SettingsView_RestoreDefaultNotes {
+            get {
+                return ResourceManager.GetString("XRay_SettingsView_RestoreDefaultNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SETTINGS.
         /// </summary>
         internal static string XRay_SettingsView_Settings {
@@ -1452,6 +1461,24 @@ namespace DriveHUD.PlayerXRay.Resources {
         internal static string XRay_YesNoConfirmationView_No {
             get {
                 return ResourceManager.GetString("XRay_YesNoConfirmationView_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore defaults?.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_RestoreDefaults {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_RestoreDefaults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to restore defaults notes?.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_RestoreDefaultsText {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_RestoreDefaultsText", resourceCulture);
             }
         }
         

@@ -40,6 +40,9 @@ namespace DriveHUD.PlayerXRay.ViewModels
             DeleteNotesCommand = ReactiveCommand.Create();
             DeleteNotesCommand.Subscribe(x => DeleteNotes(OlderThanDate));
 
+            RestoreDefaultsCommand = ReactiveCommand.Create();
+            RestoreDefaultsCommand.Subscribe(x => RestoreDefaults());
+
             olderThanDate = DateTime.Today;
 
             profiles = new ReactiveList<AutoNoteProfile>();
@@ -261,9 +264,33 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
         public ReactiveCommand<object> DeleteNotesCommand { get; private set; }
 
+        public ReactiveCommand<object> RestoreDefaultsCommand { get; private set; }
+
         #endregion
 
         #region Infrastructure
+
+        private void RestoreDefaults()
+        {
+            var confirmationViewModel = new YesNoConfirmationViewModel
+            {
+                ConfirmationMessage = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_RestoreDefaultsText")
+            };
+
+            confirmationViewModel.OnYesAction = () =>
+            {
+                NoteService.InitializeDefaultNotes();
+                eventAggregator.GetEvent<RestoreDefaultsEvent>().Publish(new RestoreDefaultsEventArgs());
+            };
+
+            var popupEventArgs = new RaisePopupEventArgs()
+            {
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_RestoreDefaults"),
+                Content = new YesNoConfirmationView(confirmationViewModel)
+            };
+
+            eventAggregator.GetEvent<RaisePopupEvent>().Publish(popupEventArgs);
+        }
 
         private void DeleteNotes(DateTime? date)
         {

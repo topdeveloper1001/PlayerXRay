@@ -215,13 +215,13 @@
 									<FirstType>0</FirstType>
 									<FirstMinValue>0</FirstMinValue>
 									<FirstMaxValue>0</FirstMaxValue>
-									<SecondType>5</SecondType>
+									<SecondType>1</SecondType>
 									<SecondMinValue>0</SecondMinValue>
 									<SecondMaxValue>0</SecondMaxValue>
-									<ThirdType>0</ThirdType>
+									<ThirdType>4</ThirdType>
 									<ThirdMinValue>0</ThirdMinValue>
 									<ThirdMaxValue>0</ThirdMaxValue>
-									<FourthType>0</FourthType>
+									<FourthType>3</FourthType>
 									<FourthMinValue>0</FourthMinValue>
 									<FourthMaxValue>0</FourthMaxValue>
 								</PreflopActions>
@@ -268,10 +268,15 @@
 									<FourthMaxValue>0</FourthMaxValue>
 								</RiverActions>
 								<FlopHvSettings>
-									<AnyHv>true</AnyHv>
+									<AnyHv>false</AnyHv>
 									<AnyStraightDraws>true</AnyStraightDraws>
 									<AnyFlushDraws>true</AnyFlushDraws>
-									<SelectedHv />
+									<SelectedHv>
+										<int>10</int>
+										<int>20</int>
+										<int>21</int>
+										<int>24</int>
+									</SelectedHv>
 									<SelectedStraighDraws />
 									<SelectedFlushDraws />
 								</FlopHvSettings>
@@ -293,17 +298,17 @@
 								</TurnHvSettings>
 								<FlopTextureSettings>
 									<IsFlushCardFilter>false</IsFlushCardFilter>
-									<IsOpenEndedStraightDrawsFilter>false</IsOpenEndedStraightDrawsFilter>
-									<OpenEndedStraightDraws>0</OpenEndedStraightDraws>
+									<IsOpenEndedStraightDrawsFilter>true</IsOpenEndedStraightDrawsFilter>
+									<OpenEndedStraightDraws>2</OpenEndedStraightDraws>
 									<IsPairedFilter>false</IsPairedFilter>
 									<IsGutshotsFilter>false</IsGutshotsFilter>
 									<IsCardTextureFilter>false</IsCardTextureFilter>
-									<IsHighcardFilter>false</IsHighcardFilter>
-									<IsPossibleStraightsFilter>false</IsPossibleStraightsFilter>
+									<IsHighcardFilter>true</IsHighcardFilter>
+									<IsPossibleStraightsFilter>true</IsPossibleStraightsFilter>
 									<PossibleStraightsCompare>0</PossibleStraightsCompare>
 									<PossibleStraights>0</PossibleStraights>
 									<Gutshots>0</Gutshots>
-									<HighestCard>2</HighestCard>
+									<HighestCard>9</HighestCard>
 									<SelectedCardTexture />
 									<IsPairedFilterTrue>true</IsPairedFilterTrue>
 									<FlushCard>1</FlushCard>
@@ -364,7 +369,7 @@
 										<Stage>0</Stage>
 									</FilterObject>
 								</SelectedFiltersComparison>
-								<ExcludedCards>AA,AKs,AQs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s,A2s,AKo,KK,KQs,KJs,KTs,K9s,K8s,K7s,K6s,K5s,K4s,K3s,K2s,AQo,KQo,QQ,QJs,QTs,Q9s,Q8s,Q7s,Q6s,Q5s,Q4s,Q3s,Q2s,AJo,KJo,QJo,JJ,JTs,J9s,J8s,J7s,J6s,J5s,J4s,J3s,J2s,ATo,KTo,QTo,JTo,TT,T9s,T8s,T7s,T6s,T5s,T4s,T3s,T2s,A9o,K9o,Q9o,J9o,T9o,99,97s,96s,95s,94s,93s,92s,A8o,K8o,Q8o,J8o,T8o,98o,88,86s,85s,84s,83s,82s,A7o,K7o,Q7o,J7o,T7o,97o,87o,77,75s,74s,73s,72s,A6o,K6o,Q6o,J6o,T6o,96o,86o,76o,66,64s,63s,62s,A5o,K5o,Q5o,J5o,T5o,95o,85o,75o,65o,55,53s,52s,A4o,K4o,Q4o,J4o,T4o,94o,84o,74o,64o,54o,44,42s,A3o,K3o,Q3o,J3o,T3o,93o,83o,73o,63o,53o,43o,33,A2o,K2o,Q2o,J2o,T2o,92o,82o,72o,62o,52o,42o,32o,22</ExcludedCards>
+								<ExcludedCards>AKs,AJs,ATs,A9s,A8s,A7s,A6s,A5s,A4s,A3s,A2s,AKo,KQs,KTs,K9s,K8s,K7s,K6s,K5s,K4s,K3s,K2s,AQo,KQo,QJs,Q9s,Q8s,Q7s,Q6s,Q5s,Q4s,Q3s,Q2s,AJo,KJo,QJo,JTs,J8s,J7s,J6s,J5s,J4s,J3s,J2s,ATo,KTo,QTo,JTo,T9s,T7s,T6s,T5s,T4s,T3s,T2s,A9o,K9o,Q9o,J9o,T9o,96s,95s,94s,93s,92s,A8o,K8o,Q8o,J8o,T8o,98o,85s,84s,83s,82s,A7o,K7o,Q7o,J7o,T7o,97o,87o,74s,73s,72s,A6o,K6o,Q6o,J6o,T6o,96o,86o,76o,63s,62s,A5o,K5o,Q5o,J5o,T5o,95o,85o,75o,65o,52s,A4o,K4o,Q4o,J4o,T4o,94o,84o,74o,64o,54o,A3o,K3o,Q3o,J3o,T3o,93o,83o,73o,63o,53o,43o,A2o,K2o,Q2o,J2o,T2o,92o,82o,72o,62o,52o,42o,32o,AQs,KJs,AA,KK,QQ,QTs,JJ,J9s,TT,T8s,99,97s,88,86s,77,75s,66,64s,55,53s,44,42s,33,22</ExcludedCards>
 								<ExcludedStakes />
 								<TypeNoLimit>true</TypeNoLimit>
 								<TypePotLimit>true</TypePotLimit>
@@ -544,10 +549,10 @@
 									<FourthMaxValue>0</FourthMaxValue>
 								</PreflopActions>
 								<FlopActions>
-									<FirstType>0</FirstType>
+									<FirstType>1</FirstType>
 									<FirstMinValue>0</FirstMinValue>
 									<FirstMaxValue>0</FirstMaxValue>
-									<SecondType>0</SecondType>
+									<SecondType>4</SecondType>
 									<SecondMinValue>0</SecondMinValue>
 									<SecondMaxValue>0</SecondMaxValue>
 									<ThirdType>0</ThirdType>
@@ -3899,320 +3904,6 @@
 					</Settings>
 				</NoteObject>
 				<NoteObject>
-					<Name>Raised 30%+ of stack then folded</Name>
-					<ID>37</ID>
-					<DisplayedNote>Raised 30% of stack then folded</DisplayedNote>
-					<Settings>
-						<SelectedFilters>
-							<FilterObject>
-								<Description>Preflop Raise Size / Pot is Bigger Than...</Description>
-								<Tag>27</Tag>
-								<Filter>PreflopRaiseSizePotisBiggerThan</Filter>
-								<Value>30</Value>
-								<Stage>0</Stage>
-							</FilterObject>
-							<FilterObject>
-								<Description>Raised Preflop 3 bet</Description>
-								<Tag>9</Tag>
-								<Filter>RaisedPreflop3Bet</Filter>
-								<Value xsi:nil="true" />
-								<Stage>0</Stage>
-							</FilterObject>
-						</SelectedFilters>
-						<SelectedFiltersComparison />
-						<ExcludedCards />
-						<ExcludedStakes />
-						<TypeNoLimit>true</TypeNoLimit>
-						<TypePotLimit>true</TypePotLimit>
-						<TypeLimit>true</TypeLimit>
-						<Cash>true</Cash>
-						<Tournament>true</Tournament>
-						<IncludeBoard>false</IncludeBoard>
-						<PlayersNoHeadsUp>true</PlayersNoHeadsUp>
-						<PlayersNo34>true</PlayersNo34>
-						<PlayersNo56>true</PlayersNo56>
-						<PlayersNoMax>true</PlayersNoMax>
-						<PlayersNoCustom>false</PlayersNoCustom>
-						<PlayersNoMinVal>2</PlayersNoMinVal>
-						<PlayersNoMaxVal>10</PlayersNoMaxVal>
-						<PositionSB>true</PositionSB>
-						<PositionEarly>true</PositionEarly>
-						<PositionCutoff>true</PositionCutoff>
-						<PositionBB>true</PositionBB>
-						<PositionMiddle>true</PositionMiddle>
-						<PositionButton>true</PositionButton>
-						<FacingUnopened>true</FacingUnopened>
-						<Facing2PlusLimpers>true</Facing2PlusLimpers>
-						<FacingRaisersCallers>true</FacingRaisersCallers>
-						<Facing1Limper>true</Facing1Limper>
-						<Facing1Raiser>true</Facing1Raiser>
-						<Facing2Raisers>true</Facing2Raisers>
-						<PositionSBRaiser>false</PositionSBRaiser>
-						<PositionEarlyRaiser>false</PositionEarlyRaiser>
-						<PositionCutoffRaiser>false</PositionCutoffRaiser>
-						<PositionBBRaiser>false</PositionBBRaiser>
-						<PositionMiddleRaiser>false</PositionMiddleRaiser>
-						<PositionButtonRaiser>false</PositionButtonRaiser>
-						<PositionSB3Bet>false</PositionSB3Bet>
-						<PositionEarly3Bet>false</PositionEarly3Bet>
-						<PositionCutoff3Bet>false</PositionCutoff3Bet>
-						<PositionBB3Bet>false</PositionBB3Bet>
-						<PositionMiddle3Bet>false</PositionMiddle3Bet>
-						<PositionButton3Bet>false</PositionButton3Bet>
-						<TagPlayer>
-							<Include>true</Include>
-							<PlayerType>0</PlayerType>
-							<VpIpMin>20</VpIpMin>
-							<VpIpMax>25</VpIpMax>
-							<PfrMin>17</PfrMin>
-							<PfrMax>23</PfrMax>
-							<AggMin>2.4</AggMin>
-							<AggMax>4</AggMax>
-							<ThreeBetMin>5</ThreeBetMin>
-							<ThreeBetMax>8.8</ThreeBetMax>
-							<WtsdMin>21</WtsdMin>
-							<WtsdMax>26</WtsdMax>
-							<WsdMin>48</WsdMin>
-							<WsdMax>57</WsdMax>
-							<WwsfMin>39</WwsfMin>
-							<WwsfMax>48</WwsfMax>
-						</TagPlayer>
-						<FishPlayer>
-							<Include>true</Include>
-							<PlayerType>1</PlayerType>
-							<VpIpMin>38</VpIpMin>
-							<VpIpMax>55</VpIpMax>
-							<PfrMin>0</PfrMin>
-							<PfrMax>15</PfrMax>
-							<AggMin>0</AggMin>
-							<AggMax>3</AggMax>
-							<ThreeBetMin>0</ThreeBetMin>
-							<ThreeBetMax>5</ThreeBetMax>
-							<WtsdMin>18</WtsdMin>
-							<WtsdMax>38</WtsdMax>
-							<WsdMin>0</WsdMin>
-							<WsdMax>55</WsdMax>
-							<WwsfMin>0</WwsfMin>
-							<WwsfMax>40</WwsfMax>
-						</FishPlayer>
-						<WhalePlayer>
-							<Include>true</Include>
-							<PlayerType>2</PlayerType>
-							<VpIpMin>20</VpIpMin>
-							<VpIpMax>25</VpIpMax>
-							<PfrMin>17</PfrMin>
-							<PfrMax>23</PfrMax>
-							<AggMin>2.4</AggMin>
-							<AggMax>4</AggMax>
-							<ThreeBetMin>5</ThreeBetMin>
-							<ThreeBetMax>8.8</ThreeBetMax>
-							<WtsdMin>21</WtsdMin>
-							<WtsdMax>26</WtsdMax>
-							<WsdMin>48</WsdMin>
-							<WsdMax>57</WsdMax>
-							<WwsfMin>39</WwsfMin>
-							<WwsfMax>48</WwsfMax>
-						</WhalePlayer>
-						<GamblerPlayer>
-							<Include>true</Include>
-							<PlayerType>3</PlayerType>
-							<VpIpMin>25</VpIpMin>
-							<VpIpMax>40</VpIpMax>
-							<PfrMin>15</PfrMin>
-							<PfrMax>30</PfrMax>
-							<AggMin>2.5</AggMin>
-							<AggMax>8</AggMax>
-							<ThreeBetMin>5</ThreeBetMin>
-							<ThreeBetMax>18</ThreeBetMax>
-							<WtsdMin>21</WtsdMin>
-							<WtsdMax>26</WtsdMax>
-							<WsdMin>48</WsdMin>
-							<WsdMax>57</WsdMax>
-							<WwsfMin>39</WwsfMin>
-							<WwsfMax>48</WwsfMax>
-						</GamblerPlayer>
-						<LagPlayer>
-							<Include>true</Include>
-							<PlayerType>4</PlayerType>
-							<VpIpMin>20</VpIpMin>
-							<VpIpMax>25</VpIpMax>
-							<PfrMin>17</PfrMin>
-							<PfrMax>23</PfrMax>
-							<AggMin>2.4</AggMin>
-							<AggMax>4</AggMax>
-							<ThreeBetMin>5</ThreeBetMin>
-							<ThreeBetMax>8.8</ThreeBetMax>
-							<WtsdMin>21</WtsdMin>
-							<WtsdMax>26</WtsdMax>
-							<WsdMin>48</WsdMin>
-							<WsdMax>57</WsdMax>
-							<WwsfMin>39</WwsfMin>
-							<WwsfMax>48</WwsfMax>
-						</LagPlayer>
-						<RockPlayer>
-							<Include>true</Include>
-							<PlayerType>5</PlayerType>
-							<VpIpMin>20</VpIpMin>
-							<VpIpMax>25</VpIpMax>
-							<PfrMin>17</PfrMin>
-							<PfrMax>23</PfrMax>
-							<AggMin>2.4</AggMin>
-							<AggMax>4</AggMax>
-							<ThreeBetMin>5</ThreeBetMin>
-							<ThreeBetMax>8.8</ThreeBetMax>
-							<WtsdMin>21</WtsdMin>
-							<WtsdMax>26</WtsdMax>
-							<WsdMin>48</WsdMin>
-							<WsdMax>57</WsdMax>
-							<WwsfMin>39</WwsfMin>
-							<WwsfMax>48</WwsfMax>
-						</RockPlayer>
-						<NitPlayer>
-							<Include>true</Include>
-							<PlayerType>6</PlayerType>
-							<VpIpMin>20</VpIpMin>
-							<VpIpMax>25</VpIpMax>
-							<PfrMin>17</PfrMin>
-							<PfrMax>23</PfrMax>
-							<AggMin>2.4</AggMin>
-							<AggMax>4</AggMax>
-							<ThreeBetMin>5</ThreeBetMin>
-							<ThreeBetMax>8.8</ThreeBetMax>
-							<WtsdMin>21</WtsdMin>
-							<WtsdMax>26</WtsdMax>
-							<WsdMin>48</WsdMin>
-							<WsdMax>57</WsdMax>
-							<WwsfMin>39</WwsfMin>
-							<WwsfMax>48</WwsfMax>
-						</NitPlayer>
-						<PreflopActions>
-							<FirstType>0</FirstType>
-							<FirstMinValue>0</FirstMinValue>
-							<FirstMaxValue>0</FirstMaxValue>
-							<SecondType>0</SecondType>
-							<SecondMinValue>0</SecondMinValue>
-							<SecondMaxValue>0</SecondMaxValue>
-							<ThirdType>0</ThirdType>
-							<ThirdMinValue>0</ThirdMinValue>
-							<ThirdMaxValue>0</ThirdMaxValue>
-							<FourthType>0</FourthType>
-							<FourthMinValue>0</FourthMinValue>
-							<FourthMaxValue>0</FourthMaxValue>
-						</PreflopActions>
-						<FlopActions>
-							<FirstType>0</FirstType>
-							<FirstMinValue>0</FirstMinValue>
-							<FirstMaxValue>0</FirstMaxValue>
-							<SecondType>0</SecondType>
-							<SecondMinValue>0</SecondMinValue>
-							<SecondMaxValue>0</SecondMaxValue>
-							<ThirdType>0</ThirdType>
-							<ThirdMinValue>0</ThirdMinValue>
-							<ThirdMaxValue>0</ThirdMaxValue>
-							<FourthType>0</FourthType>
-							<FourthMinValue>0</FourthMinValue>
-							<FourthMaxValue>0</FourthMaxValue>
-						</FlopActions>
-						<TurnActions>
-							<FirstType>0</FirstType>
-							<FirstMinValue>0</FirstMinValue>
-							<FirstMaxValue>0</FirstMaxValue>
-							<SecondType>0</SecondType>
-							<SecondMinValue>0</SecondMinValue>
-							<SecondMaxValue>0</SecondMaxValue>
-							<ThirdType>0</ThirdType>
-							<ThirdMinValue>0</ThirdMinValue>
-							<ThirdMaxValue>0</ThirdMaxValue>
-							<FourthType>0</FourthType>
-							<FourthMinValue>0</FourthMinValue>
-							<FourthMaxValue>0</FourthMaxValue>
-						</TurnActions>
-						<RiverActions>
-							<FirstType>0</FirstType>
-							<FirstMinValue>0</FirstMinValue>
-							<FirstMaxValue>0</FirstMaxValue>
-							<SecondType>0</SecondType>
-							<SecondMinValue>0</SecondMinValue>
-							<SecondMaxValue>0</SecondMaxValue>
-							<ThirdType>0</ThirdType>
-							<ThirdMinValue>0</ThirdMinValue>
-							<ThirdMaxValue>0</ThirdMaxValue>
-							<FourthType>0</FourthType>
-							<FourthMinValue>0</FourthMinValue>
-							<FourthMaxValue>0</FourthMaxValue>
-						</RiverActions>
-						<FlopHvSettings>
-							<AnyHv>true</AnyHv>
-							<AnyStraightDraws>true</AnyStraightDraws>
-							<AnyFlushDraws>true</AnyFlushDraws>
-							<SelectedHv />
-							<SelectedStraighDraws />
-							<SelectedFlushDraws />
-						</FlopHvSettings>
-						<RiverHvSettings>
-							<AnyHv>true</AnyHv>
-							<AnyStraightDraws>true</AnyStraightDraws>
-							<AnyFlushDraws>true</AnyFlushDraws>
-							<SelectedHv />
-							<SelectedStraighDraws />
-							<SelectedFlushDraws />
-						</RiverHvSettings>
-						<TurnHvSettings>
-							<AnyHv>true</AnyHv>
-							<AnyStraightDraws>true</AnyStraightDraws>
-							<AnyFlushDraws>true</AnyFlushDraws>
-							<SelectedHv />
-							<SelectedStraighDraws />
-							<SelectedFlushDraws />
-						</TurnHvSettings>
-						<FlopTextureSettings>
-							<IsFlushCardFilter>false</IsFlushCardFilter>
-							<IsOpenEndedStraightDrawsFilter>false</IsOpenEndedStraightDrawsFilter>
-							<OpenEndedStraightDraws>0</OpenEndedStraightDraws>
-							<IsPairedFilter>false</IsPairedFilter>
-							<IsGutshotsFilter>false</IsGutshotsFilter>
-							<IsCardTextureFilter>false</IsCardTextureFilter>
-							<IsHighcardFilter>false</IsHighcardFilter>
-							<IsPossibleStraightsFilter>false</IsPossibleStraightsFilter>
-							<PossibleStraightsCompare>0</PossibleStraightsCompare>
-							<PossibleStraights>0</PossibleStraights>
-							<Gutshots>0</Gutshots>
-							<IsPairedFilterTrue>false</IsPairedFilterTrue>
-							<FlushCard>1</FlushCard>
-						</FlopTextureSettings>
-						<TurnTextureSettings>
-							<IsFlushCardFilter>false</IsFlushCardFilter>
-							<IsOpenEndedStraightDrawsFilter>false</IsOpenEndedStraightDrawsFilter>
-							<OpenEndedStraightDraws>0</OpenEndedStraightDraws>
-							<IsPairedFilter>false</IsPairedFilter>
-							<IsGutshotsFilter>false</IsGutshotsFilter>
-							<IsCardTextureFilter>false</IsCardTextureFilter>
-							<IsHighcardFilter>false</IsHighcardFilter>
-							<IsPossibleStraightsFilter>false</IsPossibleStraightsFilter>
-							<PossibleStraightsCompare>0</PossibleStraightsCompare>
-							<PossibleStraights>0</PossibleStraights>
-							<Gutshots>0</Gutshots>
-							<IsPairedFilterTrue>false</IsPairedFilterTrue>
-							<FlushCard>0</FlushCard>
-						</TurnTextureSettings>
-						<RiverTextureSettings>
-							<IsFlushCardFilter>false</IsFlushCardFilter>
-							<IsOpenEndedStraightDrawsFilter>false</IsOpenEndedStraightDrawsFilter>
-							<OpenEndedStraightDraws>0</OpenEndedStraightDraws>
-							<IsPairedFilter>false</IsPairedFilter>
-							<IsGutshotsFilter>false</IsGutshotsFilter>
-							<IsCardTextureFilter>false</IsCardTextureFilter>
-							<IsHighcardFilter>false</IsHighcardFilter>
-							<IsPossibleStraightsFilter>false</IsPossibleStraightsFilter>
-							<PossibleStraightsCompare>0</PossibleStraightsCompare>
-							<PossibleStraights>0</PossibleStraights>
-							<Gutshots>0</Gutshots>
-							<IsPairedFilterTrue>false</IsPairedFilterTrue>
-							<FlushCard>0</FlushCard>
-						</RiverTextureSettings>
-					</Settings>
-				</NoteObject>
-				<NoteObject>
 					<Name>5-bet shove bluffs</Name>
 					<ID>9</ID>
 					<Description />
@@ -5177,8 +4868,10 @@
 									<PossibleStraightsCompare>0</PossibleStraightsCompare>
 									<PossibleStraights>0</PossibleStraights>
 									<Gutshots>0</Gutshots>
+									<HighestCard>7</HighestCard>
+									<SelectedCardTexture />
 									<IsPairedFilterTrue>false</IsPairedFilterTrue>
-									<FlushCard>1</FlushCard>
+									<FlushCard>3</FlushCard>
 								</FlopTextureSettings>
 								<TurnTextureSettings>
 									<IsFlushCardFilter>false</IsFlushCardFilter>
@@ -9382,10 +9075,10 @@
 							<FourthMaxValue>0</FourthMaxValue>
 						</FlopActions>
 						<TurnActions>
-							<FirstType>0</FirstType>
+							<FirstType>2</FirstType>
 							<FirstMinValue>0</FirstMinValue>
 							<FirstMaxValue>0</FirstMaxValue>
-							<SecondType>0</SecondType>
+							<SecondType>5</SecondType>
 							<SecondMinValue>0</SecondMinValue>
 							<SecondMaxValue>0</SecondMaxValue>
 							<ThirdType>0</ThirdType>
@@ -9721,12 +9414,37 @@
 							<AnyStraightDraws>false</AnyStraightDraws>
 							<AnyFlushDraws>false</AnyFlushDraws>
 							<SelectedHv>
-								<int>28</int>
-								<int>29</int>
 								<int>10</int>
 								<int>11</int>
 								<int>0</int>
+								<int>28</int>
+								<int>29</int>
 								<int>30</int>
+								<int>40</int>
+								<int>41</int>
+								<int>42</int>
+								<int>43</int>
+								<int>60</int>
+								<int>61</int>
+								<int>62</int>
+								<int>63</int>
+								<int>64</int>
+								<int>65</int>
+								<int>66</int>
+								<int>67</int>
+								<int>80</int>
+								<int>81</int>
+								<int>100</int>
+								<int>101</int>
+								<int>102</int>
+								<int>121</int>
+								<int>122</int>
+								<int>123</int>
+								<int>124</int>
+								<int>125</int>
+								<int>140</int>
+								<int>141</int>
+								<int>160</int>
 							</SelectedHv>
 							<SelectedStraighDraws>
 								<int>0</int>
@@ -10039,8 +9757,6 @@
 							<AnyStraightDraws>true</AnyStraightDraws>
 							<AnyFlushDraws>true</AnyFlushDraws>
 							<SelectedHv>
-								<int>20</int>
-								<int>23</int>
 								<int>40</int>
 								<int>41</int>
 								<int>42</int>
@@ -10064,13 +9780,18 @@
 								<int>140</int>
 								<int>141</int>
 								<int>160</int>
-								<int>24</int>
-								<int>28</int>
-								<int>29</int>
+								<int>67</int>
+								<int>66</int>
 								<int>43</int>
+								<int>20</int>
+								<int>23</int>
+								<int>24</int>
 								<int>103</int>
 								<int>104</int>
 								<int>120</int>
+								<int>28</int>
+								<int>29</int>
+								<int>30</int>
 							</SelectedHv>
 							<SelectedStraighDraws />
 							<SelectedFlushDraws />
@@ -10386,8 +10107,13 @@
 							<AnyStraightDraws>true</AnyStraightDraws>
 							<AnyFlushDraws>true</AnyFlushDraws>
 							<SelectedHv>
-								<int>20</int>
-								<int>23</int>
+								<int>101</int>
+								<int>102</int>
+								<int>121</int>
+								<int>122</int>
+								<int>140</int>
+								<int>141</int>
+								<int>160</int>
 								<int>40</int>
 								<int>41</int>
 								<int>42</int>
@@ -10402,16 +10128,19 @@
 								<int>80</int>
 								<int>81</int>
 								<int>100</int>
-								<int>101</int>
-								<int>102</int>
-								<int>121</int>
-								<int>122</int>
 								<int>123</int>
 								<int>124</int>
 								<int>125</int>
-								<int>140</int>
-								<int>141</int>
-								<int>160</int>
+								<int>43</int>
+								<int>28</int>
+								<int>29</int>
+								<int>30</int>
+								<int>20</int>
+								<int>23</int>
+								<int>24</int>
+								<int>103</int>
+								<int>104</int>
+								<int>120</int>
 							</SelectedHv>
 							<SelectedStraighDraws />
 							<SelectedFlushDraws />
@@ -10754,10 +10483,10 @@
 								<int>10</int>
 								<int>11</int>
 								<int>0</int>
-								<int>49</int>
 								<int>30</int>
 								<int>31</int>
 								<int>32</int>
+								<int>49</int>
 							</SelectedHv>
 							<SelectedStraighDraws>
 								<int>0</int>
@@ -11434,6 +11163,10 @@
 								<int>31</int>
 								<int>32</int>
 								<int>49</int>
+								<int>45</int>
+								<int>27</int>
+								<int>22</int>
+								<int>21</int>
 							</SelectedHv>
 							<SelectedStraighDraws>
 								<int>0</int>
@@ -15735,6 +15468,11 @@
 							<AnyFlushDraws>true</AnyFlushDraws>
 							<SelectedHv>
 								<int>69</int>
+								<int>45</int>
+								<int>49</int>
+								<int>28</int>
+								<int>29</int>
+								<int>27</int>
 							</SelectedHv>
 							<SelectedStraighDraws />
 							<SelectedFlushDraws />
@@ -16046,15 +15784,17 @@
 							<AnyStraightDraws>true</AnyStraightDraws>
 							<AnyFlushDraws>true</AnyFlushDraws>
 							<SelectedHv>
+								<int>27</int>
+								<int>28</int>
+								<int>29</int>
+								<int>49</int>
 								<int>21</int>
 								<int>22</int>
 								<int>25</int>
 								<int>26</int>
-								<int>27</int>
-								<int>28</int>
-								<int>29</int>
 								<int>30</int>
-								<int>49</int>
+								<int>69</int>
+								<int>45</int>
 							</SelectedHv>
 							<SelectedStraighDraws />
 							<SelectedFlushDraws />
@@ -16443,7 +16183,7 @@
 						<TypeNoLimit>true</TypeNoLimit>
 						<TypePotLimit>true</TypePotLimit>
 						<TypeLimit>true</TypeLimit>
-						<Cash>false</Cash>
+						<Cash>true</Cash>
 						<Tournament>true</Tournament>
 						<IncludeBoard>true</IncludeBoard>
 						<PlayersNoHeadsUp>true</PlayersNoHeadsUp>
@@ -16771,7 +16511,7 @@
 						<TypeLimit>true</TypeLimit>
 						<Cash>true</Cash>
 						<Tournament>true</Tournament>
-						<IncludeBoard>false</IncludeBoard>
+						<IncludeBoard>true</IncludeBoard>
 						<PlayersNoHeadsUp>true</PlayersNoHeadsUp>
 						<PlayersNo34>true</PlayersNo34>
 						<PlayersNo56>true</PlayersNo56>
@@ -17002,6 +16742,7 @@
 								<int>11</int>
 								<int>0</int>
 								<int>49</int>
+								<int>69</int>
 							</SelectedHv>
 							<SelectedStraighDraws />
 							<SelectedFlushDraws />

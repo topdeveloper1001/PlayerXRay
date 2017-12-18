@@ -862,6 +862,15 @@
                             Command="{Binding DeleteAllNotesCommand}"
                             Content="{ResX Key=XRay_SettingsView_DeleteAllNotes}" />
 
+                        <Button
+                            Margin="5,0,0,0"
+                            Width="110"
+                            Height="24"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Command="{Binding RestoreDefaultsCommand}"
+                            Content="{ResX Key=XRay_SettingsView_RestoreDefaultNotes}" />
+                      
                     </StackPanel>
 
                 </StackPanel>

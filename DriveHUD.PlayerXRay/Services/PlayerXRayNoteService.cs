@@ -127,7 +127,7 @@ namespace DriveHUD.PlayerXRay.Services
             }
         }
 
-        private void InitializeDefaultNotes()
+        public void InitializeDefaultNotes()
         {
             try
             {

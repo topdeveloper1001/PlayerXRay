@@ -44,6 +44,8 @@ namespace DriveHUD.PlayerXRay
 
         private readonly SubscriptionToken raisePopupSubscriptionToken;
 
+        private readonly SubscriptionToken restoreDefaultsSubscriptionToken;
+
         public PlayerXRayMainViewModel()
         {
             eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
@@ -52,6 +54,7 @@ namespace DriveHUD.PlayerXRay
             storageModel = ServiceLocator.Current.TryResolve<SingletonStorageModel>();
 
             raisePopupSubscriptionToken = eventAggregator.GetEvent<RaisePopupEvent>().Subscribe(RaisePopup, false);
+            restoreDefaultsSubscriptionToken = eventAggregator.GetEvent<RestoreDefaultsEvent>().Subscribe(OnRestoreDefaults, false);
         }
 
         public override void Configure(object viewModelInfo)
@@ -254,6 +257,7 @@ namespace DriveHUD.PlayerXRay
             playerNotesService.SaveAppSettings();
 
             eventAggregator.GetEvent<RaisePopupEvent>().Unsubscribe(raisePopupSubscriptionToken);
+            eventAggregator.GetEvent<RestoreDefaultsEvent>().Unsubscribe(restoreDefaultsSubscriptionToken);
 
             workspaces.Values.ForEach(workspace => workspace.Dispose());
 
@@ -341,6 +345,19 @@ namespace DriveHUD.PlayerXRay
         private void Upgrade()
         {
             RaiseRegistrationPopup(true);
+        }
+
+        private void OnRestoreDefaults(RestoreDefaultsEventArgs e)
+        {
+            var selectedType = Workspace.WorkspaceType;
+
+            if (workspaces != null)
+            {
+                workspaces.Values.ForEach(x => x.Dispose());
+                workspaces.Clear();
+            }
+
+            Navigate(selectedType);
         }
 
         private void RaiseRegistrationPopup(bool showRegister)
