@@ -1375,7 +1375,7 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Restore defaults notes.
+        ///   Looks up a localized string similar to Restore default notes.
         /// </summary>
         internal static string XRay_SettingsView_RestoreDefaultNotes {
             get {
