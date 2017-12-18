@@ -592,7 +592,7 @@
     <value>Are you sure you want to exit?</value>
   </data>
   <data name="XRay_SettingsView_RestoreDefaultNotes" xml:space="preserve">
-    <value>Restore defaults</value>
+    <value>Restore defaults notes</value>
   </data>
   <data name="XRay_YesNoConfirmationView_RestoreDefaults" xml:space="preserve">
     <value>Restore defaults?</value>
