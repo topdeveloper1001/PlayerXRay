@@ -12,7 +12,6 @@
 
 using DriveHUD.Common.Wpf.Actions;
 using System;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace DriveHUD.PlayerXRay
@@ -20,31 +19,25 @@ namespace DriveHUD.PlayerXRay
     /// <summary>
     /// Interaction logic for PlayerXRayMainView.xaml
     /// </summary>
-    public partial class PlayerXRayMainView : UserControl, IViewModelContainer<PlayerXRayMainViewModel>, IViewContainer
+    public partial class PlayerXRayMainView : UserControl, IViewModelContainer<IPlayerXRayMainViewModel>
     {
-        public PlayerXRayMainView()
+        public PlayerXRayMainView(IPlayerXRayMainViewModel viewModel)
         {
+            ViewModel = viewModel;
+            ViewModel.Initialized += ViewModel_Initialized;
             InitializeComponent();
-            Loaded += PlayerXRayMainView_Loaded;
         }
 
-        public PlayerXRayMainViewModel ViewModel
+        private void ViewModel_Initialized(object sender, EventArgs e)
         {
-            get
-            {
-                return DataContext as PlayerXRayMainViewModel;
-            }
+            DataContext = ViewModel;
+            ViewModel.Initialized -= ViewModel_Initialized;
         }
 
-        public ContentControl Window
+        public IPlayerXRayMainViewModel ViewModel
         {
-            get; set;
-        }
-
-        private void PlayerXRayMainView_Loaded(object sender, EventArgs e)
-        {
-            Loaded -= PlayerXRayMainView_Loaded;
-            ViewModel?.Initialize();
+            get;
+            private set;
         }
     }
 }

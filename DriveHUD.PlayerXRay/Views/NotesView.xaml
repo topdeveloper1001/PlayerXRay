@@ -512,8 +512,29 @@
                                 dh:DragDrop.PassClickEventToParent="True"
                                 dh:DragDrop.DragAdornerTemplate="{StaticResource NoteAdornerTemplate}"
                                 dh:DragDrop.DragDropCommand="{Binding DataContext.NoteDragDropCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
-                                dh:DragDrop.DragDropData="{Binding .}"
-                                Text="{Binding Name}" />
+                                dh:DragDrop.DragDropData="{Binding .}">
+                                <TextBlock.Style>
+                                    <Style
+                                        TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Modified}"
+                                                Value="True">
+                                                <Setter
+                                                    Property="Text"
+                                                    Value="{Binding Name, StringFormat=*{0}}" />
+                                            </DataTrigger>
+                                            <DataTrigger
+                                                Binding="{Binding Modified}"
+                                                Value="False">
+                                                <Setter
+                                                    Property="Text"
+                                                    Value="{Binding Name}" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
                         </DataTemplate>
                     </TreeView.Resources>
                 </TreeView>

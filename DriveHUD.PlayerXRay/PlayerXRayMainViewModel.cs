@@ -10,12 +10,9 @@
 // </copyright>
 //----------------------------------------------------------------------
 
-using DriveHUD.Common.Exceptions;
 using DriveHUD.Common.Infrastructure.CustomServices;
 using DriveHUD.Common.Linq;
-using DriveHUD.Common.Log;
 using DriveHUD.Common.Resources;
-using DriveHUD.Common.Security;
 using DriveHUD.Common.Wpf.Mvvm;
 using DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings;
 using DriveHUD.PlayerXRay.Events;
@@ -28,7 +25,6 @@ using DriveHUD.PlayerXRay.Views.PopupViews;
 using Microsoft.Practices.ServiceLocation;
 using Model;
 using Prism.Events;
-using Prism.Interactivity.InteractionRequest;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
@@ -38,7 +34,7 @@ using System.Reflection;
 
 namespace DriveHUD.PlayerXRay
 {
-    public class PlayerXRayMainViewModel : WindowViewModelBase, IModuleEntryViewModel
+    public class PlayerXRayMainViewModel : PopupWindowViewModel, IPlayerXRayMainViewModel
     {
         private readonly Dictionary<WorkspaceType, WorkspaceViewModel> workspaces;
 
@@ -50,27 +46,28 @@ namespace DriveHUD.PlayerXRay
 
         public PlayerXRayMainViewModel()
         {
-            title = "Player X-Ray";
-
             eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
 
             workspaces = new Dictionary<WorkspaceType, WorkspaceViewModel>();
             storageModel = ServiceLocator.Current.TryResolve<SingletonStorageModel>();
 
+            raisePopupSubscriptionToken = eventAggregator.GetEvent<RaisePopupEvent>().Subscribe(RaisePopup, false);
+        }
+
+        public override void Configure(object viewModelInfo)
+        {
             NavigateCommand = ReactiveCommand.Create();
             NavigateCommand.Subscribe(x => Navigate((WorkspaceType)x));
 
             UpgradeCommand = ReactiveCommand.Create();
             UpgradeCommand.Subscribe(x => Upgrade());
 
-            raisePopupSubscriptionToken = eventAggregator.GetEvent<RaisePopupEvent>().Subscribe(RaisePopup, false);
-        }
-
-        public void Initialize()
-        {
             StaticStorage.CurrentPlayer = StorageModel.PlayerSelectedItem?.PlayerId.ToString();
             StaticStorage.CurrentPlayerName = StorageModel.PlayerSelectedItem?.Name;
+
             Navigate(WorkspaceType.Run);
+
+            OnInitialized();
 
             var licenseService = ServiceLocator.Current.GetInstance<ILicenseService>();
 
@@ -247,40 +244,7 @@ namespace DriveHUD.PlayerXRay
 
         public ReactiveCommand<object> UpgradeCommand { get; private set; }
 
-        #endregion
-
-        #region INotification implementation
-
-        private string title;
-
-        public string Title
-        {
-            get
-            {
-                return title;
-            }
-
-            set
-            {
-                this.RaiseAndSetIfChanged(ref title, value);
-            }
-        }
-
-        private object content;
-
-        public object Content
-        {
-            get
-            {
-                return content;
-            }
-            set
-            {
-                this.RaiseAndSetIfChanged(ref content, value);
-            }
-        }
-
-        #endregion
+        #endregion        
 
         #region IDisposable implementation
 
@@ -291,7 +255,7 @@ namespace DriveHUD.PlayerXRay
 
             eventAggregator.GetEvent<RaisePopupEvent>().Unsubscribe(raisePopupSubscriptionToken);
 
-            workspaces.Values.ForEach(workspace => workspace.Dispose());         
+            workspaces.Values.ForEach(workspace => workspace.Dispose());
 
             base.Disposing();
         }
@@ -302,9 +266,15 @@ namespace DriveHUD.PlayerXRay
 
         private void Navigate(WorkspaceType workspaceType)
         {
+            if (Workspace != null)
+            {
+                Workspace.IsClosing = true;
+            }
+
             if (workspaces.ContainsKey(workspaceType))
             {
                 Workspace = workspaces[workspaceType];
+                Workspace.IsClosing = false;
                 return;
             }
 
@@ -336,6 +306,36 @@ namespace DriveHUD.PlayerXRay
 
             workspaces.Add(workspaceType, workspace);
             Workspace = workspace;
+        }
+
+        private bool isClosing = false;
+
+        public override bool OnClosing()
+        {
+            if (isClosing)
+            {
+                return true;
+            }
+
+            var confirmationViewModel = new YesNoConfirmationViewModel
+            {
+                ConfirmationMessage = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_ExitText"),
+                OnYesAction = () =>
+                {
+                    isClosing = true;
+                    OnClosed();
+                }
+            };
+
+            var popupEventArgs = new RaisePopupEventArgs()
+            {
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_Exit"),
+                Content = new YesNoConfirmationView(confirmationViewModel)
+            };
+
+            eventAggregator.GetEvent<RaisePopupEvent>().Publish(popupEventArgs);
+
+            return isClosing;
         }
 
         private void Upgrade()

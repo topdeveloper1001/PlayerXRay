@@ -122,5 +122,20 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
                 return hash;
             }
         }
+
+        public HandValueSettings Copy()
+        {
+            var handValueSettings = new HandValueSettings
+            {
+                AnyHv = AnyHv,
+                AnyFlushDraws = AnyFlushDraws,
+                AnyStraightDraws = AnyStraightDraws,
+                SelectedHv = new ObservableCollection<int>(SelectedHv),
+                SelectedFlushDraws = new ObservableCollection<int>(SelectedFlushDraws),
+                SelectedStraighDraws = new ObservableCollection<int>(SelectedStraighDraws)
+            };
+
+            return handValueSettings;
+        }
     }
 }

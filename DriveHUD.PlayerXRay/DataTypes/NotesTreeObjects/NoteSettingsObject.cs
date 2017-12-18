@@ -14,6 +14,7 @@ using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.ActionsObjects;
 using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects;
 using ReactiveUI;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Serialization;
 
@@ -52,16 +53,8 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
 
             ExcludedStakes = new List<Stake>();
             ExcludedCardsList = new List<string>();
-            SelectedFilters = new List<FilterObject>();
-            SelectedFiltersComparison = new List<FilterObject>();
-
-            TagPlayer = new PlayerObject(PlayerTypeEnum.Tag);
-            FishPlayer = new PlayerObject(PlayerTypeEnum.Fish);
-            WhalePlayer = new PlayerObject(PlayerTypeEnum.Whale);
-            GamblerPlayer = new PlayerObject(PlayerTypeEnum.Gambler);
-            LagPlayer = new PlayerObject(PlayerTypeEnum.Lag);
-            RockPlayer = new PlayerObject(PlayerTypeEnum.Rock);
-            NitPlayer = new PlayerObject(PlayerTypeEnum.Nit);
+            SelectedFilters = new ObservableCollection<FilterObject>();
+            SelectedFiltersComparison = new ObservableCollection<FilterObject>();
 
             FlopHvSettings = new HandValueSettings();
             TurnHvSettings = new HandValueSettings();
@@ -77,12 +70,61 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
             PreflopActions = new ActionSettings();
         }
 
-        public List<FilterObject> SelectedFilters { get; set; }
-        public List<FilterObject> SelectedFiltersComparison { get; set; }
+        private ObservableCollection<FilterObject> selectedFilters;
 
-        public string ExcludedCards { get; set; }
+        public ObservableCollection<FilterObject> SelectedFilters
+        {
+            get
+            {
+                return selectedFilters;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref selectedFilters, value);
+            }
+        }
 
-        public List<Stake> ExcludedStakes { get; set; }
+        private ObservableCollection<FilterObject> selectedFiltersComparison;
+
+        public ObservableCollection<FilterObject> SelectedFiltersComparison
+        {
+            get
+            {
+                return selectedFiltersComparison;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref selectedFiltersComparison, value);
+            }
+        }
+
+        private string excludedCards;
+
+        public string ExcludedCards
+        {
+            get
+            {
+                return excludedCards;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref excludedCards, value);
+            }
+        }
+
+        private List<Stake> excludedStakes;
+
+        public List<Stake> ExcludedStakes
+        {
+            get
+            {
+                return excludedStakes;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref excludedStakes, value);
+            }
+        }
 
         [XmlIgnore]
         public List<string> ExcludedCardsList
@@ -97,24 +139,102 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
             }
             set
             {
-                ExcludedCards = string.Empty;
+                var excludedCards = string.Empty;
 
                 foreach (string card in value)
                 {
-                    ExcludedCards += card + ',';
+                    excludedCards += card + ',';
                 }
-                if (ExcludedCards.Contains(","))
-                    ExcludedCards = ExcludedCards.Remove(ExcludedCards.LastIndexOf(','), 1);
+
+                ExcludedCards = excludedCards.Contains(",") ?
+                    excludedCards.Remove(excludedCards.LastIndexOf(','), 1) :
+                    excludedCards;
             }
         }
 
-        public bool TypeNoLimit { get; set; }
-        public bool TypePotLimit { get; set; }
-        public bool TypeLimit { get; set; }
-        public bool Cash { get; set; }
-        public bool Tournament { get; set; }
+        private bool typeNoLimit;
 
-        public bool IncludeBoard { get; set; }
+        public bool TypeNoLimit
+        {
+            get
+            {
+                return typeNoLimit;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref typeNoLimit, value);
+            }
+        }
+
+        private bool typePotLimit;
+
+        public bool TypePotLimit
+        {
+            get
+            {
+                return typePotLimit;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref typePotLimit, value);
+            }
+        }
+
+        private bool typeLimit;
+
+        public bool TypeLimit
+        {
+            get
+            {
+                return typeLimit;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref typeLimit, value);
+            }
+        }
+
+        private bool cash;
+
+        public bool Cash
+        {
+            get
+            {
+                return cash;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref cash, value);
+            }
+        }
+
+        private bool tournament;
+
+        public bool Tournament
+        {
+            get
+            {
+                return tournament;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref tournament, value);
+            }
+        }
+
+        private bool includeBoard;
+
+        public bool IncludeBoard
+        {
+            get
+            {
+                return includeBoard;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref includeBoard, value);
+            }
+        }
 
         #region Number of players
 
@@ -219,33 +339,341 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
 
         #endregion
 
-        public bool PositionSB { get; set; }
-        public bool PositionEarly { get; set; }
-        public bool PositionCutoff { get; set; }
-        public bool PositionBB { get; set; }
-        public bool PositionMiddle { get; set; }
-        public bool PositionButton { get; set; }
+        private bool positionSB;
 
-        public bool FacingUnopened { get; set; }
-        public bool Facing2PlusLimpers { get; set; }
-        public bool FacingRaisersCallers { get; set; }
-        public bool Facing1Limper { get; set; }
-        public bool Facing1Raiser { get; set; }
-        public bool Facing2Raisers { get; set; }
+        public bool PositionSB
+        {
+            get
+            {
+                return positionSB;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionSB, value);
+            }
+        }
 
-        public bool PositionSBRaiser { get; set; }
-        public bool PositionEarlyRaiser { get; set; }
-        public bool PositionCutoffRaiser { get; set; }
-        public bool PositionBBRaiser { get; set; }
-        public bool PositionMiddleRaiser { get; set; }
-        public bool PositionButtonRaiser { get; set; }
+        private bool positionEarly;
 
-        public bool PositionSB3Bet { get; set; }
-        public bool PositionEarly3Bet { get; set; }
-        public bool PositionCutoff3Bet { get; set; }
-        public bool PositionBB3Bet { get; set; }
-        public bool PositionMiddle3Bet { get; set; }
-        public bool PositionButton3Bet { get; set; }
+        public bool PositionEarly
+        {
+            get
+            {
+                return positionEarly;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionEarly, value);
+            }
+        }
+
+        private bool positionCutoff;
+
+        public bool PositionCutoff
+        {
+            get
+            {
+                return positionCutoff;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionCutoff, value);
+            }
+        }
+
+        private bool positionBB;
+
+        public bool PositionBB
+        {
+            get
+            {
+                return positionBB;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionBB, value);
+            }
+        }
+
+        private bool positionMiddle;
+
+        public bool PositionMiddle
+        {
+            get
+            {
+                return positionMiddle;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionMiddle, value);
+            }
+        }
+
+        private bool positionButton;
+
+        public bool PositionButton
+        {
+            get
+            {
+                return positionButton;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionButton, value);
+            }
+        }
+
+        private bool facingUnopened;
+
+        public bool FacingUnopened
+        {
+            get
+            {
+                return facingUnopened;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref facingUnopened, value);
+            }
+        }
+
+        private bool facing2PlusLimpers;
+
+        public bool Facing2PlusLimpers
+        {
+            get
+            {
+                return facing2PlusLimpers;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref facing2PlusLimpers, value);
+            }
+        }
+
+        private bool facingRaisersCallers;
+
+        public bool FacingRaisersCallers
+        {
+            get
+            {
+                return facingRaisersCallers;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref facingRaisersCallers, value);
+            }
+        }
+
+        private bool facing1Limper;
+
+        public bool Facing1Limper
+        {
+            get
+            {
+                return facing1Limper;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref facing1Limper, value);
+            }
+        }
+
+        private bool facing1Raiser;
+
+        public bool Facing1Raiser
+        {
+            get
+            {
+                return facing1Raiser;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref facing1Raiser, value);
+            }
+        }
+
+        private bool facing2Raisers;
+
+        public bool Facing2Raisers
+        {
+            get
+            {
+                return facing2Raisers;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref facing2Raisers, value);
+            }
+        }
+
+        private bool positionSBRaiser;
+
+        public bool PositionSBRaiser
+        {
+            get
+            {
+                return positionSBRaiser;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionSBRaiser, value);
+            }
+        }
+
+        private bool positionEarlyRaiser;
+
+        public bool PositionEarlyRaiser
+        {
+            get
+            {
+                return positionEarlyRaiser;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionEarlyRaiser, value);
+            }
+        }
+
+        private bool positionCutoffRaiser;
+
+        public bool PositionCutoffRaiser
+        {
+            get
+            {
+                return positionCutoffRaiser;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionCutoffRaiser, value);
+            }
+        }
+
+        private bool positionBBRaiser;
+
+        public bool PositionBBRaiser
+        {
+            get
+            {
+                return positionBBRaiser;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionBBRaiser, value);
+            }
+        }
+
+        private bool positionMiddleRaiser;
+
+        public bool PositionMiddleRaiser
+        {
+            get
+            {
+                return positionMiddleRaiser;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionMiddleRaiser, value);
+            }
+        }
+
+        private bool positionButtonRaiser;
+
+        public bool PositionButtonRaiser
+        {
+            get
+            {
+                return positionButtonRaiser;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionButtonRaiser, value);
+            }
+        }
+
+        private bool positionSB3Bet;
+
+        public bool PositionSB3Bet
+        {
+            get
+            {
+                return positionSB3Bet;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionSB3Bet, value);
+            }
+        }
+
+        private bool positionEarly3Bet;
+
+        public bool PositionEarly3Bet
+        {
+            get
+            {
+                return positionEarly3Bet;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionEarly3Bet, value);
+            }
+        }
+
+        private bool positionCutoff3Bet;
+
+        public bool PositionCutoff3Bet
+        {
+            get
+            {
+                return positionCutoff3Bet;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionCutoff3Bet, value);
+            }
+        }
+
+        private bool positionBB3Bet;
+
+        public bool PositionBB3Bet
+        {
+            get
+            {
+                return positionBB3Bet;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionBB3Bet, value);
+            }
+        }
+
+        private bool positionMiddle3Bet;
+
+        public bool PositionMiddle3Bet
+        {
+            get
+            {
+                return positionMiddle3Bet;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionMiddle3Bet, value);
+            }
+        }
+
+        private bool positionButton3Bet;
+
+        public bool PositionButton3Bet
+        {
+            get
+            {
+                return positionButton3Bet;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref positionButton3Bet, value);
+            }
+        }
 
         [XmlIgnore]
         public double MBCMinSizeOfPot
@@ -283,26 +711,157 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
             get { return SelectedFilters.Any(p => p.Filter == FilterEnum.AllinPreflop); }
         }
 
-        public PlayerObject TagPlayer { get; set; }
-        public PlayerObject FishPlayer { get; set; }
-        public PlayerObject WhalePlayer { get; set; }
-        public PlayerObject GamblerPlayer { get; set; }
-        public PlayerObject LagPlayer { get; set; }
-        public PlayerObject RockPlayer { get; set; }
-        public PlayerObject NitPlayer { get; set; }
+        #region Actions 
 
-        public ActionSettings PreflopActions { get; set; }
-        public ActionSettings FlopActions { get; set; }
-        public ActionSettings TurnActions { get; set; }
-        public ActionSettings RiverActions { get; set; }
+        private ActionSettings preflopActions;
 
-        public HandValueSettings FlopHvSettings { get; set; }
-        public HandValueSettings RiverHvSettings { get; set; }
-        public HandValueSettings TurnHvSettings { get; set; }
+        public ActionSettings PreflopActions
+        {
+            get
+            {
+                return preflopActions;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref preflopActions, value);
+            }
+        }
 
-        public FlopTextureSettings FlopTextureSettings { get; set; }
-        public TurnTextureSettings TurnTextureSettings { get; set; }
-        public RiverTextureSettings RiverTextureSettings { get; set; }
+        private ActionSettings flopActions;
+
+        public ActionSettings FlopActions
+        {
+            get
+            {
+                return flopActions;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref flopActions, value);
+            }
+        }
+
+        private ActionSettings turnActions;
+
+        public ActionSettings TurnActions
+        {
+            get
+            {
+                return turnActions;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref turnActions, value);
+            }
+        }
+
+        private ActionSettings riverActions;
+
+        public ActionSettings RiverActions
+        {
+            get
+            {
+                return riverActions;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref riverActions, value);
+            }
+        }
+
+        #endregion
+
+        #region Hand values
+
+        private HandValueSettings flopHvSettings;
+
+        public HandValueSettings FlopHvSettings
+        {
+            get
+            {
+                return flopHvSettings;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref flopHvSettings, value);
+            }
+        }
+
+        private HandValueSettings riverHvSettings;
+
+        public HandValueSettings RiverHvSettings
+        {
+            get
+            {
+                return riverHvSettings;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref riverHvSettings, value);
+            }
+        }
+
+        private HandValueSettings turnHvSettings;
+
+        public HandValueSettings TurnHvSettings
+        {
+            get
+            {
+                return turnHvSettings;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref turnHvSettings, value);
+            }
+        }
+
+        #endregion
+
+        #region Texture settings
+
+        private FlopTextureSettings flopTextureSettings;
+
+        public FlopTextureSettings FlopTextureSettings
+        {
+            get
+            {
+                return flopTextureSettings;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref flopTextureSettings, value);
+            }
+        }
+
+        private TurnTextureSettings turnTextureSettings;
+
+        public TurnTextureSettings TurnTextureSettings
+        {
+            get
+            {
+                return turnTextureSettings;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref turnTextureSettings, value);
+            }
+        }
+
+        private RiverTextureSettings riverTextureSettings;
+
+        public RiverTextureSettings RiverTextureSettings
+        {
+            get
+            {
+                return riverTextureSettings;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref riverTextureSettings, value);
+            }
+        }
+
+        #endregion
 
         public override bool Equals(object x)
         {
@@ -330,13 +889,6 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
                    x1.TypeNoLimit == x2.TypeNoLimit &&
                    x1.TypePotLimit == x2.TypePotLimit && SelectedStakesEquality(x1.ExcludedStakes) &&
                    SelectedCardsEquality(x1.ExcludedCardsList) &&
-                   x1.FishPlayer.Equals(x2.FishPlayer) &&
-                   x1.GamblerPlayer.Equals(x2.GamblerPlayer) &&
-                   x1.TagPlayer.Equals(x2.TagPlayer) &&
-                   x1.LagPlayer.Equals(x2.LagPlayer) &&
-                   x1.RockPlayer.Equals(x2.RockPlayer) &&
-                   x1.NitPlayer.Equals(x2.NitPlayer) &&
-                   x1.WhalePlayer.Equals(x2.WhalePlayer) &&
                    CompareSelectedFilters(x1.SelectedFilters) &&
                    x1.FlopHvSettings.Equals(x2.FlopHvSettings) &&
                    x1.TurnHvSettings.Equals(x2.TurnHvSettings) &&
@@ -366,6 +918,11 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects
                    x1.Facing2Raisers == x2.Facing2Raisers &&
                    x1.FacingRaisersCallers == x2.FacingRaisersCallers &&
                    x1.FacingUnopened == x2.FacingUnopened;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         private bool CompareSelectedFilters(ICollection<FilterObject> newList)

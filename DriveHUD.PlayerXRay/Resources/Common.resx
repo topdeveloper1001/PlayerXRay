@@ -579,4 +579,16 @@
   <data name="XRay_RegistrationView_TrialRegisterError" xml:space="preserve">
     <value>Could not register error. Internal error occurred. Please contact support.</value>
   </data>
+  <data name="XRay_YesNoConfirmationView_SavePendingChanges" xml:space="preserve">
+    <value>Save pending changes?</value>
+  </data>
+  <data name="XRay_YesNoConfirmationView_SavePendingChangesText" xml:space="preserve">
+    <value>Do you want to save pending changes?</value>
+  </data>
+  <data name="XRay_YesNoConfirmationView_Exit" xml:space="preserve">
+    <value>Exit?</value>
+  </data>
+  <data name="XRay_YesNoConfirmationView_ExitText" xml:space="preserve">
+    <value>Are you sure you want to exit?</value>
+  </data>
 </root>

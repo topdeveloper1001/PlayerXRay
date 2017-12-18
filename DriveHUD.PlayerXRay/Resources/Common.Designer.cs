@@ -1429,11 +1429,47 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exit?.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_Exit {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to exit?.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_ExitText {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_ExitText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NO.
         /// </summary>
         internal static string XRay_YesNoConfirmationView_No {
             get {
                 return ResourceManager.GetString("XRay_YesNoConfirmationView_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save pending changes?.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_SavePendingChanges {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_SavePendingChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to save pending changes?.
+        /// </summary>
+        internal static string XRay_YesNoConfirmationView_SavePendingChangesText {
+            get {
+                return ResourceManager.GetString("XRay_YesNoConfirmationView_SavePendingChangesText", resourceCulture);
             }
         }
         

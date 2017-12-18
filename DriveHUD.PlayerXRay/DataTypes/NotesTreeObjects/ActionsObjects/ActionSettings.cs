@@ -31,9 +31,33 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.ActionsObjects
             }
         }
 
-        public double FirstMinValue { get; set; }
+        private double firstMinValue;
 
-        public double FirstMaxValue { get; set; }
+        public double FirstMinValue
+        {
+            get
+            {
+                return firstMinValue;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref firstMinValue, value);
+            }
+        }
+
+        private double firstMaxValue;
+
+        public double FirstMaxValue
+        {
+            get
+            {
+                return firstMaxValue;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref firstMaxValue, value);
+            }
+        }
 
         private ActionTypeEnum secondType;
 
@@ -49,9 +73,33 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.ActionsObjects
             }
         }
 
-        public double SecondMinValue { get; set; }
+        private double secondMinValue;
 
-        public double SecondMaxValue { get; set; }
+        public double SecondMinValue
+        {
+            get
+            {
+                return secondMinValue;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref secondMinValue, value);
+            }
+        }
+
+        private double secondMaxValue;
+
+        public double SecondMaxValue
+        {
+            get
+            {
+                return secondMaxValue;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref secondMaxValue, value);
+            }
+        }
 
         private ActionTypeEnum thirdType;
 
@@ -67,9 +115,33 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.ActionsObjects
             }
         }
 
-        public double ThirdMinValue { get; set; }
+        private double thirdMinValue;
 
-        public double ThirdMaxValue { get; set; }
+        public double ThirdMinValue
+        {
+            get
+            {
+                return thirdMinValue;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref thirdMinValue, value);
+            }
+        }
+
+        private double thirdMaxValue;
+
+        public double ThirdMaxValue
+        {
+            get
+            {
+                return thirdMaxValue;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref thirdMaxValue, value);
+            }
+        }
 
         private ActionTypeEnum fourthType;
 
@@ -85,9 +157,33 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.ActionsObjects
             }
         }
 
-        public double FourthMinValue { get; set; }
+        private double fourthMinValue;
 
-        public double FourthMaxValue { get; set; }
+        public double FourthMinValue
+        {
+            get
+            {
+                return fourthMinValue;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref fourthMinValue, value);
+            }
+        }
+
+        private double fourthMaxValue;
+
+        public double FourthMaxValue
+        {
+            get
+            {
+                return fourthMaxValue;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref fourthMaxValue, value);
+            }
+        }
 
         public bool Equals(ActionSettings x2)
         {
@@ -551,6 +647,27 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.ActionsObjects
             }
 
             return result;
+        }
+
+        public ActionSettings Copy()
+        {
+            var actionSettings = new ActionSettings
+            {
+                FirstMaxValue = FirstMaxValue,
+                FirstMinValue = FirstMinValue,
+                FirstType = FirstType,
+                SecondMaxValue = SecondMaxValue,
+                SecondMinValue = SecondMinValue,
+                SecondType = SecondType,
+                ThirdMaxValue = ThirdMaxValue,
+                ThirdMinValue = ThirdMinValue,
+                ThirdType = ThirdType,
+                FourthMaxValue = FourthMaxValue,
+                FourthMinValue = FourthMinValue,
+                FourthType = FourthType,
+            };
+
+            return actionSettings;
         }
     }
 }

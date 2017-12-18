@@ -278,7 +278,7 @@
                 <GroupBox
                     Margin="7"
                     Header="{Binding PopupTitle}"
-                    Padding="10,5,5,5">
+                    Padding="15,10,10,10">
                     <GroupBox.Height>
                         <sys:Double>NaN</sys:Double>
                     </GroupBox.Height>

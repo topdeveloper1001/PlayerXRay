@@ -150,7 +150,8 @@ namespace DriveHUD.PlayerXRay.Tests
         }
 
         [Test]
-        [TestCase("HeroCheckRaisesLight-1.xml", EnumPokerSites.IPoker, "UbuntuFoo", "Check raises light", true)]
+        [TestCase("HeroCheckRaisesLight-1.xml", EnumPokerSites.IPoker, "UbuntuFoo", "Check raises light", false)]
+        [TestCase("HeroCheckRaisesLight-1.xml", EnumPokerSites.IPoker, "UbuntuFoo", "Check raises false", false)]
         public void TestPredefinedNotes(string handHistoryFile, EnumPokerSites pokerSite, string playerName, string noteName, bool expected)
         {
             var handHistoryObject = CreateHandHistoryObject(handHistoryFile, pokerSite, playerName);

@@ -34,5 +34,7 @@ namespace DriveHUD.PlayerXRay
         {
             get;
         }
+
+        public bool IsClosing { get; set; }
     }
 }

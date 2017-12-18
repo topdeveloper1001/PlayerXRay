@@ -409,12 +409,17 @@ namespace DriveHUD.PlayerXRay.ViewModels
                         return;
                     }
 
-                    collectionToChange.Remove(x.Sender.Value);
-
                     if (x.Sender.IsSelected)
                     {
-                        collectionToChange.Add(x.Sender.Value);
+                        if (!collectionToChange.Contains(x.Sender.Value))
+                        {
+                            collectionToChange.Add(x.Sender.Value);
+                        }
+
+                        return;
                     }
+
+                    collectionToChange.Remove(x.Sender.Value);
                 });
         }
 
@@ -433,12 +438,16 @@ namespace DriveHUD.PlayerXRay.ViewModels
                 .Where(x => x.StageType == NoteStageType));
         }
 
+        private NoteObject noteCopy;
+
         private void LoadNote()
         {
             if (SelectedNote != null)
             {
                 HoleCardsCollection.ForEach(x => x.IsChecked = !SelectedNote.Settings.ExcludedCardsList.Contains(x.Name));
             }
+
+            noteCopy = SelectedNote?.CopyTo();
 
             RefreshCurrentActionSettings();
             RefreshFiltersSettings();
@@ -769,10 +778,54 @@ namespace DriveHUD.PlayerXRay.ViewModels
             }
             private set
             {
-                SaveNote();
+                NoteService.CurrentNotesAppSettings.AllNotes.Where(x => x.Modified).ForEach(x => Console.WriteLine(x.Name));
+
+                if (selectedNote != null && selectedNote.Modified && !IsClosing)
+                {
+                    ShowPendingChangedPopup(value);
+                    return;
+                }
+
                 this.RaiseAndSetIfChanged(ref selectedNote, value);
                 LoadNote();
             }
+        }
+
+        private void ShowPendingChangedPopup(NoteObject noteObject)
+        {
+            var confirmationViewModel = new YesNoConfirmationViewModel
+            {
+                ConfirmationMessage = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_SavePendingChangesText"),
+                OnYesAction = () =>
+                {
+                    if (selectedNote != null)
+                    {
+                        selectedNote.Modified = false;
+                    }
+
+                    SaveNote();
+
+                    SelectedNote = noteObject;
+                },
+                OnNoAction = () =>
+                {
+                    if (selectedNote != null)
+                    {
+                        noteCopy?.CopyTo(selectedNote);
+                        selectedNote.Modified = false;
+                    }
+
+                    SelectedNote = noteObject;
+                }
+            };
+
+            var popupEventArgs = new RaisePopupEventArgs()
+            {
+                Title = CommonResourceManager.Instance.GetResourceString("XRay_YesNoConfirmationView_SavePendingChanges"),
+                Content = new YesNoConfirmationView(confirmationViewModel)
+            };
+
+            eventAggregator.GetEvent<RaisePopupEvent>().Publish(popupEventArgs);
         }
 
         public double MBCMinSizeOfPot
@@ -1272,6 +1325,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
                         };
 
                         (SelectedStage as StageObject).InnerGroups.Add(group);
+                        SaveNote();
                         return;
                     }
 
@@ -1316,6 +1370,8 @@ namespace DriveHUD.PlayerXRay.ViewModels
                 };
 
                 noteList.Add(note);
+
+                SaveNote();
             };
 
             var popupEventArgs = new RaisePopupEventArgs()
@@ -1344,6 +1400,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
             addNoteViewModel.OnSaveAction = () =>
             {
                 treeEditableObject.Name = addNoteViewModel.Name;
+                SaveNote();
             };
 
             var popupEventArgs = new RaisePopupEventArgs()
@@ -1385,6 +1442,8 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
                         stage.InnerGroups.Remove(groupToRemove);
                     }
+
+                    SaveNote();
                 }
             };
 

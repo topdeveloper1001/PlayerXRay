@@ -335,7 +335,7 @@
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                IsChecked="{Binding IsPairedFilterTrue, Converter={dh:BoolNotConverter}}"
+                IsChecked="{Binding IsPairedFilterTrue, Converter={dh:BoolNotConverter}, Mode=OneWay}"
                 Content="False" />
 
         </StackPanel>

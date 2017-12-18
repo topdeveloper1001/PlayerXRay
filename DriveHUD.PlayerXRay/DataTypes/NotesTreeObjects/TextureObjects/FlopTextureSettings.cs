@@ -10,6 +10,7 @@
 // </copyright>
 //----------------------------------------------------------------------
 
+using System;
 using ReactiveUI;
 
 namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
@@ -64,6 +65,16 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
 
                 return hash;
             }
+        }
+
+        protected override TextureSettings InternalCopy()
+        {
+            var textureSettings = new FlopTextureSettings
+            {
+                FlushCard = FlushCard
+            };
+
+            return textureSettings;
         }
     }
 }

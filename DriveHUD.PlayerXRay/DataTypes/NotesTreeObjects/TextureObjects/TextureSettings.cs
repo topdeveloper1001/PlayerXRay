@@ -41,8 +41,12 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
                 .Where(x => x.PropertyName == nameof(CardTexture.IsChecked))
                 .Subscribe(x =>
                 {
-                    selectedCardTexture = string.Join(",", cardTextureCollection.Where(c => c.IsChecked).Select(c => c.Card).ToArray());
-                    this.RaisePropertyChanged(nameof(SelectedCardTexture));
+                    var cardTexture = string.Join(",", cardTextureCollection.Where(c => c.IsChecked).Select(c => c.Card).ToArray());
+
+                    if (selectedCardTexture != cardTexture)
+                    {
+                        this.RaisePropertyChanged(nameof(SelectedCardTexture));
+                    }
                 });
         }
 
@@ -226,9 +230,15 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
             {
                 this.RaiseAndSetIfChanged(ref selectedCardTexture, value);
 
-                var selectedCards = selectedCardTexture.Split(',');
-
-                cardTextureCollection.ForEach(x => x.IsChecked = selectedCards.Contains(x.Card));
+                if (selectedCardTexture != null)
+                {
+                    var selectedCards = selectedCardTexture.Split(',');
+                    cardTextureCollection.ForEach(x => x.IsChecked = selectedCards.Contains(x.Card));
+                }
+                else
+                {
+                    cardTextureCollection.Clear();
+                }
             }
         }
 
@@ -418,6 +428,30 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
 
                 return hash;
             }
+        }
+
+        protected abstract TextureSettings InternalCopy();
+
+        public virtual TextureSettings Copy()
+        {
+            var textureSettings = InternalCopy();
+
+            textureSettings.IsFlushCardFilter = IsFlushCardFilter;
+            textureSettings.IsOpenEndedStraightDrawsFilter = IsOpenEndedStraightDrawsFilter;
+            textureSettings.OpenEndedStraightDraws = OpenEndedStraightDraws;
+            textureSettings.IsGutshotsFilter = IsGutshotsFilter;
+            textureSettings.Gutshots = Gutshots;
+            textureSettings.IsHighcardFilter = IsHighcardFilter;
+            textureSettings.HighestCard = HighestCard;
+            textureSettings.IsPairedFilter = IsPairedFilter;
+            textureSettings.IsPairedFilterTrue = IsPairedFilterTrue;
+            textureSettings.IsPossibleStraightsFilter = IsPossibleStraightsFilter;
+            textureSettings.PossibleStraights = PossibleStraights;
+            textureSettings.PossibleStraightsCompare = PossibleStraightsCompare;
+            textureSettings.IsCardTextureFilter = IsCardTextureFilter;
+            textureSettings.SelectedCardTexture = SelectedCardTexture;
+
+            return textureSettings;
         }
 
         public class CardTexture : ReactiveObject

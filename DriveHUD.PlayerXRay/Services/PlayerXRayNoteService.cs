@@ -85,9 +85,10 @@ namespace DriveHUD.PlayerXRay.Services
             lock (locker)
             {
                 try
-                {
+                {                   
                     var xml = Serializer.ToXml(CurrentNotesAppSettings, typeof(NotesAppSettings));
                     File.WriteAllText(configurationFile, xml);
+                    CurrentNotesAppSettings.AllNotes.ForEach(x => x.Modified = false);
                 }
                 catch (Exception e)
                 {
@@ -106,6 +107,7 @@ namespace DriveHUD.PlayerXRay.Services
                     {
                         var xml = File.ReadAllText(configurationFile);
                         CurrentNotesAppSettings = (NotesAppSettings)Serializer.FromXml(xml, typeof(NotesAppSettings));
+                        CurrentNotesAppSettings.AllNotes.ForEach(x => x.TrackChanges(true));
                     }
                     else
                     {
@@ -137,6 +139,7 @@ namespace DriveHUD.PlayerXRay.Services
                 {
                     var xmlSerializer = new XmlSerializer(typeof(NotesAppSettings));
                     CurrentNotesAppSettings = xmlSerializer.Deserialize(stream) as NotesAppSettings;
+                    CurrentNotesAppSettings.AllNotes.ForEach(x => x.TrackChanges(true));
                 }
             }
             catch (Exception e)

@@ -55,10 +55,20 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
             unchecked
             {
                 var hash = base.GetHashCode();
-                hash += hash * 31 + FlushCard.GetHashCode();                
+                hash += hash * 31 + FlushCard.GetHashCode();
 
                 return hash;
             }
+        }
+
+        protected override TextureSettings InternalCopy()
+        {
+            var textureSettings = new TurnTextureSettings
+            {
+                FlushCard = FlushCard
+            };
+
+            return textureSettings;
         }
     }
 }

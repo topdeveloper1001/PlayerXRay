@@ -664,10 +664,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             // if everything is unchecked return entry list of Playerstatistics
             if (!settings.PositionBBRaiser && !settings.PositionButtonRaiser &&
                 !settings.PositionCutoffRaiser && !settings.PositionEarlyRaiser &&
-                !settings.PositionMiddleRaiser && !settings.PositionSBRaiser ||
-                settings.PositionBBRaiser && settings.PositionButtonRaiser &&
-                settings.PositionCutoffRaiser && settings.PositionEarlyRaiser &&
-                settings.PositionMiddleRaiser && settings.PositionSBRaiser)
+                !settings.PositionMiddleRaiser && !settings.PositionSBRaiser)
             {
                 return playerStatistics;
             }
@@ -724,9 +721,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
         private static List<PlayerstatisticExtended> FilterByPositionThreeBetCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
         {
             if (!settings.PositionBB3Bet && !settings.PositionSB3Bet && !settings.PositionButton3Bet &&
-                    !settings.PositionCutoff3Bet && !settings.PositionEarly3Bet && !settings.PositionMiddle3Bet ||
-                   settings.PositionBB3Bet && settings.PositionSB3Bet && settings.PositionButton3Bet &&
-                   settings.PositionCutoff3Bet && settings.PositionEarly3Bet && settings.PositionMiddle3Bet)
+                    !settings.PositionCutoff3Bet && !settings.PositionEarly3Bet && !settings.PositionMiddle3Bet)
             {
                 return playerStatistics;
             }
@@ -824,16 +819,20 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
         }
 
         #region Filters
-
-        //todo check what filter to keep filters or filtersComparison
+        
         private static List<PlayerstatisticExtended> FilterByAllSelectedFilters(List<PlayerstatisticExtended> playerstatistics, ICollection<FilterObject> filters, ICollection<FilterObject> filtersComparison)
         {
             List<PlayerstatisticExtended> fileteredList = playerstatistics;
+
             if (filters.Count == 0 && filtersComparison.Count == 0)
+            {
                 return fileteredList;
+            }
 
             foreach (FilterObject filter in filters)
+            {
                 fileteredList = NoteManagerHelper.FilterByASelectedFilter(fileteredList, filter);
+            }
 
             return fileteredList;
         }

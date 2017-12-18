@@ -60,5 +60,15 @@ namespace DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects.TextureObjects
                 return hash;
             }
         }
+
+        protected override TextureSettings InternalCopy()
+        {
+            var textureSettings = new RiverTextureSettings
+            {
+                FlushCard = FlushCard
+            };
+
+            return textureSettings;
+        }
     }
 }
