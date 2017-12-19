@@ -109,6 +109,7 @@ namespace DriveHUD.PlayerXRay.Services
                         var xml = File.ReadAllText(configurationFile);
                         CurrentNotesAppSettings = (NotesAppSettings)Serializer.FromXml(xml, typeof(NotesAppSettings));
                         CurrentNotesAppSettings.AllNotes.ForEach(x => x.TrackChanges(true));
+                        SetStageParents();
                     }
                     else
                     {
@@ -124,9 +125,7 @@ namespace DriveHUD.PlayerXRay.Services
                     CurrentNotesAppSettings.StagesList.Count == 0)
                 {
                     InitializeDefaultNotes();
-                }
-
-                SetStageParents();
+                }                            
             }
         }
 
@@ -143,6 +142,7 @@ namespace DriveHUD.PlayerXRay.Services
                     var xmlSerializer = new XmlSerializer(typeof(NotesAppSettings));
                     CurrentNotesAppSettings = xmlSerializer.Deserialize(stream) as NotesAppSettings;
                     CurrentNotesAppSettings.AllNotes.ForEach(x => x.TrackChanges(true));
+                    SetStageParents();
                 }
             }
             catch (Exception e)

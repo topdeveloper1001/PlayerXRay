@@ -59,9 +59,9 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             selectedPlayerStatistics = FilterByTurnTextureCondition(selectedPlayerStatistics, note.Settings);
             selectedPlayerStatistics = FilterByRiverTextureCondition(selectedPlayerStatistics, note.Settings);
 
-            selectedPlayerStatistics = FilterByFlopHandTextureCondition(selectedPlayerStatistics, note.Settings);
-            selectedPlayerStatistics = FilterByTurnHandTextureCondition(selectedPlayerStatistics, note.Settings);
-            selectedPlayerStatistics = FilterByRiverHandTextureCondition(selectedPlayerStatistics, note.Settings);
+            selectedPlayerStatistics = FilterByFlopHandValueCondition(selectedPlayerStatistics, note.Settings);
+            selectedPlayerStatistics = FilterByTurnHandValueCondition(selectedPlayerStatistics, note.Settings);
+            selectedPlayerStatistics = FilterByRiverHandValueCondition(selectedPlayerStatistics, note.Settings);
 
             selectedPlayerStatistics = FilterByAllSelectedFilters(selectedPlayerStatistics, note.Settings.SelectedFilters, note.Settings.SelectedFiltersComparison);
 
@@ -74,8 +74,8 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
         }
 
         #region hand value analyzers
-        //todo 100% tested for flop;  need to test for turn and river 
-        private static List<PlayerstatisticExtended> FilterByRiverHandTextureCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
+        
+        private static List<PlayerstatisticExtended> FilterByRiverHandValueCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
         {
             if (settings.RiverHvSettings.AnyHv && settings.RiverHvSettings.AnyFlushDraws && settings.RiverHvSettings.AnyStraightDraws)
                 return playerStatistics;
@@ -95,7 +95,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             return fileteredList.Distinct().ToList();
         }
 
-        private static List<PlayerstatisticExtended> FilterByFlopHandTextureCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
+        private static List<PlayerstatisticExtended> FilterByFlopHandValueCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
         {
             if (settings.FlopHvSettings.AnyHv && settings.FlopHvSettings.AnyFlushDraws && settings.FlopHvSettings.AnyStraightDraws)
                 return playerStatistics;
@@ -132,7 +132,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             return filteredList.Distinct().ToList();
         }
 
-        private static List<PlayerstatisticExtended> FilterByTurnHandTextureCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
+        private static List<PlayerstatisticExtended> FilterByTurnHandValueCondition(List<PlayerstatisticExtended> playerStatistics, NoteSettingsObject settings)
         {
             if (settings.TurnHvSettings.AnyHv && settings.TurnHvSettings.AnyFlushDraws && settings.TurnHvSettings.AnyStraightDraws)
                 return playerStatistics;

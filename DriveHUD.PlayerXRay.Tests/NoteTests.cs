@@ -151,7 +151,17 @@ namespace DriveHUD.PlayerXRay.Tests
 
         [Test]
         [TestCase("HeroCheckRaisesLight-1.xml", EnumPokerSites.IPoker, "UbuntuFoo", "Check raises light", false)]
-        [TestCase("HeroCheckRaisesLight-1.xml", EnumPokerSites.IPoker, "UbuntuFoo", "Check raises false", false)]
+        [TestCase("HeroCheckRaisesLight-1.xml", EnumPokerSites.IPoker, "UbuntuFoo", "Check raises light", false)]
+        [TestCase("BetsWeakWithWeakHand.xml", EnumPokerSites.IPoker, "takisaris", "Bets weak w/ weak hands", false)]
+        [TestCase("BetsWeakWithWeakHand.xml", EnumPokerSites.IPoker, "Hero", "Bets weak w/ weak hands", false)]
+        [TestCase("BetsWeakWithWeakHand.xml", EnumPokerSites.IPoker, "mariusban365", "Bets weak w/ weak hands", false)]
+        [TestCase("BetsWeakWithWeakHand.xml", EnumPokerSites.IPoker, "WhiteRiderT", "Bets weak w/ weak hands", false)]
+        [TestCase("BetsWeakWithWeakHand.xml", EnumPokerSites.IPoker, "Lex44", "Bets weak w/ weak hands", false)]
+        [TestCase("BetsWeakWithWeakHand-2.xml", EnumPokerSites.IPoker, "P6_890925RK", "Bets weak w/ weak hands", true)]
+        [TestCase("CallsFlopCheckRaiseWAir.xml", EnumPokerSites.IPoker, "P4_254046CL", "Bets weak w/ weak hands", false)]
+        [TestCase("CallsFlopCheckRaiseWAir.xml", EnumPokerSites.IPoker, "P4_254046CL", "Calls flop check raise w/ air", true)]
+        [TestCase("CallsFlopCheckRaiseWAir-2.xml", EnumPokerSites.IPoker, "Hero", "Calls flop check raise w/ air", true)]
+        [TestCase("OverBetsStrong.xml", EnumPokerSites.IPoker, "Hero", "Over bets strong", true)]
         public void TestPredefinedNotes(string handHistoryFile, EnumPokerSites pokerSite, string playerName, string noteName, bool expected)
         {
             var handHistoryObject = CreateHandHistoryObject(handHistoryFile, pokerSite, playerName);

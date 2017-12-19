@@ -1,0 +1,63 @@
+<session sessioncode="2689234">
+	<general>
+		<mode>real</mode>
+		<gametype>Holdem NL $0.50/$1</gametype>
+		<tablename>Baku</tablename>
+		<duration>N/A</duration>
+		<gamecount>0</gamecount>
+		<startdate>2016-07-30 17:58:37</startdate>
+		<currency>USD</currency>
+		<nickname>Hero</nickname>
+		<bets>0</bets>
+		<wins>0</wins>
+		<chipsin>0</chipsin>
+		<chipsout>0</chipsout>
+		<ipoints>0</ipoints>
+		<statuspoints>0</statuspoints>
+		<awardpoints>0</awardpoints>
+		<place>0</place>
+		<buyin>$0+$0</buyin>
+		<totalbuyin>$0</totalbuyin>
+		<win>0</win>
+	</general>
+	<game gamecode="3335029854">
+		<general>
+			<startdate>2016-07-30 19:24:57</startdate>
+			<players>
+				<player seat="1" name="P1_919596MD" chips="65.27" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+				<player seat="3" name="P2_276636VP" chips="66.78" dealer="1" win="11.25" bet="6" rebuy="0" addon="0" />
+				<player seat="5" name="P3_967969QC" chips="94.35" dealer="0" win="0" bet="0.5" rebuy="0" addon="0" />
+				<player seat="6" name="P4_254046CL" chips="5.3" dealer="0" win="0" bet="5.3" rebuy="0" addon="0" />
+				<player seat="8" name="P5_890224HB" chips="206.24" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+			</players>
+		</general>
+		<round no="0">
+			<action no="1246" player="P3_967969QC" type="1" sum="0.5" cards="[cards]" />
+			<action no="1247" player="P4_254046CL" type="2" sum="1" cards="[cards]" />
+		</round>
+		<round no="1">
+			<cards type="Pocket" player="P1_919596MD">X X</cards>
+			<cards type="Pocket" player="P2_276636VP">H7 H3</cards>
+			<cards type="Pocket" player="P3_967969QC">X X</cards>
+			<cards type="Pocket" player="P4_254046CL">S10 D8</cards>
+			<cards type="Pocket" player="P5_890224HB">X X</cards>
+			<action no="1248" player="P5_890224HB" type="0" sum="0" cards="" />
+			<action no="1249" player="P1_919596MD" type="0" sum="0" cards="" />
+			<action no="1250" player="P2_276636VP" type="3" sum="1" cards="" />
+			<action no="1251" player="P3_967969QC" type="0" sum="0" cards="" />
+			<action no="1252" player="P4_254046CL" type="4" sum="0" cards="" />
+		</round>
+		<round no="2">
+			<cards type="Flop" player="">C5 C7 D5</cards>
+			<action no="1253" player="P4_254046CL" type="5" sum="2.5" cards="" />
+			<action no="1254" player="P2_276636VP" type="23" sum="5" cards="" />
+			<action no="1255" player="P4_254046CL" type="7" sum="1.8" cards="" />
+		</round>
+		<round no="3">
+			<cards type="Turn" player="">DJ</cards>
+		</round>
+		<round no="4">
+			<cards type="River" player="">SA</cards>
+		</round>
+	</game>
+</session>

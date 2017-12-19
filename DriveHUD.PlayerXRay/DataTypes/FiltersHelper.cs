@@ -108,29 +108,35 @@ namespace DriveHUD.PlayerXRay.DataTypes
         };
 
         public static HashSet<FilterEnum> PercentBasedFilters = new HashSet<FilterEnum>
-        {          
+        {
             FilterEnum.PreflopRaiseSizePotisBiggerThan,
             FilterEnum.PreflopRaiseSizePotisLessThan,
             FilterEnum.PreflopFacingRaiseSizePotisBiggerThan,
-            FilterEnum.PreflopFacingRaiseSizePotisLessThan,                            
+            FilterEnum.PreflopFacingRaiseSizePotisLessThan,
+            FilterEnum.FlopBetSizePotisBiggerThan,
+            FilterEnum.FlopBetSizePotisLessThan,
             FilterEnum.FlopRaiseSizePotisBiggerThan,
             FilterEnum.FlopRaiseSizePotisLessThan,
             FilterEnum.FlopFacingBetSizePotisBiggerThan,
             FilterEnum.FlopFacingBetSizePotisLessThan,
             FilterEnum.FlopFacingRaiseSizePotisBiggerThan,
-            FilterEnum.FlopFacingRaiseSizePotisLessThan,                                    
+            FilterEnum.FlopFacingRaiseSizePotisLessThan,
+            FilterEnum.TurnBetSizePotisBiggerThan,
+            FilterEnum.TurnBetSizePotisLessThan,
             FilterEnum.TurnRaiseSizePotisBiggerThan,
             FilterEnum.TurnRaiseSizePotisLessThan,
             FilterEnum.TurnFacingBetSizePotisBiggerThan,
             FilterEnum.TurnFacingBetSizePotisLessThan,
             FilterEnum.TurnFacingRaiseSizePotisBiggerThan,
-            FilterEnum.TurnFacingRaiseSizePotisLessThan,             
+            FilterEnum.TurnFacingRaiseSizePotisLessThan,
+            FilterEnum.RiverBetSizePotisBiggerThan,
+            FilterEnum.RiverBetSizePotisLessThan,
             FilterEnum.RiverRaiseSizePotisBiggerThan,
             FilterEnum.RiverRaiseSizePotisLessThan,
             FilterEnum.RiverFacingBetSizePotisBiggerThan,
             FilterEnum.RiverFacingBetSizePotisLessThan,
             FilterEnum.RiverFacingRaiseSizePotisBiggerThan,
-            FilterEnum.RiverFacingRaiseSizePotisLessThan                      
+            FilterEnum.RiverFacingRaiseSizePotisLessThan
         };
 
         public static IEnumerable<FilterObject> GetFiltersObjects()

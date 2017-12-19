@@ -1,0 +1,79 @@
+<session sessioncode="5345733671">
+	<general>
+		<mode>real</mode>
+		<gametype>Holdem NL</gametype>
+		<tablename>Wed $30K Stg2 Spd R/A 5*, 683601261, 683601261</tablename>
+		<duration>N/A</duration>
+		<gamecount>82</gamecount>
+		<startdate>2012-02-08 12:00:35</startdate>
+		<currency>USD</currency>
+		<nickname>WhiteRiderT</nickname>
+		<bets>122,612.50</bets>
+		<wins>175,320</wins>
+		<chipsin>0</chipsin>
+		<chipsout>54,207.50</chipsout>
+		<ipoints>0.34</ipoints>
+		<statuspoints>0.34</statuspoints>
+		<awardpoints>0.34</awardpoints>
+		<tournamentname>Wed $30K Stg2 Spd R/A 5*</tournamentname>
+		<place>1</place>
+		<buyin>$0.20+$0.02</buyin>
+		<totalbuyin>$0.22</totalbuyin>
+		<ipoints>0.34</ipoints>
+		<win>Seat</win>
+		<statuspoints>0.34</statuspoints>
+		<awardpoints>0.34</awardpoints>}
+	</general>
+	<game gamecode="3979924035">
+		<general>
+			<startdate>2012-02-08 12:15:51</startdate>
+			<players>
+				<player seat="2" name="miki1725" chips="1,340" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+				<player seat="3" name="takisaris" chips="1,290" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+				<player seat="4" name="Hero" chips="2,450" dealer="0" win="0" bet="100" rebuy="0" addon="0" />
+				<player seat="5" name="mariusban365" chips="1,035" dealer="1" win="0" bet="700" rebuy="0" addon="0" />
+				<player seat="6" name="goran32" chips="6,950" dealer="0" win="0" bet="100" rebuy="0" addon="0" />
+				<player seat="9" name="WhiteRiderT" chips="3,035" dealer="0" win="2,400" bet="1,500" rebuy="0" addon="0" />
+				<player seat="10" name="Lex44" chips="8,985" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+			</players>
+		</general>
+		<round no="0">
+			<action no="1" player="goran32" type="1" sum="50" cards="[cards]" />
+			<action no="2" player="WhiteRiderT" type="2" sum="100" cards="[cards]" />
+		</round>
+		<round no="1">
+			<cards type="Pocket" player="miki1725">X X</cards>
+			<action no="4" player="miki1725" type="0" sum="0" cards="" />
+			<cards type="Pocket" player="takisaris">X X</cards>
+			<action no="5" player="takisaris" type="0" sum="0" cards="" />
+			<cards type="Pocket" player="Hero">X X</cards>
+			<action no="6" player="Hero" type="3" sum="100" cards="" />
+			<cards type="Pocket" player="mariusban365">X X</cards>
+			<action no="7" player="mariusban365" type="3" sum="100" cards="" />
+			<cards type="Pocket" player="goran32">X X</cards>
+			<action no="8" player="goran32" type="3" sum="50" cards="" />
+			<cards type="Pocket" player="WhiteRiderT">HQ S10</cards>
+			<action no="9" player="WhiteRiderT" type="4" sum="0" cards="" />
+			<cards type="Pocket" player="Lex44">X X</cards>
+			<action no="3" player="Lex44" type="0" sum="0" cards="" />
+		</round>
+		<round no="2">
+			<cards type="Flop" player="">DK HA CJ</cards>
+			<action no="12" player="Hero" type="0" sum="0" cards="" />
+			<action no="13" player="mariusban365" type="3" sum="200" cards="" />
+			<action no="10" player="goran32" type="4" sum="0" cards="" />
+			<action no="14" player="goran32" type="0" sum="0" cards="" />
+			<action no="11" player="WhiteRiderT" type="5" sum="200" cards="" />
+		</round>
+		<round no="3">
+			<cards type="Turn" player="">S4</cards>
+			<action no="16" player="mariusban365" type="3" sum="400" cards="" />
+			<action no="15" player="WhiteRiderT" type="5" sum="400" cards="" />
+		</round>
+		<round no="4">
+			<cards type="River" player="">H7</cards>
+			<action no="18" player="mariusban365" type="0" sum="0" cards="" />
+			<action no="17" player="WhiteRiderT" type="5" sum="800" cards="" />
+		</round>
+	</game>
+</session>

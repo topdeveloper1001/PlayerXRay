@@ -6662,6 +6662,7 @@
 								<int>32</int>
 								<int>30</int>
 								<int>31</int>
+								<int>22</int>
 							</SelectedHv>
 							<SelectedStraighDraws>
 								<int>0</int>
@@ -8509,7 +8510,6 @@
 								<int>28</int>
 								<int>29</int>
 								<int>49</int>
-								<int>45</int>
 							</SelectedHv>
 							<SelectedStraighDraws />
 							<SelectedFlushDraws />
@@ -8933,9 +8933,6 @@
 								<int>10</int>
 								<int>11</int>
 								<int>0</int>
-								<int>43</int>
-								<int>44</int>
-								<int>45</int>
 							</SelectedHv>
 							<SelectedStraighDraws />
 							<SelectedFlushDraws />
@@ -9367,6 +9364,7 @@
 								<int>40</int>
 								<int>42</int>
 								<int>41</int>
+								<int>65</int>
 							</SelectedHv>
 							<SelectedStraighDraws />
 							<SelectedFlushDraws />
@@ -9777,8 +9775,6 @@
 								<int>26</int>
 								<int>30</int>
 								<int>45</int>
-								<int>40</int>
-								<int>41</int>
 								<int>105</int>
 							</SelectedHv>
 							<SelectedStraighDraws />
@@ -10157,7 +10153,6 @@
 								<int>11</int>
 								<int>0</int>
 								<int>49</int>
-								<int>45</int>
 								<int>69</int>
 							</SelectedHv>
 							<SelectedStraighDraws />

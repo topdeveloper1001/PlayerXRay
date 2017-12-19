@@ -2,6 +2,7 @@
 using DriveHUD.PlayerXRay.DataTypes;
 using HandHistories.Objects.Actions;
 using HandHistories.Objects.Cards;
+using Model;
 using System;
 using System.Linq;
 
@@ -18,10 +19,12 @@ namespace DriveHUD.PlayerXRay.BusinessHelper.OtherAnalyzers
             {
                 HandAction raiseAction =
                   playerstatistic.HandHistory.HandActions.Where(x => x.Street == targetStreet)
-                      .FirstOrDefault(x => x.HandActionType == HandActionType.RAISE);
+                      .FirstOrDefault(x => x.IsRaise());
 
                 if (raiseAction == null || raiseAction.PlayerName == playerstatistic.Playerstatistic.PlayerName)
+                {
                     return -1;
+                }
 
                 HandAction heroAction = playerstatistic.HandHistory.HandActions.Where(x => x.Street == targetStreet)
                     .SkipWhile(x => x != raiseAction)
@@ -37,8 +40,8 @@ namespace DriveHUD.PlayerXRay.BusinessHelper.OtherAnalyzers
             //here we take first hero action facing, excluding hero actions as BB or SB 
             if (targetStreet == Street.Preflop)
                 if (playerstatistic.Playerstatistic.FacingPreflop == EnumFacingPreflop.Raiser)
-                    return ONE_HUNDRED_PERCENTS * Math.Abs(playerstatistic.HandHistory.HandActions.FirstOrDefault(x => x.HandActionType == HandActionType.RAISE).Amount)
-                        / playerstatistic.HandHistory.HandActions.TakeWhile(x => x.HandActionType != HandActionType.RAISE).Sum(x => Math.Abs(x.Amount));
+                    return ONE_HUNDRED_PERCENTS * Math.Abs(playerstatistic.HandHistory.HandActions.FirstOrDefault(x => x.IsRaise()).Amount)
+                        / playerstatistic.HandHistory.HandActions.TakeWhile(x => !x.IsRaise()).Sum(x => Math.Abs(x.Amount));
 
             return -1;
         }
@@ -49,12 +52,14 @@ namespace DriveHUD.PlayerXRay.BusinessHelper.OtherAnalyzers
             {
                 HandAction betAction =
                     playerstatistic.HandHistory.HandActions.Where(x => x.Street == targetStreet)
-                                                       .SkipWhile(x => x.HandActionType != HandActionType.BET)
+                                                       .SkipWhile(x => !x.IsBet())
                                                        .TakeWhile(x => x.PlayerName != playerstatistic.Playerstatistic.PlayerName)
-                                                       .LastOrDefault(x => x.HandActionType == HandActionType.BET || x.HandActionType == HandActionType.RAISE);
+                                                       .LastOrDefault(x => x.IsBet() || x.IsRaise());
 
                 if (betAction == null || betAction.PlayerName == playerstatistic.Playerstatistic.PlayerName)
+                {
                     return -1;
+                }
 
                 HandAction heroAction = playerstatistic.HandHistory.HandActions.Where(x => x.Street == targetStreet)
                                                                            .SkipWhile(x => x != betAction)
@@ -62,51 +67,55 @@ namespace DriveHUD.PlayerXRay.BusinessHelper.OtherAnalyzers
 
 
                 if (heroAction?.PlayerName == playerstatistic.Playerstatistic.PlayerName)
+                {
                     return ONE_HUNDRED_PERCENTS * Math.Abs(betAction.Amount) / playerstatistic.HandHistory.HandActions.TakeWhile(x => x != heroAction).Sum(x => Math.Abs(x.Amount));
-
+                }
             }
 
             return -1;
         }
 
-
-
         public static decimal GetFacingBetAndDidRaiseSizePot(PlayerstatisticExtended playerstatistic, Street targetStreet)
         {
             if (targetStreet == Street.Flop || targetStreet == Street.Turn || targetStreet == Street.River)
             {
-                //HandAction betAction =
-                //    playerstatistic.HandHistory.Actions.Where(x => x.Street == targetStreet)
-                //                                       .FirstOrDefault(x => x.HandActionType == HandActionType.BET);
                 HandAction betAction =
                     playerstatistic.HandHistory.HandActions.Where(x => x.Street == targetStreet)
-                                                       .SkipWhile(x => x.HandActionType != HandActionType.BET)
+                                                       .SkipWhile(x => !x.IsBet())
                                                        .TakeWhile(x => x.PlayerName != playerstatistic.Playerstatistic.PlayerName)
-                                                       .LastOrDefault(x => x.HandActionType == HandActionType.BET || x.HandActionType == HandActionType.RAISE);
+                                                       .LastOrDefault(x => x.IsBet() || x.IsRaise());
 
                 if (betAction == null || betAction.PlayerName == playerstatistic.Playerstatistic.PlayerName)
+                {
                     return -1;
+                }
 
                 HandAction heroAction = playerstatistic.HandHistory.HandActions.Where(x => x.Street == targetStreet)
                                                                            .SkipWhile(x => x != betAction)
                                                                            .FirstOrDefault(x => x != betAction && x.HandActionType != HandActionType.FOLD || x.PlayerName == playerstatistic.Playerstatistic.PlayerName);
 
-                if (heroAction != null && heroAction.PlayerName == playerstatistic.Playerstatistic.PlayerName && heroAction.HandActionType == HandActionType.RAISE)
+                if (heroAction != null && heroAction.PlayerName == playerstatistic.Playerstatistic.PlayerName && heroAction.IsRaise())
+                {
                     return ONE_HUNDRED_PERCENTS * Math.Abs(heroAction.Amount) / playerstatistic.HandHistory.HandActions.TakeWhile(x => x != heroAction).Sum(x => Math.Abs(x.Amount));
+                }
             }
 
-
-            //no bet here just check if facing limpers or unopened
+            // no bet here just check if facing limpers or unopened
             if (targetStreet == Street.Preflop)
             {
                 HandAction raiseAction = null;
+
                 if (playerstatistic.Playerstatistic.FacingPreflop == EnumFacingPreflop.Limper ||
                     playerstatistic.Playerstatistic.FacingPreflop == EnumFacingPreflop.MultipleLimpers ||
                     playerstatistic.Playerstatistic.FacingPreflop == EnumFacingPreflop.Unopened)
-                    raiseAction = playerstatistic.HandHistory.HandActions.FirstOrDefault(x => x.Street == Street.Preflop && x.HandActionType == HandActionType.RAISE);
+                {
+                    raiseAction = playerstatistic.HandHistory.HandActions.FirstOrDefault(x => x.Street == Street.Preflop && x.IsRaise());
+                }
 
                 if (raiseAction != null && raiseAction.PlayerName == playerstatistic.Playerstatistic.PlayerName)
+                {
                     return ONE_HUNDRED_PERCENTS * Math.Abs(raiseAction.Amount) / playerstatistic.HandHistory.HandActions.TakeWhile(x => x != raiseAction).Sum(x => Math.Abs(x.Amount));
+                }
             }
 
             return -1;
