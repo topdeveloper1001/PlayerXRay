@@ -68,8 +68,8 @@ namespace DriveHUD.PlayerXRay.BusinessHelper.HandAnalyzer
 
             if (HandAnalyzerHelpers.HasPair(playerCards, 1)
                 && HandAnalyzerHelpers.HasPair(consideredCards, 1)
-                && !new PocketPairOverpairAnalyzer().Analyze(playerCards, consideredCards, targetStreet)
-                && !new PocketPairSecondPairAnalyzer().Analyze(playerCards, consideredCards, targetStreet))
+                && !new PocketPairOverpairAnalyzer().Analyze(playerCards, allBoardCards, targetStreet)
+                && !new PocketPairSecondPairAnalyzer().Analyze(playerCards, allBoardCards, targetStreet))
                 return true;
 
             return false;

@@ -9209,18 +9209,18 @@
 								<Stage>3</Stage>
 							</FilterObject>
 							<FilterObject>
-								<Description>River Stack Pot Ration is Bigger Than...</Description>
-								<Tag>177</Tag>
-								<Filter>RiverStackPotRatioisBiggerThan</Filter>
-								<Value>1</Value>
-								<Stage>3</Stage>
-							</FilterObject>
-							<FilterObject>
 								<Description>Saw Showdown</Description>
 								<Tag>187</Tag>
 								<Filter>SawShowdown</Filter>
 								<Value xsi:nil="true" />
 								<Stage>4</Stage>
+							</FilterObject>
+							<FilterObject>
+								<Description>River Raise Size / Pot is Bigger Than...</Description>
+								<Tag>181</Tag>
+								<Filter>RiverRaiseSizePotisBiggerThan</Filter>
+								<Value>100</Value>
+								<Stage>3</Stage>
 							</FilterObject>
 						</SelectedFilters>
 						<SelectedFiltersComparison>
@@ -9432,13 +9432,6 @@
 					<Settings>
 						<SelectedFilters>
 							<FilterObject>
-								<Description>River Stack Pot Ration is Bigger Than...</Description>
-								<Tag>177</Tag>
-								<Filter>RiverStackPotRatioisBiggerThan</Filter>
-								<Value>1</Value>
-								<Stage>3</Stage>
-							</FilterObject>
-							<FilterObject>
 								<Description>River Bet</Description>
 								<Tag>149</Tag>
 								<Filter>RiverBet</Filter>
@@ -9451,6 +9444,13 @@
 								<Filter>SawShowdown</Filter>
 								<Value xsi:nil="true" />
 								<Stage>4</Stage>
+							</FilterObject>
+							<FilterObject>
+								<Description>River Raise Size / Pot is Bigger Than...</Description>
+								<Tag>181</Tag>
+								<Filter>RiverRaiseSizePotisBiggerThan</Filter>
+								<Value>100</Value>
+								<Stage>3</Stage>
 							</FilterObject>
 						</SelectedFilters>
 						<SelectedFiltersComparison>

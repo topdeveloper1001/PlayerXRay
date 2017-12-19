@@ -609,9 +609,11 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                                 .HandActions
                                 .FirstOrDefault(ha => ha.Street == Street.Flop &&
                                     ha.PlayerName == incomingPlayerstatistic.Playerstatistic.PlayerName && ha.IsBet())
-                            where betAction != null && Math.Abs(betAction.Amount) > 0 &&
-                                ((filterEnum == FilterEnum.FlopBetSizePotisLessThan && Math.Abs(betAction.Amount) < (decimal)filter.Value / 100) ||
-                                    (filterEnum == FilterEnum.FlopBetSizePotisBiggerThan && Math.Abs(betAction.Amount) > (decimal)filter.Value / 100))
+                            let potSize = CalculatePotUntilAction(betAction, incomingPlayerstatistic.HandHistory)
+                            let betSizePot = potSize != 0 ? Math.Abs(betAction.Amount) / potSize * 100 : 0
+                            where betAction != null && betSizePot > 0 &&
+                                ((filterEnum == FilterEnum.FlopBetSizePotisLessThan && betSizePot < (decimal)filter.Value) ||
+                                    (filterEnum == FilterEnum.FlopBetSizePotisBiggerThan && betSizePot > (decimal)filter.Value))
                             select incomingPlayerstatistic).ToList();
 
                 case FilterEnum.FlopRaiseSizePotisBiggerThan:
@@ -826,9 +828,11 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                                 .HandActions
                                 .FirstOrDefault(ha => ha.Street == Street.Turn &&
                                     ha.PlayerName == incomingPlayerstatistic.Playerstatistic.PlayerName && ha.IsBet())
-                            where betAction != null && Math.Abs(betAction.Amount) > 0 &&
-                                ((filterEnum == FilterEnum.TurnBetSizePotisLessThan && Math.Abs(betAction.Amount) < (decimal)filter.Value / 100) ||
-                                    (filterEnum == FilterEnum.TurnBetSizePotisBiggerThan && Math.Abs(betAction.Amount) > (decimal)filter.Value / 100))
+                            let potSize = CalculatePotUntilAction(betAction, incomingPlayerstatistic.HandHistory)
+                            let betSizePot = potSize != 0 ? Math.Abs(betAction.Amount) / potSize * 100 : 0
+                            where betAction != null && betSizePot > 0 &&
+                                ((filterEnum == FilterEnum.FlopBetSizePotisLessThan && betSizePot < (decimal)filter.Value) ||
+                                    (filterEnum == FilterEnum.FlopBetSizePotisBiggerThan && betSizePot > (decimal)filter.Value))
                             select incomingPlayerstatistic).ToList();
 
                 case FilterEnum.TurnRaiseSizePotisBiggerThan:
@@ -1045,12 +1049,14 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                                 .HandActions
                                 .FirstOrDefault(ha => ha.Street == Street.River &&
                                     ha.PlayerName == incomingPlayerstatistic.Playerstatistic.PlayerName && ha.IsBet())
-                            where betAction != null && Math.Abs(betAction.Amount) > 0 &&
-                                ((filterEnum == FilterEnum.RiverBetSizePotisLessThan && Math.Abs(betAction.Amount) < (decimal)filter.Value / 100) ||
-                                    (filterEnum == FilterEnum.RiverBetSizePotisBiggerThan && Math.Abs(betAction.Amount) > (decimal)filter.Value / 100))
+                            let potSize = CalculatePotUntilAction(betAction, incomingPlayerstatistic.HandHistory)
+                            let betSizePot = potSize != 0 ? Math.Abs(betAction.Amount) / potSize * 100 : 0
+                            where betAction != null && betSizePot > 0 &&
+                                ((filterEnum == FilterEnum.FlopBetSizePotisLessThan && betSizePot < (decimal)filter.Value) ||
+                                    (filterEnum == FilterEnum.FlopBetSizePotisBiggerThan && betSizePot > (decimal)filter.Value))
                             select incomingPlayerstatistic).ToList();
 
-                case FilterEnum.RiverRaiseSizePotisBiggerThan:                    
+                case FilterEnum.RiverRaiseSizePotisBiggerThan:
                     return filter.Value != null ?
                           incomingPlayerstatistics
                               .Where(x => BetSizeAnalyzers.GetFacingBetAndDidRaiseSizePot(x, Street.River) > (decimal)filter.Value)
@@ -1061,9 +1067,9 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                        (from incomingPlayerstatistic in incomingPlayerstatistics
                         let raiseSizePot = BetSizeAnalyzers.GetFacingBetAndDidRaiseSizePot(incomingPlayerstatistic, Street.River)
                         where raiseSizePot > 0 && raiseSizePot < (decimal)filter.Value
-                        select incomingPlayerstatistic).ToList() : new List<PlayerstatisticExtended>();                    
+                        select incomingPlayerstatistic).ToList() : new List<PlayerstatisticExtended>();
 
-                case FilterEnum.RiverFacingBetSizePotisBiggerThan:                 
+                case FilterEnum.RiverFacingBetSizePotisBiggerThan:
                     return filter.Value != null ?
                         incomingPlayerstatistics
                             .Where(x => filter.Value != null && BetSizeAnalyzers.GetFacingBetSizePot(x, Street.River) > (decimal)filter.Value)
@@ -1075,8 +1081,8 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                         let raiseSizePot = BetSizeAnalyzers.GetFacingBetSizePot(incomingPlayerstatistic, Street.River)
                         where raiseSizePot > 0 && raiseSizePot < (decimal)filter.Value
                         select incomingPlayerstatistic).ToList() : new List<PlayerstatisticExtended>();
-                    
-                case FilterEnum.RiverFacingRaiseSizePotisBiggerThan:                   
+
+                case FilterEnum.RiverFacingRaiseSizePotisBiggerThan:
                     return filter.Value != null ?
                          incomingPlayerstatistics
                              .Where(x => filter.Value != null && BetSizeAnalyzers.GetFacingRaiseSizePot(x, Street.River) > (decimal)filter.Value)
@@ -1087,7 +1093,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                        (from incomingPlayerstatistic in incomingPlayerstatistics
                         let raiseSizePot = BetSizeAnalyzers.GetFacingRaiseSizePot(incomingPlayerstatistic, Street.River)
                         where raiseSizePot > 0 && raiseSizePot < (decimal)filter.Value
-                        select incomingPlayerstatistic).ToList() : new List<PlayerstatisticExtended>();                    
+                        select incomingPlayerstatistic).ToList() : new List<PlayerstatisticExtended>();
 
                 //Other
                 case FilterEnum.SawShowdown:
@@ -1206,6 +1212,20 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
 
             //checking if second element HandActionType after firstActionType matches secondActionType 
             return candidatePlayerActions.ElementAtOrDefault(1)?.HandActionType == secondActionType;
+        }
+
+        private static decimal CalculatePotUntilAction(HandAction action, HandHistories.Objects.Hand.HandHistory handHistory)
+        {
+            if (action == null || handHistory == null)
+            {
+                return 0;
+            }
+
+            var potSize = Math.Abs(handHistory
+                .HandActions
+                .TakeWhile(x => !ReferenceEquals(x, action)).Sum(x => x.Amount));
+
+            return potSize;
         }
     }
 }

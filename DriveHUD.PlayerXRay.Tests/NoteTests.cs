@@ -105,7 +105,6 @@ namespace DriveHUD.PlayerXRay.Tests
         }
 
         [Test]
-
         [TestCase("HeroFirstPreflopActionIsCall.txt", EnumPokerSites.PokerStars, "DURKADURDUR", ActionTypeEnum.Call, 10, 60, true)]
         [TestCase("HeroFirstPreflopActionIsCall.txt", EnumPokerSites.PokerStars, "DURKADURDUR", ActionTypeEnum.Call, 60, 80, false)]
         public void TestFirstPreflopPlayerAction(string handHistoryFile, EnumPokerSites pokerSite, string playerName, ActionTypeEnum actionType, double min, double max, bool expected)
@@ -161,7 +160,8 @@ namespace DriveHUD.PlayerXRay.Tests
         [TestCase("CallsFlopCheckRaiseWAir.xml", EnumPokerSites.IPoker, "P4_254046CL", "Bets weak w/ weak hands", false)]
         [TestCase("CallsFlopCheckRaiseWAir.xml", EnumPokerSites.IPoker, "P4_254046CL", "Calls flop check raise w/ air", true)]
         [TestCase("CallsFlopCheckRaiseWAir-2.xml", EnumPokerSites.IPoker, "Hero", "Calls flop check raise w/ air", true)]
-        [TestCase("OverBetsStrong.xml", EnumPokerSites.IPoker, "Hero", "Over bets strong", true)]
+        [TestCase("OverBetsStrong.xml", EnumPokerSites.IPoker, "Hero", "Over bets strong", false)]
+        [TestCase("OverBetsStrong.xml", EnumPokerSites.IPoker, "Hero", "Bet 70%+ of pot with weak made hand", false)]
         public void TestPredefinedNotes(string handHistoryFile, EnumPokerSites pokerSite, string playerName, string noteName, bool expected)
         {
             var handHistoryObject = CreateHandHistoryObject(handHistoryFile, pokerSite, playerName);
