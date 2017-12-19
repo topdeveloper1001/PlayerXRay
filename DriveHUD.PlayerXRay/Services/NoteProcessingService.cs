@@ -152,14 +152,14 @@ namespace DriveHUD.PlayerXRay.Services
                 if (NoteManager.IsMatch(note, playerstatistic))
                 {
                     var playerCardsText = string.IsNullOrEmpty(playerstatistic.Playerstatistic.Cards) ?
-                        string.Empty : $"{{{playerstatistic.Playerstatistic.Cards}}}";
+                        string.Empty : $"[{playerstatistic.Playerstatistic.Cards}]";
 
                     var playerNote = new Playernotes
                     {
                         PlayerId = stats.PlayerId,
                         PokersiteId = (short)stats.PokersiteId,
                         Note = $"=[{note.ParentStageType}]= {note.DisplayedNote}",
-                        CardRange = note.Settings.IncludeBoard && !string.IsNullOrEmpty(playerstatistic.Playerstatistic.Board) ?
+                        CardRange = note.Settings.IncludeBoard && !string.IsNullOrEmpty(playerCardsText) && !string.IsNullOrEmpty(playerstatistic.Playerstatistic.Board) ?
                             $"{playerCardsText}({playerstatistic.Playerstatistic.Board})" :
                             playerCardsText,
                         IsAutoNote = true,

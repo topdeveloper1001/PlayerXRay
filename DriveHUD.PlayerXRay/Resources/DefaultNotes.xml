@@ -2,7 +2,8 @@
 <NotesAppSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<AutoNotesEnabled>true</AutoNotesEnabled>
 	<TakesNotesOnHero>false</TakesNotesOnHero>
-	<IsNoteCreationSinceDate>false</IsNoteCreationSinceDate>	
+	<IsNoteCreationSinceDate>false</IsNoteCreationSinceDate>
+	<NoteCreationSinceDate>2017-10-20T00:00:00+03:00</NoteCreationSinceDate>
 	<ShowHoleCards>true</ShowHoleCards>
 	<AllHoleCards>false</AllHoleCards>
 	<IsAdvancedLogEnabled>false</IsAdvancedLogEnabled>
@@ -3432,7 +3433,7 @@
 								<TypeLimit>true</TypeLimit>
 								<Cash>true</Cash>
 								<Tournament>true</Tournament>
-								<IncludeBoard>false</IncludeBoard>
+								<IncludeBoard>true</IncludeBoard>
 								<PlayersNoHeadsUp>true</PlayersNoHeadsUp>
 								<PlayersNo34>true</PlayersNo34>
 								<PlayersNo56>true</PlayersNo56>
@@ -3624,7 +3625,7 @@
 								<TypeLimit>true</TypeLimit>
 								<Cash>true</Cash>
 								<Tournament>true</Tournament>
-								<IncludeBoard>false</IncludeBoard>
+								<IncludeBoard>true</IncludeBoard>
 								<PlayersNoHeadsUp>true</PlayersNoHeadsUp>
 								<PlayersNo34>true</PlayersNo34>
 								<PlayersNo56>true</PlayersNo56>
@@ -7746,7 +7747,7 @@
 				<NoteObject>
 					<Name>Double barrels OOP w/ air</Name>
 					<ID>48</ID>
-					<DisplayedNote>Double barrels OOP</DisplayedNote>
+					<DisplayedNote>Double barrels OOP w/ air</DisplayedNote>
 					<Settings>
 						<SelectedFilters>
 							<FilterObject>
