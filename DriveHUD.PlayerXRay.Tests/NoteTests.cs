@@ -163,6 +163,7 @@ namespace DriveHUD.PlayerXRay.Tests
         [TestCase("CallsFlopCheckRaiseWAir-3.xml", EnumPokerSites.IPoker, "P2_773369KJ", "Calls flop check raise w/ air", false)]
         [TestCase("OverBetsStrong.xml", EnumPokerSites.IPoker, "Hero", "Over bets strong", false)]
         [TestCase("OverBetsStrong.xml", EnumPokerSites.IPoker, "Hero", "Bet 70%+ of pot with weak made hand", false)]
+        [TestCase("DoubleBarrelsOOPWAir.xml", EnumPokerSites.IPoker, "P5_736203JN", "Double barrels OOP w/ air", false)]
         public void TestPredefinedNotes(string handHistoryFile, EnumPokerSites pokerSite, string playerName, string noteName, bool expected)
         {
             var handHistoryObject = CreateHandHistoryObject(handHistoryFile, pokerSite, playerName);

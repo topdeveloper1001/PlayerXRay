@@ -10,6 +10,7 @@
 // </copyright>
 //----------------------------------------------------------------------
 
+using DriveHUD.Common.Linq;
 using DriveHUD.Common.Log;
 using DriveHUD.Entities;
 using DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings;
@@ -70,6 +71,8 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
 
         #region hand value analyzers     
 
+        private readonly static Dictionary<Street, List<int>> handValuesCache = new Dictionary<Street, List<int>>();
+
         private static List<PlayerstatisticExtended> FilterByHandValueConditions(List<PlayerstatisticExtended> playerStatistics, HandValueSettings settings, Street street)
         {
             if (settings == null || settings.AnyHv && settings.AnyFlushDraws && settings.AnyStraightDraws)
@@ -80,12 +83,50 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             var filteredList = new List<PlayerstatisticExtended>();
 
             // check hand values
-            if (!settings.AnyHv && settings.SelectedHv.Count > 0)
+            if (!settings.AnyHv)
             {
+                if (!handValuesCache.ContainsKey(street))
+                {
+                    lock (handValuesCache)
+                    {
+                        if (!handValuesCache.ContainsKey(street))
+                        {
+                            handValuesCache.Add(street, HandValuesHelper.GetHandValueObjects(street).Select(x => x.Value).ToList());
+                        }
+                    }
+                }
+
+                var restrictedHv = handValuesCache[street]
+                    .Except(settings.SelectedHv)
+                    .ToList();
+
                 foreach (var handValue in settings.SelectedHv)
                 {
                     var handValueEnum = (HandValueEnum)handValue;
                     filteredList.AddRange(NoteManagerHelper.HandValueFilterHelper(playerStatistics, handValueEnum, street));
+                }
+
+                filteredList = filteredList.Distinct().ToList();
+
+                if (filteredList.Count > 0 && restrictedHv.Count > 0)
+                {
+                    foreach (var handValue in restrictedHv)
+                    {
+                        var handValueEnum = (HandValueEnum)handValue;
+                        var restrictedList = NoteManagerHelper.HandValueFilterHelper(filteredList, handValueEnum, street);
+
+                        if (restrictedList.Count > 0)
+                        {
+                            filteredList = filteredList
+                                .Except(restrictedList)
+                                .ToList();
+
+                            if (filteredList.Count == 0)
+                            {
+                                break;
+                            }
+                        }
+                    }
                 }
             }
 

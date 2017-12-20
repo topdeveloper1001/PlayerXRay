@@ -11,6 +11,8 @@
 //----------------------------------------------------------------------
 
 using DriveHUD.PlayerXRay.DataTypes.NotesTreeObjects;
+using HandHistories.Objects.Cards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -102,6 +104,28 @@ namespace DriveHUD.PlayerXRay.DataTypes
             }
 
             return results;
+        }
+
+        public static IEnumerable<HandValueObject> GetHandValueObjects(Street street)
+        {
+            NoteStageType noteStageType;
+
+            switch (street)
+            {
+                case Street.Flop:
+                    noteStageType = NoteStageType.Flop;
+                    break;
+                case Street.Turn:
+                    noteStageType = NoteStageType.Turn;
+                    break;
+                case Street.River:
+                    noteStageType = NoteStageType.River;
+                    break;
+                default:
+                    throw new ArgumentException($"{street} isn't supported in this method.");
+            }
+
+            return GetHandValueObjects(noteStageType);
         }
 
         public static IEnumerable<HandValueObject> GetFlushHandValueObjects(NoteStageType stageType)
