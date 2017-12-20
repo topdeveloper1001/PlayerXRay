@@ -18,15 +18,20 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
         public static List<PlayerstatisticExtended> HelperHandValueAnalyzer(Func<List<DataTypes.Card>, List<DataTypes.Card>, Street, bool> filter, Street targetStreet, List<PlayerstatisticExtended> incomingPlayerStatistics)
         {
             List<PlayerstatisticExtended> itemsAfterLocalFilter = new List<PlayerstatisticExtended>();
+
             foreach (var playerstatistic in incomingPlayerStatistics)
             {
-                if (!filter(BoardTextureAnalyzerHelpers.ParseStringSequenceOfCards(playerstatistic.Playerstatistic.Cards),
+                if (string.IsNullOrEmpty(playerstatistic.Playerstatistic.Cards) ||
+                    !filter(BoardTextureAnalyzerHelpers.ParseStringSequenceOfCards(playerstatistic.Playerstatistic.Cards),
                             BoardTextureAnalyzerHelpers.ParseStringSequenceOfCards(playerstatistic.Playerstatistic.Board),
                             targetStreet))
+                {
                     continue;
+                }
 
                 itemsAfterLocalFilter.Add(playerstatistic);
             }
+
             return itemsAfterLocalFilter;
         }
 

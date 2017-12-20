@@ -95,12 +95,12 @@
 
             <ctl:ResizableRadioButton
                 IsChecked="{Binding BoardTextureFilterType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static nt:BoardTextureFilterType.Any}}"
-                Content="Any Texture"
+                Content="{ResX Key=XRay_BoardTextureView_AnyTexture}"
                 Style="{StaticResource RadioButtonStyle}" />
 
             <ctl:ResizableRadioButton
                 IsChecked="{Binding BoardTextureFilterType, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static nt:BoardTextureFilterType.FilterByTexture}}"
-                Content="Filter By Texture"
+                Content="{ResX Key=XRay_BoardTextureView_FilterByTexture}"
                 Style="{StaticResource RadioButtonStyle}" />
 
         </StackPanel>
@@ -109,7 +109,7 @@
         <CheckBox
             Grid.Row="1"
             IsChecked="{Binding IsFlushCardFilter}"
-            Content="Flush Cards" />
+            Content="{ResX Key=XRay_BoardTextureView_FlushCards}" />
 
         <!-- Flop Flush cards -->
         <WrapPanel
@@ -122,17 +122,17 @@
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Rainbow"
+                Content="{ResX Key=XRay_BoardTextureView_Rainbow}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:FlopFlushCardsEnum.Rainbow}}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Two of One Suit"
+                Content="{ResX Key=XRay_BoardTextureView_TwoOfOneSuit}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:FlopFlushCardsEnum.TwoOfOneSuit}}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Three of One Suit"
+                Content="{ResX Key=XRay_BoardTextureView_ThreeOfOneSuit}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:FlopFlushCardsEnum.ThreeOfOneSuit}}" />
 
         </WrapPanel>
@@ -148,27 +148,27 @@
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Rainbow"
+                Content="{ResX Key=XRay_BoardTextureView_Rainbow}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:TurnFlushCardsEnum.Rainbow}}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Two of One Suit"
+                Content="{ResX Key=XRay_BoardTextureView_TwoOfOneSuit}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:TurnFlushCardsEnum.TwoOfOneSuit}}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Two of Two Suits"
+                Content="{ResX Key=XRay_BoardTextureView_TwoOfTwoSuit}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:TurnFlushCardsEnum.TwoOfTwoSuits}}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Three of One Suit"
+                Content="{ResX Key=XRay_BoardTextureView_ThreeOfOneSuit}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:TurnFlushCardsEnum.ThreeOfOneSuit}}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Four of One Suit"
+                Content="{ResX Key=XRay_BoardTextureView_FourOfOneSuit}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:TurnFlushCardsEnum.FourOfOneSuit}}" />
 
         </WrapPanel>
@@ -184,22 +184,22 @@
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="No Flush Possible"
+                Content="{ResX Key=XRay_BoardTextureView_NoFlushPossible}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:RiverFlushCardsEnum.NoFlush}}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Three Cards One Suit"
+                Content="{ResX Key=XRay_BoardTextureView_ThreeCardsOneSuit}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:RiverFlushCardsEnum.ThreeCardsOneSuit}}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Four Cards One Suit"
+                Content="{ResX Key=XRay_BoardTextureView_FourCardsOneSuit}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:RiverFlushCardsEnum.FourCardsOneSuit}}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
-                Content="Five Cards One Suit"
+                Content="{ResX Key=XRay_BoardTextureView_FiveCardsOneSuit}"
                 IsChecked="{Binding FlushCard, Converter={dh:EnumBoolConverter}, ConverterParameter={x:Static dt:RiverFlushCardsEnum.FiveCardsOneSuit}}" />
 
         </WrapPanel>
@@ -209,7 +209,7 @@
             Grid.Row="2"
             IsChecked="{Binding IsOpenEndedStraightDrawsFilter}"
             Visibility="{Binding StageType, Converter={dh:EnumNotToVisibilityConverterCollapsedByDef}, ConverterParameter={x:Static dt:NoteStageType.River}}"
-            Content="Number of Open Ended Straight Draws" />
+            Content="{ResX Key=XRay_BoardTextureView_NumberOfOpenEndedStraightDraws}" />
 
         <ComboBox
             Grid.Row="2"
@@ -228,7 +228,7 @@
             Grid.Row="3"
             IsChecked="{Binding IsGutshotsFilter}"
             Visibility="{Binding StageType, Converter={dh:EnumNotToVisibilityConverterCollapsedByDef}, ConverterParameter={x:Static dt:NoteStageType.River}}"
-            Content="Number of Gutshots" />
+            Content="{ResX Key=XRay_BoardTextureView_NumberOfGutshots}" />
 
         <ComboBox
             Grid.Row="3"
@@ -246,7 +246,7 @@
         <CheckBox
             Grid.Row="4"
             IsChecked="{Binding IsPossibleStraightsFilter}"
-            Content="Number of Possible Straights" />
+            Content="{ResX Key=XRay_BoardTextureView_NumberOfPossibleStraights}" />
 
         <ComboBox
             Grid.Row="4"
@@ -274,7 +274,7 @@
         <CheckBox
             Grid.Row="5"
             IsChecked="{Binding IsHighcardFilter}"
-            Content="Highest Card" />
+            Content="{ResX Key=XRay_BoardTextureView_HighestCard}" />
 
         <ComboBox
             Grid.Row="5"
@@ -291,7 +291,7 @@
         <CheckBox
             Grid.Row="6"
             IsChecked="{Binding IsCardTextureFilter}"
-            Content="Exact Texture" />
+            Content="{ResX Key=XRay_BoardTextureView_ExactTexture}" />
 
         <ItemsControl
             Grid.Row="6"
@@ -319,7 +319,7 @@
         <CheckBox
             Grid.Row="7"
             IsChecked="{Binding IsPairedFilter}"
-            Content="Is Paired" />
+            Content="{ResX Key=XRay_BoardTextureView_IsPaired}" />
 
         <StackPanel
             Grid.Column="2"
@@ -331,12 +331,12 @@
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
                 IsChecked="{Binding IsPairedFilterTrue}"
-                Content="True" />
+                Content="{ResX Key=XRay_BoardTextureView_True}" />
 
             <ctl:ResizableRadioButton
                 Style="{StaticResource RadioButtonStyle}"
                 IsChecked="{Binding IsPairedFilterTrue, Converter={dh:BoolNotConverter}, Mode=OneWay}"
-                Content="False" />
+                Content="{ResX Key=XRay_BoardTextureView_False}" />
 
         </StackPanel>
 

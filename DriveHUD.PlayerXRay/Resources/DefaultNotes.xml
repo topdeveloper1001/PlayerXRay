@@ -3424,6 +3424,13 @@
 										<Value xsi:nil="true" />
 										<Stage>1</Stage>
 									</FilterObject>
+									<FilterObject>
+										<Description>Flop Was Check Raised</Description>
+										<Tag>61</Tag>
+										<Filter>FlopWasCheckRaised</Filter>
+										<Value xsi:nil="true" />
+										<Stage>1</Stage>
+									</FilterObject>
 								</SelectedFilters>
 								<SelectedFiltersComparison />
 								<ExcludedCards />

@@ -142,6 +142,186 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Any Texture.
+        /// </summary>
+        internal static string XRay_BoardTextureView_AnyTexture {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_AnyTexture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exact Texture.
+        /// </summary>
+        internal static string XRay_BoardTextureView_ExactTexture {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_ExactTexture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to False.
+        /// </summary>
+        internal static string XRay_BoardTextureView_False {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_False", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter By Texture.
+        /// </summary>
+        internal static string XRay_BoardTextureView_FilterByTexture {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_FilterByTexture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Five Cards One Suit.
+        /// </summary>
+        internal static string XRay_BoardTextureView_FiveCardsOneSuit {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_FiveCardsOneSuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flush Cards.
+        /// </summary>
+        internal static string XRay_BoardTextureView_FlushCards {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_FlushCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Four Cards One Suit.
+        /// </summary>
+        internal static string XRay_BoardTextureView_FourCardsOneSuit {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_FourCardsOneSuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Four of One Suit.
+        /// </summary>
+        internal static string XRay_BoardTextureView_FourOfOneSuit {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_FourOfOneSuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Highest Card.
+        /// </summary>
+        internal static string XRay_BoardTextureView_HighestCard {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_HighestCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is Paired.
+        /// </summary>
+        internal static string XRay_BoardTextureView_IsPaired {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_IsPaired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Flush Possible.
+        /// </summary>
+        internal static string XRay_BoardTextureView_NoFlushPossible {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_NoFlushPossible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Gutshots.
+        /// </summary>
+        internal static string XRay_BoardTextureView_NumberOfGutshots {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_NumberOfGutshots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Open Ended Straight Draws.
+        /// </summary>
+        internal static string XRay_BoardTextureView_NumberOfOpenEndedStraightDraws {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_NumberOfOpenEndedStraightDraws", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Possible Straights.
+        /// </summary>
+        internal static string XRay_BoardTextureView_NumberOfPossibleStraights {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_NumberOfPossibleStraights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rainbow.
+        /// </summary>
+        internal static string XRay_BoardTextureView_Rainbow {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_Rainbow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Three Cards One Suit.
+        /// </summary>
+        internal static string XRay_BoardTextureView_ThreeCardsOneSuit {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_ThreeCardsOneSuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Three of One Suit.
+        /// </summary>
+        internal static string XRay_BoardTextureView_ThreeOfOneSuit {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_ThreeOfOneSuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True.
+        /// </summary>
+        internal static string XRay_BoardTextureView_True {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_True", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two of One Suit.
+        /// </summary>
+        internal static string XRay_BoardTextureView_TwoOfOneSuit {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_TwoOfOneSuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two of Two Suits.
+        /// </summary>
+        internal static string XRay_BoardTextureView_TwoOfTwoSuit {
+            get {
+                return ResourceManager.GetString("XRay_BoardTextureView_TwoOfTwoSuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://drivehud.com/product/player-xray.
         /// </summary>
         internal static string XRay_BuyLink {
@@ -174,6 +354,60 @@ namespace DriveHUD.PlayerXRay.Resources {
         internal static string XRay_MainView_Help {
             get {
                 return ResourceManager.GetString("XRay_MainView_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FORUM.
+        /// </summary>
+        internal static string XRay_MainView_Help_Forum {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Help_Forum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://drivehud.com/.
+        /// </summary>
+        internal static string XRay_MainView_Help_ForumLink {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Help_ForumLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MANUAL.
+        /// </summary>
+        internal static string XRay_MainView_Help_Manual {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Help_Manual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://drivehud.com/.
+        /// </summary>
+        internal static string XRay_MainView_Help_ManualLink {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Help_ManualLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUPPORT.
+        /// </summary>
+        internal static string XRay_MainView_Help_Support {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Help_Support", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://drivehud.com/.
+        /// </summary>
+        internal static string XRay_MainView_Help_SupportLink {
+            get {
+                return ResourceManager.GetString("XRay_MainView_Help_SupportLink", resourceCulture);
             }
         }
         

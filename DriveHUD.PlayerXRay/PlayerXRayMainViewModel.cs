@@ -13,6 +13,7 @@
 using DriveHUD.Common.Infrastructure.CustomServices;
 using DriveHUD.Common.Linq;
 using DriveHUD.Common.Resources;
+using DriveHUD.Common.Utils;
 using DriveHUD.Common.Wpf.Mvvm;
 using DriveHUD.PlayerXRay.BusinessHelper.ApplicationSettings;
 using DriveHUD.PlayerXRay.Events;
@@ -64,6 +65,15 @@ namespace DriveHUD.PlayerXRay
 
             UpgradeCommand = ReactiveCommand.Create();
             UpgradeCommand.Subscribe(x => Upgrade());
+
+            ManualCommand = ReactiveCommand.Create();
+            ManualCommand.Subscribe(x => BrowserHelper.OpenLinkInBrowser(CommonResourceManager.Instance.GetResourceString("XRay_MainView_Help_ManualLink")));
+
+            ForumCommand = ReactiveCommand.Create();
+            ForumCommand.Subscribe(x => BrowserHelper.OpenLinkInBrowser(CommonResourceManager.Instance.GetResourceString("XRay_MainView_Help_ForumLink")));
+
+            SupportCommand = ReactiveCommand.Create();
+            SupportCommand.Subscribe(x => BrowserHelper.OpenLinkInBrowser(CommonResourceManager.Instance.GetResourceString("XRay_MainView_Help_SupportLink")));
 
             StaticStorage.CurrentPlayer = StorageModel.PlayerSelectedItem?.PlayerId.ToString();
             StaticStorage.CurrentPlayerName = StorageModel.PlayerSelectedItem?.Name;
@@ -246,6 +256,12 @@ namespace DriveHUD.PlayerXRay
         public ReactiveCommand<object> NavigateCommand { get; private set; }
 
         public ReactiveCommand<object> UpgradeCommand { get; private set; }
+
+        public ReactiveCommand<object> ManualCommand { get; private set; }
+
+        public ReactiveCommand<object> ForumCommand { get; private set; }
+
+        public ReactiveCommand<object> SupportCommand { get; private set; }
 
         #endregion        
 

@@ -600,4 +600,82 @@
   <data name="XRay_YesNoConfirmationView_RestoreDefaultsText" xml:space="preserve">
     <value>Are you sure you want to restore defaults notes?</value>
   </data>
+  <data name="XRay_BoardTextureView_AnyTexture" xml:space="preserve">
+    <value>Any Texture</value>
+  </data>
+  <data name="XRay_BoardTextureView_ExactTexture" xml:space="preserve">
+    <value>Exact Texture</value>
+  </data>
+  <data name="XRay_BoardTextureView_False" xml:space="preserve">
+    <value>False</value>
+  </data>
+  <data name="XRay_BoardTextureView_FilterByTexture" xml:space="preserve">
+    <value>Filter By Texture</value>
+  </data>
+  <data name="XRay_BoardTextureView_FiveCardsOneSuit" xml:space="preserve">
+    <value>Five Cards One Suit</value>
+  </data>
+  <data name="XRay_BoardTextureView_FlushCards" xml:space="preserve">
+    <value>Flush Cards</value>
+  </data>
+  <data name="XRay_BoardTextureView_FourCardsOneSuit" xml:space="preserve">
+    <value>Four Cards One Suit</value>
+  </data>
+  <data name="XRay_BoardTextureView_FourOfOneSuit" xml:space="preserve">
+    <value>Four of One Suit</value>
+  </data>
+  <data name="XRay_BoardTextureView_HighestCard" xml:space="preserve">
+    <value>Highest Card</value>
+  </data>
+  <data name="XRay_BoardTextureView_IsPaired" xml:space="preserve">
+    <value>Is Paired</value>
+  </data>
+  <data name="XRay_BoardTextureView_NoFlushPossible" xml:space="preserve">
+    <value>No Flush Possible</value>
+  </data>
+  <data name="XRay_BoardTextureView_NumberOfGutshots" xml:space="preserve">
+    <value>Number of Gutshots</value>
+  </data>
+  <data name="XRay_BoardTextureView_NumberOfOpenEndedStraightDraws" xml:space="preserve">
+    <value>Number of Open Ended Straight Draws</value>
+  </data>
+  <data name="XRay_BoardTextureView_NumberOfPossibleStraights" xml:space="preserve">
+    <value>Number of Possible Straights</value>
+  </data>
+  <data name="XRay_BoardTextureView_Rainbow" xml:space="preserve">
+    <value>Rainbow</value>
+  </data>
+  <data name="XRay_BoardTextureView_ThreeCardsOneSuit" xml:space="preserve">
+    <value>Three Cards One Suit</value>
+  </data>
+  <data name="XRay_BoardTextureView_ThreeOfOneSuit" xml:space="preserve">
+    <value>Three of One Suit</value>
+  </data>
+  <data name="XRay_BoardTextureView_True" xml:space="preserve">
+    <value>True</value>
+  </data>
+  <data name="XRay_BoardTextureView_TwoOfOneSuit" xml:space="preserve">
+    <value>Two of One Suit</value>
+  </data>
+  <data name="XRay_BoardTextureView_TwoOfTwoSuit" xml:space="preserve">
+    <value>Two of Two Suits</value>
+  </data>
+  <data name="XRay_MainView_Help_Forum" xml:space="preserve">
+    <value>FORUM</value>
+  </data>
+  <data name="XRay_MainView_Help_ForumLink" xml:space="preserve">
+    <value>http://drivehud.com/</value>
+  </data>
+  <data name="XRay_MainView_Help_Manual" xml:space="preserve">
+    <value>MANUAL</value>
+  </data>
+  <data name="XRay_MainView_Help_ManualLink" xml:space="preserve">
+    <value>http://drivehud.com/</value>
+  </data>
+  <data name="XRay_MainView_Help_Support" xml:space="preserve">
+    <value>SUPPORT</value>
+  </data>
+  <data name="XRay_MainView_Help_SupportLink" xml:space="preserve">
+    <value>http://drivehud.com/</value>
+  </data>
 </root>

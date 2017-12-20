@@ -301,7 +301,7 @@
             </Style>
 
             <Style
-                x:Key="HandValuesListBoxStyle"                
+                x:Key="HandValuesListBoxStyle"
                 TargetType="{x:Type ListBox}"
                 BasedOn="{StaticResource {x:Type ListBox}}">
 
@@ -324,10 +324,6 @@
                 <Setter
                     Property="BorderThickness"
                     Value="1" />
-
-                <Setter
-                    Property="Height"
-                    Value="82" />
 
                 <Setter
                     Property="Width"
@@ -1939,18 +1935,37 @@
                                         Width="70"
                                         Header="{ResX Key=XRay_NotesView_Flop}">
 
-                                        <StackPanel
+                                        <Grid
                                             Margin="10,0,0,0">
 
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    MinHeight="205"
+                                                    Height="0.45*" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    MinHeight="82"
+                                                    Height="0.18*" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    MinHeight="82"
+                                                    Height="0.18*" />
+                                            </Grid.RowDefinitions>
+
                                             <CheckBox
+                                                Grid.Row="0"
                                                 Style="{StaticResource CheckBoxStyle}"
                                                 Content="{ResX Key=XRay_NotesView_AnyHandValue}"
                                                 IsChecked="{Binding FlopAnyHandValue}" />
 
                                             <ListBox
+                                                Grid.Row="1"
                                                 IsEnabled="{Binding SelectedNote.Settings.FlopHvSettings.AnyHv, Converter={dh:BoolNotConverter}}"
-                                                Style="{StaticResource HandValuesListBoxStyle}"
-                                                Height="205"
+                                                Style="{StaticResource HandValuesListBoxStyle}"                                               
                                                 SelectionMode="Extended"
                                                 ItemContainerStyle="{StaticResource HandValueListBoxItemStyle}"
                                                 ItemsSource="{Binding FlopHandValues, Mode=OneWay}">
@@ -1965,12 +1980,14 @@
                                             </ListBox>
 
                                             <CheckBox
+                                                Grid.Row="2"
                                                 Margin="0,5,0,0"
                                                 Style="{StaticResource CheckBoxStyle}"
                                                 Content="{ResX Key=XRay_NotesView_AnyFlushDrawValue}"
                                                 IsChecked="{Binding FlopAnyFlushDrawsHandValue}" />
 
                                             <ListBox
+                                                Grid.Row="3"
                                                 IsEnabled="{Binding SelectedNote.Settings.FlopHvSettings.AnyFlushDraws, Converter={dh:BoolNotConverter}}"
                                                 Style="{StaticResource HandValuesListBoxStyle}"
                                                 SelectionMode="Extended"
@@ -1987,12 +2004,14 @@
                                             </ListBox>
 
                                             <CheckBox
+                                                Grid.Row="4"
                                                 Margin="0,5,0,0"
                                                 Style="{StaticResource CheckBoxStyle}"
                                                 Content="{ResX Key=XRay_NotesView_AnyStraightDrawValue}"
                                                 IsChecked="{Binding FlopAnyStraightDrawsHandValue}" />
 
                                             <ListBox
+                                                Grid.Row="5"
                                                 IsEnabled="{Binding SelectedNote.Settings.FlopHvSettings.AnyStraightDraws, Converter={dh:BoolNotConverter}}"
                                                 Style="{StaticResource HandValuesListBoxStyle}"
                                                 SelectionMode="Extended"
@@ -2008,7 +2027,7 @@
 
                                             </ListBox>
 
-                                        </StackPanel>
+                                        </Grid>
 
                                     </TabItem>
 
@@ -2016,18 +2035,37 @@
                                         Width="70"
                                         Header="{ResX Key=XRay_NotesView_Turn}">
 
-                                        <StackPanel
+                                        <Grid
                                             Margin="10,0,0,0">
 
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    MinHeight="205"
+                                                    Height="0.45*" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    MinHeight="82"
+                                                    Height="0.18*" />
+                                                <RowDefinition
+                                                    Height="Auto" />
+                                                <RowDefinition
+                                                    MinHeight="82"
+                                                    Height="0.18*" />
+                                            </Grid.RowDefinitions>
+
                                             <CheckBox
+                                                Grid.Row="0"
                                                 Style="{StaticResource CheckBoxStyle}"
                                                 Content="{ResX Key=XRay_NotesView_AnyHandValue}"
                                                 IsChecked="{Binding TurnAnyHandValue}" />
 
                                             <ListBox
+                                                Grid.Row="1"
                                                 IsEnabled="{Binding SelectedNote.Settings.TurnHvSettings.AnyHv, Converter={dh:BoolNotConverter}}"
                                                 Style="{StaticResource HandValuesListBoxStyle}"
-                                                Height="205"
                                                 SelectionMode="Extended"
                                                 ItemContainerStyle="{StaticResource HandValueListBoxItemStyle}"
                                                 ItemsSource="{Binding TurnHandValues, Mode=OneWay}">
@@ -2042,12 +2080,14 @@
                                             </ListBox>
 
                                             <CheckBox
+                                                Grid.Row="2"
                                                 Margin="0,5,0,0"
                                                 Style="{StaticResource CheckBoxStyle}"
                                                 Content="{ResX Key=XRay_NotesView_AnyFlushDrawValue}"
                                                 IsChecked="{Binding TurnAnyFlushDrawsHandValue}" />
 
                                             <ListBox
+                                                Grid.Row="3"
                                                 IsEnabled="{Binding SelectedNote.Settings.TurnHvSettings.AnyFlushDraws, Converter={dh:BoolNotConverter}}"
                                                 Style="{StaticResource HandValuesListBoxStyle}"
                                                 SelectionMode="Extended"
@@ -2064,12 +2104,14 @@
                                             </ListBox>
 
                                             <CheckBox
+                                                Grid.Row="4"
                                                 Margin="0,5,0,0"
                                                 Style="{StaticResource CheckBoxStyle}"
                                                 Content="{ResX Key=XRay_NotesView_AnyStraightDrawValue}"
                                                 IsChecked="{Binding TurnAnyStraightDrawsHandValue}" />
 
                                             <ListBox
+                                                Grid.Row="5"
                                                 IsEnabled="{Binding SelectedNote.Settings.TurnHvSettings.AnyStraightDraws, Converter={dh:BoolNotConverter}}"
                                                 Style="{StaticResource HandValuesListBoxStyle}"
                                                 SelectionMode="Extended"
@@ -2085,7 +2127,7 @@
 
                                             </ListBox>
 
-                                        </StackPanel>
+                                        </Grid>
 
                                     </TabItem>
 
