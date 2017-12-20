@@ -664,18 +664,18 @@
     <value>FORUM</value>
   </data>
   <data name="XRay_MainView_Help_ForumLink" xml:space="preserve">
-    <value>http://drivehud.com/</value>
+    <value>http://drivehud.com/blog/forums/forum/player-xray-support/</value>
   </data>
   <data name="XRay_MainView_Help_Manual" xml:space="preserve">
     <value>MANUAL</value>
   </data>
   <data name="XRay_MainView_Help_ManualLink" xml:space="preserve">
-    <value>http://drivehud.com/</value>
+    <value>http://drivehud.com/blog/manual/#document-33</value>
   </data>
   <data name="XRay_MainView_Help_Support" xml:space="preserve">
     <value>SUPPORT</value>
   </data>
   <data name="XRay_MainView_Help_SupportLink" xml:space="preserve">
-    <value>http://drivehud.com/</value>
+    <value>http://drivehud.com/support</value>
   </data>
 </root>

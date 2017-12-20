@@ -367,7 +367,7 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://drivehud.com/.
+        ///   Looks up a localized string similar to http://drivehud.com/blog/forums/forum/player-xray-support/.
         /// </summary>
         internal static string XRay_MainView_Help_ForumLink {
             get {
@@ -385,7 +385,7 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://drivehud.com/.
+        ///   Looks up a localized string similar to http://drivehud.com/blog/manual/#document-33.
         /// </summary>
         internal static string XRay_MainView_Help_ManualLink {
             get {
@@ -403,7 +403,7 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://drivehud.com/.
+        ///   Looks up a localized string similar to http://drivehud.com/support.
         /// </summary>
         internal static string XRay_MainView_Help_SupportLink {
             get {
