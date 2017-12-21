@@ -6111,6 +6111,13 @@
 								<Value xsi:nil="true" />
 								<Stage>0</Stage>
 							</FilterObject>
+							<FilterObject>
+								<Description>Could Cold Call</Description>
+								<Tag>303</Tag>
+								<Filter>CouldColdCall</Filter>
+								<Value xsi:nil="true" />
+								<Stage>0</Stage>
+							</FilterObject>
 						</SelectedFilters>
 						<SelectedFiltersComparison />
 						<ExcludedCards />
@@ -6238,9 +6245,6 @@
 								<int>124</int>
 								<int>125</int>
 								<int>43</int>
-								<int>28</int>
-								<int>29</int>
-								<int>30</int>
 								<int>20</int>
 								<int>23</int>
 								<int>24</int>
@@ -7573,7 +7577,7 @@
 				<NoteObject>
 					<Name>Raises turn c-bet</Name>
 					<ID>35</ID>
-					<DisplayedNote>Raise Turn C-bet w/ </DisplayedNote>
+					<DisplayedNote>Raise Turn C-bet</DisplayedNote>
 					<Settings>
 						<SelectedFilters>
 							<FilterObject>
