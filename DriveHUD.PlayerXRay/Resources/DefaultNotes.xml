@@ -5518,6 +5518,20 @@
 								<Value xsi:nil="true" />
 								<Stage>2</Stage>
 							</FilterObject>
+							<FilterObject>
+								<Description>PFR = False</Description>
+								<Tag>302</Tag>
+								<Filter>PFRFalse</Filter>
+								<Value xsi:nil="true" />
+								<Stage>0</Stage>
+							</FilterObject>
+							<FilterObject>
+								<Description>Could Cold Call</Description>
+								<Tag>303</Tag>
+								<Filter>CouldColdCall</Filter>
+								<Value xsi:nil="true" />
+								<Stage>0</Stage>
+							</FilterObject>
 						</SelectedFilters>
 						<SelectedFiltersComparison />
 						<ExcludedCards />
@@ -5900,7 +5914,7 @@
 						<TypeLimit>true</TypeLimit>
 						<Cash>true</Cash>
 						<Tournament>true</Tournament>
-						<IncludeBoard>false</IncludeBoard>
+						<IncludeBoard>true</IncludeBoard>
 						<PlayersNoHeadsUp>true</PlayersNoHeadsUp>
 						<PlayersNo34>true</PlayersNo34>
 						<PlayersNo56>true</PlayersNo56>

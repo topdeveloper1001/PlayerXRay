@@ -42,6 +42,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
         {
             var selectedPlayerStatistics = new List<PlayerstatisticExtended> { playerstatistic };
 
+            selectedPlayerStatistics = FilterByMiscConditions(selectedPlayerStatistics, note.Settings);
             selectedPlayerStatistics = FilterByPositionCondition(selectedPlayerStatistics, note.Settings);
             selectedPlayerStatistics = FilterByPreflopFacingCondition(selectedPlayerStatistics, note.Settings);
             selectedPlayerStatistics = FilterByPositionThreeBetCondition(selectedPlayerStatistics, note.Settings);
@@ -67,6 +68,19 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
             selectedPlayerStatistics = FilterByAllSelectedFilters(selectedPlayerStatistics, note.Settings.SelectedFilters, note.Settings.SelectedFiltersComparison);
 
             return selectedPlayerStatistics.Count > 0;
+        }
+
+        private static List<PlayerstatisticExtended> FilterByMiscConditions(List<PlayerstatisticExtended> selectedPlayerStatistics, NoteSettingsObject settings)
+        {
+            if (settings.Cash && settings.Tournament)
+            {
+                return selectedPlayerStatistics;
+            }
+
+            return selectedPlayerStatistics
+                .Where(x => settings.Tournament && x.Playerstatistic.IsTourney ||
+                        settings.Cash && !x.Playerstatistic.IsTourney)
+                .ToList();
         }
 
         #region hand value analyzers     
@@ -743,30 +757,23 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
 
             foreach (var playerStatistic in playerStatistics)
             {
-                var facedHandActions = new List<HandAction>();
+                var raiser = playerStatistic.HandHistory.PreFlop.FirstOrDefault(x => x.HandActionType == HandActionType.RAISE)?.PlayerName;
 
-                foreach (var hA in playerStatistic.HandHistory.HandActions
-                    .Where(hA => hA.HandActionType != HandActionType.SMALL_BLIND && hA.HandActionType != HandActionType.BIG_BLIND &&
-                            hA.HandActionType != HandActionType.ANTE && hA.HandActionType != HandActionType.POSTS))
+                if (string.IsNullOrEmpty(raiser))
                 {
-                    if (hA.PlayerName != playerStatistic.Playerstatistic.PlayerName)
-                    {
-                        facedHandActions.Add(hA);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    continue;
                 }
 
-                var raisesNumber = facedHandActions.Count(x => x.HandActionType == HandActionType.RAISE);
+                var threeBet = new ConditionalBet();
 
-                if (raisesNumber < 2)
+                PlayerStatisticCalculator.Calculate3Bet(threeBet, playerStatistic.HandHistory.PreFlop.ToList(), playerStatistic.Playerstatistic.PlayerName, raiser);
+
+                if (!threeBet.Happened)
+                {
                     continue;
+                }
 
-                var handAction = facedHandActions.Where(x => x.HandActionType == HandActionType.RAISE).ElementAt(1);
-
-                var firstRaiserPosition = Converter.ToPosition(playerStatistic.HandHistory, handAction.PlayerName);
+                var firstRaiserPosition = Converter.ToPosition(playerStatistic.HandHistory, threeBet.HappenedByPlayer);
                 var firstRaiserPositionString = Converter.ToPositionString(firstRaiserPosition);
 
                 if ((firstRaiserPositionString == "SB" && settings.PositionSB3Bet) ||

@@ -1,0 +1,69 @@
+<session sessioncode="93785366">
+	<general>
+		<mode>real</mode>
+		<gametype>Holdem NL $0.50/$1</gametype>
+		<tablename>Boulevardiers</tablename>
+		<duration>N/A</duration>
+		<gamecount>0</gamecount>
+		<startdate>2017-01-11 19:04:42</startdate>
+		<currency>USD</currency>
+		<nickname>Hero</nickname>
+		<bets>0</bets>
+		<wins>0</wins>
+		<chipsin>0</chipsin>
+		<chipsout>0</chipsout>
+		<ipoints>0</ipoints>
+		<statuspoints>0</statuspoints>
+		<awardpoints>0</awardpoints>
+		<place>0</place>
+		<buyin>$0+$0</buyin>
+		<totalbuyin>$0</totalbuyin>
+		<win>0</win>
+	</general>
+	<game gamecode="3410413679">
+		<general>
+			<startdate>2017-01-11 19:30:58</startdate>
+			<players>
+				<player seat="1" name="P1_506963UY" chips="100" dealer="1" win="196" bet="100" rebuy="0" addon="0" />
+				<player seat="2" name="P2_704413FE" chips="99" dealer="0" win="0" bet="99" rebuy="0" addon="0" />
+				<player seat="3" name="P3_604470QE" chips="331.21" dealer="0" win="0" bet="1" rebuy="0" addon="0" />
+				<player seat="4" name="P4_563620CK" chips="146.8" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+				<player seat="5" name="Hero" chips="108.86" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+				<player seat="6" name="P6_330012DY" chips="49" dealer="0" win="0" bet="0" rebuy="0" addon="0" />
+			</players>
+		</general>
+		<round no="0">
+			<action no="1" player="P2_704413FE" type="1" sum="0.5" cards="[cards]" />
+			<action no="2" player="P3_604470QE" type="2" sum="1" cards="[cards]" />
+		</round>
+		<round no="1">
+			<cards type="Pocket" player="P1_506963UY">D7 H7</cards>
+			<cards type="Pocket" player="P2_704413FE">HQ HK</cards>
+			<cards type="Pocket" player="P3_604470QE">X X</cards>
+			<cards type="Pocket" player="P4_563620CK">X X</cards>
+			<cards type="Pocket" player="Hero">D3 S2</cards>
+			<cards type="Pocket" player="P6_330012DY">X X</cards>
+			<action no="3" player="P4_563620CK" type="0" sum="0" cards="" />
+			<action no="4" player="Hero" type="0" sum="0" cards="" />
+			<action no="5" player="P6_330012DY" type="0" sum="0" cards="" />
+			<action no="6" player="P1_506963UY" type="23" sum="2.5" cards="" />
+			<action no="7" player="P2_704413FE" type="23" sum="9" cards="" />
+			<action no="8" player="P3_604470QE" type="0" sum="0" cards="" />
+			<action no="9" player="P1_506963UY" type="3" sum="6.5" cards="" />
+		</round>
+		<round no="2">
+			<cards type="Flop" player="">H5 C7 DJ</cards>
+			<action no="10" player="P2_704413FE" type="5" sum="9.5" cards="" />
+			<action no="11" player="P1_506963UY" type="3" sum="9.5" cards="" />
+		</round>
+		<round no="3">
+			<cards type="Turn" player="">H9</cards>
+			<action no="12" player="P2_704413FE" type="5" sum="21" cards="" />
+			<action no="13" player="P1_506963UY" type="7" sum="81.5" cards="" />
+			<action no="14" player="P2_704413FE" type="7" sum="59.5" cards="" />
+		</round>
+		<round no="4">
+			<cards type="River" player="">D5</cards>
+		</round>
+	</game>
+</session>
