@@ -5914,7 +5914,7 @@
 						<TypeLimit>true</TypeLimit>
 						<Cash>true</Cash>
 						<Tournament>true</Tournament>
-						<IncludeBoard>true</IncludeBoard>
+						<IncludeBoard>false</IncludeBoard>
 						<PlayersNoHeadsUp>true</PlayersNoHeadsUp>
 						<PlayersNo34>true</PlayersNo34>
 						<PlayersNo56>true</PlayersNo56>
