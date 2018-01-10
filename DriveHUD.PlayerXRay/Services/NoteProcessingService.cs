@@ -120,6 +120,11 @@ namespace DriveHUD.PlayerXRay.Services
 
         public event EventHandler<NoteProcessingServiceProgressChangedEventArgs> ProgressChanged;
 
+        public bool CanProcessNotes()
+        {
+            return licenseService != null && licenseService.IsRegistered;
+        }
+
         public IEnumerable<Playernotes> ProcessHand(IEnumerable<NoteObject> notes, Playerstatistic stats, HandHistory handHistory)
         {
             if (!licenseService.IsRegistered)

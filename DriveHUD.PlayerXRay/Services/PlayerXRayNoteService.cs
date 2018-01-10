@@ -48,6 +48,11 @@ namespace DriveHUD.PlayerXRay.Services
 
             var noteProcessingService = ServiceLocator.Current.GetInstance<INoteProcessingService>();
 
+            if (!noteProcessingService.CanProcessNotes())
+            {
+                return null;
+            }
+
             try
             {
                 var profile = CurrentNotesAppSettings.Profiles?.FirstOrDefault(x => x.Name == CurrentNotesAppSettings.AutoNoteProfile);
@@ -125,7 +130,7 @@ namespace DriveHUD.PlayerXRay.Services
                     CurrentNotesAppSettings.StagesList.Count == 0)
                 {
                     InitializeDefaultNotes();
-                }                            
+                }
             }
         }
 

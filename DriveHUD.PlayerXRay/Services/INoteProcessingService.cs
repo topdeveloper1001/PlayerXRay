@@ -28,5 +28,7 @@ namespace DriveHUD.PlayerXRay.Services
         IEnumerable<Playernotes> ProcessHand(IEnumerable<NoteObject> notes, Playerstatistic stats, HandHistory handHistory);
 
         void DeletesNotes(DateTime? beforeDate);
+
+        bool CanProcessNotes();
     }
 }
