@@ -13,7 +13,7 @@ param
     [string] $Mode = 'Release',
 
     [string] $Source = 'DriveHUD.PlayerXRay\bin',
-	
+    
     [string] $Solution = 'PlayerXRay.sln',                             
     
     [string] $Version = '1.0.0',
@@ -25,7 +25,7 @@ param
     [string] $ObfuscatorExcludeFilter = 'vshost',
 
     [string] $SigningIncludeFilter = 'DriveHUD.PlayerXRay.dll',
-	
+    
     [string] $SigningExcludeFilter = 'vshost',
 
     [string] $SigningCertificate = 'Certificates/APSCertificate.pfx',
@@ -78,7 +78,7 @@ $session = @{
   Candle = 'C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe'
   Light = 'C:\Program Files (x86)\WiX Toolset v3.11\bin\Light.exe'
   Insignia = 'C:\Program Files (x86)\WiX Toolset v3.11\bin\insignia.exe'
-  MSBuild = 'c:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe'
+  MSBuild = 'c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\msbuild.exe'
   Nuget = '.\.nuget\Nuget.exe'
   Git = 'c:\Program Files\Git\bin\git.exe'
   Mode = $Mode
@@ -236,10 +236,10 @@ catch
     $ErrorMessage = $_.Exception.Message    
     Write-Host $ErrorMessage -ForegroundColor Red        
     
-	Write-Host "Press any key to continue ..."
+    Write-Host "Press any key to continue ..."
 
-	$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-	
+    $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    
     exit(1)
 }
 finally
@@ -252,5 +252,5 @@ finally
     Remove-Module BuildRunner-Obfuscate
     Remove-Module BuildRunner-LicUpdater
     Remove-Module BuildRunner-Sign
-	Remove-Module BuildRunner-SignWixBundle
+    Remove-Module BuildRunner-SignWixBundle
 }

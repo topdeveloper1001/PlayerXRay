@@ -144,7 +144,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
             {
                 return selectedProfileNote;
             }
-            private set
+            set
             {
 
                 this.RaiseAndSetIfChanged(ref selectedProfileNote, value);
@@ -187,7 +187,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
             {
                 return selectedProfile;
             }
-            private set
+            set
             {
                 this.RaiseAndSetIfChanged(ref selectedProfile, value);
 
@@ -218,35 +218,30 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
         #region Commands
 
-        public ReactiveCommand<object> AddProfileCommand { get; private set; }
+        public ReactiveCommand AddProfileCommand { get; private set; }
 
-        public ReactiveCommand<object> EditProfileCommand { get; private set; }
+        public ReactiveCommand EditProfileCommand { get; private set; }
 
-        public ReactiveCommand<object> RemoveProfileCommand { get; private set; }
+        public ReactiveCommand RemoveProfileCommand { get; private set; }
 
-        public ReactiveCommand<object> AddToSelectedNotesCommand { get; private set; }
+        public ReactiveCommand AddToSelectedNotesCommand { get; private set; }
 
-        public ReactiveCommand<object> RemoveFromSelectedNotesCommand { get; private set; }
+        public ReactiveCommand RemoveFromSelectedNotesCommand { get; private set; }
 
         #endregion
 
         private void InitializeCommands()
         {
-            AddProfileCommand = ReactiveCommand.Create();
-            AddProfileCommand.Subscribe(x => AddProfile());
+            AddProfileCommand = ReactiveCommand.Create(AddProfile);
 
             var canEdit = this.WhenAny(x => x.SelectedProfile, x => x.Value != null);
 
-            EditProfileCommand = ReactiveCommand.Create(canEdit);
-            EditProfileCommand.Subscribe(x => EditProfile());
-
-            RemoveProfileCommand = ReactiveCommand.Create(canEdit);
-            RemoveProfileCommand.Subscribe(x => RemoveProfile());
+            EditProfileCommand = ReactiveCommand.Create(EditProfile, canEdit);
+            RemoveProfileCommand = ReactiveCommand.Create(RemoveProfile, canEdit);
 
             var canAddToSelectedNotes = this.WhenAny(x => x.SelectedNote, x => x.Value != null);
 
-            AddToSelectedNotesCommand = ReactiveCommand.Create(canAddToSelectedNotes);
-            AddToSelectedNotesCommand.Subscribe(x =>
+            AddToSelectedNotesCommand = ReactiveCommand.Create(() =>
             {
                 var existingNote = selectedProfileNotes.FirstOrDefault(p => p.ID == SelectedNote.ID);
 
@@ -257,16 +252,15 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
                 selectedProfileNotes.Add(SelectedNote);
                 NoteService.SaveAppSettings();
-            });
+            }, canAddToSelectedNotes);
 
             var canRemoveFromSelectedNotes = this.WhenAny(x => x.SelectedProfileNote, x => x.Value != null);
 
-            RemoveFromSelectedNotesCommand = ReactiveCommand.Create(canRemoveFromSelectedNotes);
-            RemoveFromSelectedNotesCommand.Subscribe(x =>
+            RemoveFromSelectedNotesCommand = ReactiveCommand.Create(() =>
             {
                 selectedProfileNotes.Remove(SelectedProfileNote);
                 NoteService.SaveAppSettings();
-            });
+            }, canRemoveFromSelectedNotes);
         }
 
         private void AddProfile()

@@ -93,29 +93,15 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
         {
             var canSend = this.WhenAny(x => x.Email, x => Utils.IsValidEmail(x.Value));
 
-            SendCommand = ReactiveCommand.Create(canSend);
-            SendCommand.Subscribe(x => Send());
+            SendCommand = ReactiveCommand.Create(Send, canSend);
+            CancelCommand = ReactiveCommand.Create(Cancel);
+            TrialCommand = ReactiveCommand.Create(InitializeTrial);
+            BackCommand = ReactiveCommand.Create(Back);
+            OKCommand = ReactiveCommand.Create(Cancel);
+            RegisterCommand = ReactiveCommand.Create(() => InitializeRegister(false));
+            ActivateCommand = ReactiveCommand.Create(Register);
 
-            CancelCommand = ReactiveCommand.Create();
-            CancelCommand.Subscribe(x => Cancel());
-
-            TrialCommand = ReactiveCommand.Create();
-            TrialCommand.Subscribe(x => InitializeTrial());
-
-            BackCommand = ReactiveCommand.Create();
-            BackCommand.Subscribe(x => Back());
-
-            OKCommand = ReactiveCommand.Create();
-            OKCommand.Subscribe(x => Cancel());
-
-            RegisterCommand = ReactiveCommand.Create();
-            RegisterCommand.Subscribe(x => InitializeRegister(false));
-
-            ActivateCommand = ReactiveCommand.Create();
-            ActivateCommand.Subscribe(x => Register());
-
-            BuyCommand = ReactiveCommand.Create();
-            BuyCommand.Subscribe(x =>
+            BuyCommand = ReactiveCommand.Create(() =>
             {
                 try
                 {
@@ -127,8 +113,7 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
                 }
             });
 
-            RenewCommand = ReactiveCommand.Create();
-            RenewCommand.Subscribe(x =>
+            RenewCommand = ReactiveCommand.Create(() =>
             {
                 try
                 {
@@ -649,23 +634,23 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
 
         #region Commands        
 
-        public ReactiveCommand<object> CancelCommand { get; private set; }
+        public ReactiveCommand CancelCommand { get; private set; }
 
-        public ReactiveCommand<object> SendCommand { get; private set; }
+        public ReactiveCommand SendCommand { get; private set; }
 
-        public ReactiveCommand<object> TrialCommand { get; private set; }
+        public ReactiveCommand TrialCommand { get; private set; }
 
-        public ReactiveCommand<object> BuyCommand { get; private set; }
+        public ReactiveCommand BuyCommand { get; private set; }
 
-        public ReactiveCommand<object> RegisterCommand { get; private set; }
+        public ReactiveCommand RegisterCommand { get; private set; }
 
-        public ReactiveCommand<object> RenewCommand { get; private set; }
+        public ReactiveCommand RenewCommand { get; private set; }
 
-        public ReactiveCommand<object> OKCommand { get; private set; }
+        public ReactiveCommand OKCommand { get; private set; }
 
-        public ReactiveCommand<object> ActivateCommand { get; private set; }
+        public ReactiveCommand ActivateCommand { get; private set; }
 
-        public ReactiveCommand<object> BackCommand { get; private set; }
+        public ReactiveCommand BackCommand { get; private set; }
 
         #endregion
 

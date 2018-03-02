@@ -26,15 +26,13 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
         {
             filtersDictionary = FiltersHelper.GetFiltersObjects().ToDictionary(x => x.Filter, x => x.Description);
 
-            SaveCommand = ReactiveCommand.Create();
-            SaveCommand.Subscribe(x =>
+            SaveCommand = ReactiveCommand.Create(() =>
             {
                 OnSaveAction?.Invoke();
                 FinishInteraction?.Invoke();
             });
 
-            CancelCommand = ReactiveCommand.Create();
-            CancelCommand.Subscribe(x =>
+            CancelCommand = ReactiveCommand.Create(() =>
             {
                 OnCancelAction?.Invoke();
                 FinishInteraction?.Invoke();
@@ -92,9 +90,9 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
             }
         }
 
-        public ReactiveCommand<object> SaveCommand { get; private set; }
+        public ReactiveCommand SaveCommand { get; private set; }
 
-        public ReactiveCommand<object> CancelCommand { get; private set; }
+        public ReactiveCommand CancelCommand { get; private set; }
 
         public Action FinishInteraction
         {

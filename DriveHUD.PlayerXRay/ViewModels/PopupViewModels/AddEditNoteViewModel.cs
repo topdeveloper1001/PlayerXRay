@@ -21,15 +21,13 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
         {
             var canSave = this.WhenAny(x => x.Name, x => !string.IsNullOrWhiteSpace(x.Value));
 
-            SaveCommand = ReactiveCommand.Create(canSave);
-            SaveCommand.Subscribe(x =>
+            SaveCommand = ReactiveCommand.Create(() =>
             {
                 OnSaveAction?.Invoke();
                 FinishInteraction?.Invoke();
-            });
+            }, canSave);
 
-            CancelCommand = ReactiveCommand.Create();
-            CancelCommand.Subscribe(x => FinishInteraction?.Invoke());
+            CancelCommand = ReactiveCommand.Create(() => FinishInteraction?.Invoke());
         }
 
         private string name;
@@ -74,9 +72,9 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
             }
         }
 
-        public ReactiveCommand<object> SaveCommand { get; private set; }
+        public ReactiveCommand SaveCommand { get; private set; }
 
-        public ReactiveCommand<object> CancelCommand { get; private set; }
+        public ReactiveCommand CancelCommand { get; private set; }
 
         public Action FinishInteraction
         {

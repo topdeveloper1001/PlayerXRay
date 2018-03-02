@@ -60,20 +60,11 @@ namespace DriveHUD.PlayerXRay
 
         public override void Configure(object viewModelInfo)
         {
-            NavigateCommand = ReactiveCommand.Create();
-            NavigateCommand.Subscribe(x => Navigate((WorkspaceType)x));
-
-            UpgradeCommand = ReactiveCommand.Create();
-            UpgradeCommand.Subscribe(x => Upgrade());
-
-            ManualCommand = ReactiveCommand.Create();
-            ManualCommand.Subscribe(x => BrowserHelper.OpenLinkInBrowser(CommonResourceManager.Instance.GetResourceString("XRay_MainView_Help_ManualLink")));
-
-            ForumCommand = ReactiveCommand.Create();
-            ForumCommand.Subscribe(x => BrowserHelper.OpenLinkInBrowser(CommonResourceManager.Instance.GetResourceString("XRay_MainView_Help_ForumLink")));
-
-            SupportCommand = ReactiveCommand.Create();
-            SupportCommand.Subscribe(x => BrowserHelper.OpenLinkInBrowser(CommonResourceManager.Instance.GetResourceString("XRay_MainView_Help_SupportLink")));
+            NavigateCommand = ReactiveCommand.Create<WorkspaceType>(x => Navigate(x));
+            UpgradeCommand = ReactiveCommand.Create(() => Upgrade());
+            ManualCommand = ReactiveCommand.Create(() => BrowserHelper.OpenLinkInBrowser(CommonResourceManager.Instance.GetResourceString("XRay_MainView_Help_ManualLink")));
+            ForumCommand = ReactiveCommand.Create(() => BrowserHelper.OpenLinkInBrowser(CommonResourceManager.Instance.GetResourceString("XRay_MainView_Help_ForumLink")));
+            SupportCommand = ReactiveCommand.Create(() => BrowserHelper.OpenLinkInBrowser(CommonResourceManager.Instance.GetResourceString("XRay_MainView_Help_SupportLink")));
 
             StaticStorage.CurrentPlayer = StorageModel.PlayerSelectedItem?.PlayerId.ToString();
             StaticStorage.CurrentPlayerName = StorageModel.PlayerSelectedItem?.Name;
@@ -253,15 +244,15 @@ namespace DriveHUD.PlayerXRay
 
         #region Commands
 
-        public ReactiveCommand<object> NavigateCommand { get; private set; }
+        public ReactiveCommand NavigateCommand { get; private set; }
 
-        public ReactiveCommand<object> UpgradeCommand { get; private set; }
+        public ReactiveCommand UpgradeCommand { get; private set; }
 
-        public ReactiveCommand<object> ManualCommand { get; private set; }
+        public ReactiveCommand ManualCommand { get; private set; }
 
-        public ReactiveCommand<object> ForumCommand { get; private set; }
+        public ReactiveCommand ForumCommand { get; private set; }
 
-        public ReactiveCommand<object> SupportCommand { get; private set; }
+        public ReactiveCommand SupportCommand { get; private set; }
 
         #endregion        
 

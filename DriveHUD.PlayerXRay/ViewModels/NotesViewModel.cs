@@ -126,54 +126,29 @@ namespace DriveHUD.PlayerXRay.ViewModels
         {
             var canAdd = this.WhenAny(x => x.SelectedStage, x => x.Value != null);
 
-            AddNoteCommand = ReactiveCommand.Create(canAdd);
-            AddNoteCommand.Subscribe(x => AddNote());
+            AddNoteCommand = ReactiveCommand.Create(AddNote, canAdd);
 
             var canEdit = this.WhenAny(x => x.SelectedStage, x => x.Value != null && x.Value is NoteTreeEditableObject);
 
-            EditNoteCommand = ReactiveCommand.Create(canEdit);
-            EditNoteCommand.Subscribe(x => EditNote());
+            EditNoteCommand = ReactiveCommand.Create(EditNote, canEdit);
 
             var canRemove = this.WhenAny(x => x.SelectedStage, x => (x.Value is InnerGroupObject) || (x.Value is NoteObject));
 
-            RemoveNoteCommand = ReactiveCommand.Create(canRemove);
-            RemoveNoteCommand.Subscribe(x => RemoveNote());
+            RemoveNoteCommand = ReactiveCommand.Create(RemoveNote, canRemove);
+            SwitchModeCommand = ReactiveCommand.Create(() => IsAdvancedMode = !IsAdvancedMode);
 
-            SwitchModeCommand = ReactiveCommand.Create();
-            SwitchModeCommand.Subscribe(x => IsAdvancedMode = !IsAdvancedMode);
+            HoleCardsLeftClickCommand = ReactiveCommand.Create<HoleCardsViewModel>(x => x.IsChecked = true);
+            HoleCardsDoubleLeftClickCommand = ReactiveCommand.Create<HoleCardsViewModel>(x => x.IsChecked = false);
+            HoleCardsMouseEnterCommand = ReactiveCommand.Create<HoleCardsViewModel>(x => x.IsChecked = true);
+            HoleCardsSelectAllCommand = ReactiveCommand.Create(() => HoleCardsCollection.ForEach(x => x.IsChecked = true));
+            HoleCardsSelectNoneCommand = ReactiveCommand.Create(() => HoleCardsCollection.ForEach(x => x.IsChecked = false));
+            HoleCardsSelectSuitedGappersCommand = ReactiveCommand.Create(SelectSuitedGappers);
+            HoleCardsSelectSuitedConnectorsCommand = ReactiveCommand.Create(SelectedSuitedConnectors);
+            HoleCardsSelectPocketPairsCommand = ReactiveCommand.Create(SelectPocketPairs);
+            HoleCardsSelectOffSuitedGappersCommand = ReactiveCommand.Create(SelectOffSuitedGappers);
+            HoleCardsSelectOffSuitedConnectorsCommand = ReactiveCommand.Create(SelectOffSuitedConnectors);
 
-            HoleCardsLeftClickCommand = ReactiveCommand.Create();
-            HoleCardsLeftClickCommand.Subscribe(x => (x as HoleCardsViewModel).IsChecked = true);
-
-            HoleCardsDoubleLeftClickCommand = ReactiveCommand.Create();
-            HoleCardsDoubleLeftClickCommand.Subscribe(x => (x as HoleCardsViewModel).IsChecked = false);
-
-            HoleCardsMouseEnterCommand = ReactiveCommand.Create();
-            HoleCardsMouseEnterCommand.Subscribe(x => (x as HoleCardsViewModel).IsChecked = true);
-
-            HoleCardsSelectAllCommand = ReactiveCommand.Create();
-            HoleCardsSelectAllCommand.Subscribe(o => HoleCardsCollection.ForEach(x => x.IsChecked = true));
-
-            HoleCardsSelectNoneCommand = ReactiveCommand.Create();
-            HoleCardsSelectNoneCommand.Subscribe(o => HoleCardsCollection.ForEach(x => x.IsChecked = false));
-
-            HoleCardsSelectSuitedGappersCommand = ReactiveCommand.Create();
-            HoleCardsSelectSuitedGappersCommand.Subscribe(x => SelectSuitedGappers());
-
-            HoleCardsSelectSuitedConnectorsCommand = ReactiveCommand.Create();
-            HoleCardsSelectSuitedConnectorsCommand.Subscribe(x => SelectedSuitedConnectors());
-
-            HoleCardsSelectPocketPairsCommand = ReactiveCommand.Create();
-            HoleCardsSelectPocketPairsCommand.Subscribe(x => SelectPocketPairs());
-
-            HoleCardsSelectOffSuitedGappersCommand = ReactiveCommand.Create();
-            HoleCardsSelectOffSuitedGappersCommand.Subscribe(x => SelectOffSuitedGappers());
-
-            HoleCardsSelectOffSuitedConnectorsCommand = ReactiveCommand.Create();
-            HoleCardsSelectOffSuitedConnectorsCommand.Subscribe(x => SelectOffSuitedConnectors());
-
-            AddToSelectedFiltersCommand = ReactiveCommand.Create();
-            AddToSelectedFiltersCommand.Subscribe(x =>
+            AddToSelectedFiltersCommand = ReactiveCommand.Create(() =>
             {
                 var selectedItem = filters.FirstOrDefault(f => f.IsSelected);
 
@@ -211,8 +186,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
                 }
             });
 
-            RemoveFromSelectedFiltersCommand = ReactiveCommand.Create();
-            RemoveFromSelectedFiltersCommand.Subscribe(x =>
+            RemoveFromSelectedFiltersCommand = ReactiveCommand.Create(() =>
             {
                 var selectedItem = selectedFilters.FirstOrDefault(f => f.IsSelected);
 
@@ -222,58 +196,55 @@ namespace DriveHUD.PlayerXRay.ViewModels
                 }
             });
 
-            NoteDragDropCommand = ReactiveCommand.Create();
-            NoteDragDropCommand.Subscribe(x =>
-            {
-                var dataObject = x as DragDropDataObject;
+            NoteDragDropCommand = ReactiveCommand.Create<DragDropDataObject>(dataObject =>
+           {
+               if (dataObject == null)
+               {
+                   return;
+               }
 
-                if (dataObject == null)
-                {
-                    return;
-                }
+               var note = dataObject.DropData as NoteObject;
 
-                var note = dataObject.DropData as NoteObject;
+               if (note == null || ReferenceEquals(note, dataObject.Source))
+               {
+                   return;
+               }
 
-                if (note == null || ReferenceEquals(note, dataObject.Source))
-                {
-                    return;
-                }
+               var noteParent = FindNoteParent(note);
 
-                var noteParent = FindNoteParent(note);
+               if (dataObject.Source is InnerGroupObject)
+               {
+                   (dataObject.Source as InnerGroupObject).Notes.Add(note);
+               }
+               else if (dataObject.Source is NoteObject)
+               {
+                   var sourceNoteParent = FindNoteParent(dataObject.Source as NoteObject);
 
-                if (dataObject.Source is InnerGroupObject)
-                {
-                    (dataObject.Source as InnerGroupObject).Notes.Add(note);
-                }
-                else if (dataObject.Source is NoteObject)
-                {
-                    var sourceNoteParent = FindNoteParent(dataObject.Source as NoteObject);
+                   if (ReferenceEquals(sourceNoteParent, noteParent))
+                   {
+                       return;
+                   }
 
-                    if (ReferenceEquals(sourceNoteParent, noteParent))
-                    {
-                        return;
-                    }
+                   if (sourceNoteParent is InnerGroupObject)
+                   {
+                       (sourceNoteParent as InnerGroupObject).Notes.Add(note);
+                   }
+                   else if (sourceNoteParent is StageObject)
+                   {
+                       (sourceNoteParent as StageObject).Notes.Add(note);
+                   }
+               }
 
-                    if (sourceNoteParent is InnerGroupObject)
-                    {
-                        (sourceNoteParent as InnerGroupObject).Notes.Add(note);
-                    }
-                    else if (sourceNoteParent is StageObject)
-                    {
-                        (sourceNoteParent as StageObject).Notes.Add(note);
-                    }
-                }
-
-                // remove note from parent object
-                if (noteParent is InnerGroupObject)
-                {
-                    (noteParent as InnerGroupObject).Notes.Remove(note);
-                }
-                else if (noteParent is StageObject)
-                {
-                    (noteParent as StageObject).Notes.Remove(note);
-                }
-            });
+               // remove note from parent object
+               if (noteParent is InnerGroupObject)
+               {
+                   (noteParent as InnerGroupObject).Notes.Remove(note);
+               }
+               else if (noteParent is StageObject)
+               {
+                   (noteParent as StageObject).Notes.Remove(note);
+               }
+           });
         }
 
         private NoteTreeObjectBase FindNoteParent(NoteObject note)
@@ -1213,41 +1184,41 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
         #region Commands
 
-        public ReactiveCommand<object> AddNoteCommand { get; private set; }
+        public ReactiveCommand AddNoteCommand { get; private set; }
 
-        public ReactiveCommand<object> EditNoteCommand { get; private set; }
+        public ReactiveCommand EditNoteCommand { get; private set; }
 
-        public ReactiveCommand<object> RemoveNoteCommand { get; private set; }
+        public ReactiveCommand RemoveNoteCommand { get; private set; }
 
-        public ReactiveCommand<object> ExportCommand { get; private set; }
+        public ReactiveCommand ExportCommand { get; private set; }
 
-        public ReactiveCommand<object> SwitchModeCommand { get; private set; }
+        public ReactiveCommand SwitchModeCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsLeftClickCommand { get; private set; }
+        public ReactiveCommand HoleCardsLeftClickCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsDoubleLeftClickCommand { get; private set; }
+        public ReactiveCommand HoleCardsDoubleLeftClickCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsMouseEnterCommand { get; private set; }
+        public ReactiveCommand HoleCardsMouseEnterCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsSelectSuitedGappersCommand { get; private set; }
+        public ReactiveCommand HoleCardsSelectSuitedGappersCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsSelectSuitedConnectorsCommand { get; private set; }
+        public ReactiveCommand HoleCardsSelectSuitedConnectorsCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsSelectPocketPairsCommand { get; private set; }
+        public ReactiveCommand HoleCardsSelectPocketPairsCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsSelectOffSuitedGappersCommand { get; private set; }
+        public ReactiveCommand HoleCardsSelectOffSuitedGappersCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsSelectOffSuitedConnectorsCommand { get; private set; }
+        public ReactiveCommand HoleCardsSelectOffSuitedConnectorsCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsSelectAllCommand { get; private set; }
+        public ReactiveCommand HoleCardsSelectAllCommand { get; private set; }
 
-        public ReactiveCommand<object> HoleCardsSelectNoneCommand { get; private set; }
+        public ReactiveCommand HoleCardsSelectNoneCommand { get; private set; }
 
-        public ReactiveCommand<object> AddToSelectedFiltersCommand { get; private set; }
+        public ReactiveCommand AddToSelectedFiltersCommand { get; private set; }
 
-        public ReactiveCommand<object> RemoveFromSelectedFiltersCommand { get; private set; }
+        public ReactiveCommand RemoveFromSelectedFiltersCommand { get; private set; }
 
-        public ReactiveCommand<object> NoteDragDropCommand { get; private set; }
+        public ReactiveCommand NoteDragDropCommand { get; private set; }
 
         #endregion
 

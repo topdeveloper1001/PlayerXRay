@@ -19,15 +19,13 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
     {
         public YesNoConfirmationViewModel()
         {
-            YesCommand = ReactiveCommand.Create();
-            YesCommand.Subscribe(x =>
+            YesCommand = ReactiveCommand.Create(() =>
             {
                 OnYesAction?.Invoke();
                 FinishInteraction?.Invoke();
             });
 
-            NoCommand = ReactiveCommand.Create();
-            NoCommand.Subscribe(x =>
+            NoCommand = ReactiveCommand.Create(() =>
             {
                 OnNoAction?.Invoke();
                 FinishInteraction?.Invoke();
@@ -48,9 +46,9 @@ namespace DriveHUD.PlayerXRay.ViewModels.PopupViewModels
             }
         }
 
-        public ReactiveCommand<object> YesCommand { get; private set; }
+        public ReactiveCommand YesCommand { get; private set; }
 
-        public ReactiveCommand<object> NoCommand { get; private set; }
+        public ReactiveCommand NoCommand { get; private set; }
 
         public Action FinishInteraction
         {

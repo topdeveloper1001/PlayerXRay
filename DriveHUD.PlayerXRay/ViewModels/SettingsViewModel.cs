@@ -34,14 +34,9 @@ namespace DriveHUD.PlayerXRay.ViewModels
         {
             eventAggregator = ServiceLocator.Current.GetInstance<IEventAggregator>();
 
-            DeleteAllNotesCommand = ReactiveCommand.Create();
-            DeleteAllNotesCommand.Subscribe(x => DeleteNotes(null));
-
-            DeleteNotesCommand = ReactiveCommand.Create();
-            DeleteNotesCommand.Subscribe(x => DeleteNotes(OlderThanDate));
-
-            RestoreDefaultsCommand = ReactiveCommand.Create();
-            RestoreDefaultsCommand.Subscribe(x => RestoreDefaults());
+            DeleteAllNotesCommand = ReactiveCommand.Create(() => DeleteNotes(null));
+            DeleteNotesCommand = ReactiveCommand.Create(() => DeleteNotes(OlderThanDate));
+            RestoreDefaultsCommand = ReactiveCommand.Create(() => RestoreDefaults());
 
             olderThanDate = DateTime.Today;
 
@@ -260,11 +255,11 @@ namespace DriveHUD.PlayerXRay.ViewModels
 
         #region Commands
 
-        public ReactiveCommand<object> DeleteAllNotesCommand { get; private set; }
+        public ReactiveCommand DeleteAllNotesCommand { get; private set; }
 
-        public ReactiveCommand<object> DeleteNotesCommand { get; private set; }
+        public ReactiveCommand DeleteNotesCommand { get; private set; }
 
-        public ReactiveCommand<object> RestoreDefaultsCommand { get; private set; }
+        public ReactiveCommand RestoreDefaultsCommand { get; private set; }
 
         #endregion
 

@@ -49,8 +49,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
                     (x1.Value == RunMode.ByNote && x2.Value != null && x2.Value is NoteObject) ||
                     (x1.Value == RunMode.ByProfile && x3.Value != null));
 
-            RunCommand = ReactiveCommand.Create(canRun);
-            RunCommand.Subscribe(x => Run());
+            RunCommand = ReactiveCommand.Create(Run, canRun);            
 
             ReloadStages();
 
@@ -122,7 +121,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
             {
                 return selectedProfile;
             }
-            private set
+            set
             {
                 this.RaiseAndSetIfChanged(ref selectedProfile, value);
             }
@@ -199,7 +198,7 @@ namespace DriveHUD.PlayerXRay.ViewModels
             }
         }
 
-        public ReactiveCommand<object> RunCommand { get; private set; }
+        public ReactiveCommand RunCommand { get; private set; }
 
         /// <summary>
         /// Runs notes engine
