@@ -10,7 +10,6 @@
 // </copyright>
 //----------------------------------------------------------------------
 
-using DriveHud.Common.Log;
 using DriveHUD.Common.Exceptions;
 using DriveHUD.Common.Infrastructure.CustomServices;
 using DriveHUD.Common.Linq;
@@ -263,6 +262,11 @@ namespace DriveHUD.PlayerXRay.Services
                                             return;
                                         }
 
+                                        var playerStatisticCreationInfo = new PlayerStatisticCreationInfo
+                                        {
+                                            ParsingResult = parsingResult
+                                        };
+
                                         foreach (var player in parsingResult.Players)
                                         {
                                             // skip notes for current player (need to check setting)
@@ -277,7 +281,9 @@ namespace DriveHUD.PlayerXRay.Services
                                             {
                                                 var playerNoteKey = new PlayerPokerSiteKey(player.PlayerId, player.PokersiteId);
 
-                                                var playerStatistic = BuildPlayerStatistic(parsingResult, player, calculatedEquity);
+                                                playerStatisticCreationInfo.Player = player;
+
+                                                var playerStatistic = BuildPlayerStatistic(playerStatisticCreationInfo);
 
                                                 var playerNotes = ProcessHand(notes, playerStatistic, parsingResult.Source);
 
@@ -482,11 +488,11 @@ namespace DriveHUD.PlayerXRay.Services
         /// </summary>
         /// <param name="handHistory"></param>
         /// <param name="player"></param>
-        private Playerstatistic BuildPlayerStatistic(ParsingResult handHistory, Players player, Dictionary<string, Dictionary<Street, decimal>> calculatedEquity)
+        private Playerstatistic BuildPlayerStatistic(PlayerStatisticCreationInfo playerStatisticCreationInfo)
         {
             var playerStatisticCalculator = ServiceLocator.Current.GetInstance<IPlayerStatisticCalculator>();
 
-            var playerStat = playerStatisticCalculator.CalculateStatistic(handHistory, player, calculatedEquity);
+            var playerStat = playerStatisticCalculator.CalculateStatistic(playerStatisticCreationInfo);
 
             return playerStat;
         }
