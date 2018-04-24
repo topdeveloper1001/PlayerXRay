@@ -18,6 +18,10 @@ param
     
     [string] $Version = '1.0.0',
 
+    [string] $VersionIncludeFilter = '**DriveHUD.PlayerXRay\\DriveHUD.PlayerXRay**,**XR*Reg**',
+
+    [string] $VersionExlcudeFilter = '',
+
     [string] $ObfuscatorIncludeFilter = 'DriveHUD.PlayerXRay.dll',
 
     [string] $ObfuscatorStrongNamedAssemblies = '',
@@ -84,6 +88,8 @@ $session = @{
   Mode = $Mode
   Solution = Join-Path $BaseDir $Solution  
   Version = $Version
+  VersionIncludeFilter = $VersionIncludeFilter
+  VersionExlcudeFilter = $VersionExlcudeFilter
   ObfuscatorIncludeFilter = $ObfuscatorIncludeFilter
   ObfuscatorExcludeFilter = $ObfuscatorExcludeFilter
   ObfuscatorStrongNamedAssemblies = $ObfuscatorStrongNamedAssemblies
@@ -187,7 +193,7 @@ try
    }
      
    # setup version
-   Set-Version($session)  
+   Set-Version($session)     
        
    # nuget
    Use-Nuget $session $session.Solution 'nuget.log'   
