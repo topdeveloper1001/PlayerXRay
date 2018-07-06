@@ -12,9 +12,7 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     mc:Ignorable="d"
-    Style="{DynamicResource BaseFontStyle}"
-    MinWidth="1000"
-    MinHeight="750">
+    Style="{DynamicResource BaseFontStyle}">
 
     <UserControl.Resources>
         <ResourceDictionary>
