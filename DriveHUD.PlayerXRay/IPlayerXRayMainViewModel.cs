@@ -14,7 +14,7 @@ using DriveHUD.Common.Wpf.Mvvm;
 
 namespace DriveHUD.PlayerXRay
 {
-    public interface IPlayerXRayMainViewModel : IPopupWindowViewModel
+    public interface IPlayerXRayMainViewModel : IWindowViewModelBase
     {
     }
 }

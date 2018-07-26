@@ -18,7 +18,7 @@ using System;
 
 namespace DriveHUD.PlayerXRay
 {
-    public abstract class WorkspaceViewModel : WindowViewModelBase
+    public abstract class WorkspaceViewModel : WpfViewModel<WorkspaceViewModel>
     {
         private Lazy<IPlayerXRayNoteService> noteService = new Lazy<IPlayerXRayNoteService>(() => ServiceLocator.Current.GetInstance<IPlayerNotesService>() as IPlayerXRayNoteService);
 

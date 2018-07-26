@@ -35,7 +35,7 @@ using System.Reflection;
 
 namespace DriveHUD.PlayerXRay
 {
-    public class PlayerXRayMainViewModel : PopupWindowViewModel, IPlayerXRayMainViewModel
+    public class PlayerXRayMainViewModel : WindowViewModelBase<PlayerXRayMainViewModel>, IPlayerXRayMainViewModel
     {
         private readonly Dictionary<WorkspaceType, WorkspaceViewModel> workspaces;
 
