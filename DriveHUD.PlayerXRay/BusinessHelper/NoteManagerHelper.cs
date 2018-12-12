@@ -337,7 +337,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                 case FilterEnum.FacedPreflop3Bet:
                     return incomingPlayerstatistics.Where(x => x.Playerstatistic.Facedthreebetpreflop > 0).ToList();
                 case FilterEnum.FoldedToPreflop3Bet:
-                    return incomingPlayerstatistics.Where(x => x.Playerstatistic.Facedthreebetpreflop > 0 && x.Playerstatistic.Calledthreebetpreflop == 0 && x.Playerstatistic.Raisedthreebetpreflop == 0).ToList();
+                    return incomingPlayerstatistics.Where(x => x.Playerstatistic.Foldedtothreebetpreflop > 0).ToList();
                 case FilterEnum.CalledPreflop3Bet:
                     return incomingPlayerstatistics.Where(x => x.Playerstatistic.Calledthreebetpreflop > 0).ToList();
                 case FilterEnum.RaisedPreflop3Bet:
@@ -345,7 +345,7 @@ namespace DriveHUD.PlayerXRay.BusinessHelper
                 case FilterEnum.FacedPreflop4Bet:
                     return incomingPlayerstatistics.Where(x => x.Playerstatistic.Facedfourbetpreflop > 0).ToList();
                 case FilterEnum.FoldedToPreflop4Bet:
-                    return incomingPlayerstatistics.Where(x => x.Playerstatistic.Facedfourbetpreflop > 0 && x.Playerstatistic.Calledfourbetpreflop == 0 && x.Playerstatistic.Raisedfourbetpreflop == 0).ToList();
+                    return incomingPlayerstatistics.Where(x => x.Playerstatistic.Foldedtofourbetpreflop > 0).ToList();
                 case FilterEnum.CalledPreflop4Bbet:
                     return incomingPlayerstatistics.Where(x => x.Playerstatistic.Calledfourbetpreflop > 0).ToList();
                 case FilterEnum.RaisedPreflop4Bet:
