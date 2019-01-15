@@ -149,7 +149,7 @@ namespace DriveHUD.PlayerXRay.Tests
         }
 
         [Test]
-        [TestCase("HeroCheckRaisesLight-1.xml", EnumPokerSites.IPoker, "UbuntuFoo", "Check raises light", false)]        
+        [TestCase("HeroCheckRaisesLight-1.xml", EnumPokerSites.IPoker, "UbuntuFoo", "Check raises light", false)]
         [TestCase("BetsWeakWithWeakHand.xml", EnumPokerSites.IPoker, "takisaris", "Bets weak w/ weak hands", false)]
         [TestCase("BetsWeakWithWeakHand.xml", EnumPokerSites.IPoker, "Hero", "Bets weak w/ weak hands", false)]
         [TestCase("BetsWeakWithWeakHand.xml", EnumPokerSites.IPoker, "mariusban365", "Bets weak w/ weak hands", false)]
@@ -164,7 +164,7 @@ namespace DriveHUD.PlayerXRay.Tests
         [TestCase("OverBetsStrong.xml", EnumPokerSites.IPoker, "Hero", "Bet 70%+ of pot with weak made hand", false)]
         [TestCase("DoubleBarrelsOOPWAir.xml", EnumPokerSites.IPoker, "P5_736203JN", "Double barrels OOP w/ air", false)]
         [TestCase("DonkBetsFlopStrong.xml", EnumPokerSites.IPoker, "P6_909159DM", "Donk bets flop strong", false)]
-        [TestCase("DoubleBarrelsWAir.xml", EnumPokerSites.IPoker, "P2_704413FE", "Double barrels w/ air", false)]                
+        [TestCase("DoubleBarrelsWAir.xml", EnumPokerSites.IPoker, "P2_704413FE", "Double barrels w/ air", false)]
         public void TestPredefinedNotes(string handHistoryFile, EnumPokerSites pokerSite, string playerName, string noteName, bool expected)
         {
             var handHistoryObject = CreateHandHistoryObject(handHistoryFile, pokerSite, playerName);
@@ -198,7 +198,14 @@ namespace DriveHUD.PlayerXRay.Tests
 
             var playerStatisticCalculator = ServiceLocator.Current.GetInstance<IPlayerStatisticCalculator>();
 
-            var stat = playerStatisticCalculator.CalculateStatistic(parsingResult, player);
+            var creationInfo = new PlayerStatisticCreationInfo
+            {
+                ParsingResult = parsingResult,
+                Player = player,
+                EquityData = new Dictionary<string, Model.Solvers.EquityData>()
+            };
+
+            var stat = playerStatisticCalculator.CalculateStatistic(creationInfo);
 
             return new HandHistoryObject
             {
