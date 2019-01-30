@@ -490,7 +490,7 @@ namespace DriveHUD.PlayerXRay.Services
         /// <param name="player"></param>
         private Playerstatistic BuildPlayerStatistic(PlayerStatisticCreationInfo playerStatisticCreationInfo)
         {
-            var playerStatisticCalculator = ServiceLocator.Current.GetInstance<IPlayerStatisticCalculator>();
+            var playerStatisticCalculator = ServiceLocator.Current.GetInstance<IPlayerStatisticCalculator>(playerStatisticCreationInfo.GetServiceName());
 
             var playerStat = playerStatisticCalculator.CalculateStatistic(playerStatisticCreationInfo);
 
