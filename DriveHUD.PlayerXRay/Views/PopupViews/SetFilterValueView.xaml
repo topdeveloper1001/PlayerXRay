@@ -62,13 +62,13 @@
 
             <Button
                 Margin="5,0,0,0"
-                Content="Save"
+                Content="{ResX Key=XRay_SetFilterValueView_Save}"
                 Width="45"
                 Command="{Binding SaveCommand}" />
 
             <Button
                 Margin="5,0,0,0"
-                Content="Cancel"
+                Content="{ResX Key=XRay_SetFilterValueView_Cancel}"
                 Width="45"
                 Command="{Binding CancelCommand}" />
 

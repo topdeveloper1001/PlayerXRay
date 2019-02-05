@@ -678,4 +678,10 @@
   <data name="XRay_MainView_Help_SupportLink" xml:space="preserve">
     <value>http://drivehud.com/support</value>
   </data>
+  <data name="XRay_SetFilterValueView_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="XRay_SetFilterValueView_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

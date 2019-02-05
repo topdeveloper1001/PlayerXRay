@@ -732,51 +732,6 @@
                                         Content="{ResX Key=XRay_NotesView_Limit}" />
                                 </StackPanel>
 
-                                <!--<GroupBox
-                                    Grid.Row="1"
-                                    Style="{StaticResource BoxStyle}"
-                                    Header="Stakes">
-
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition
-                                                Width="*" />
-                                            <ColumnDefinition
-                                                Width="125" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackPanel>
-                                            <CheckBox
-                                                Style="{StaticResource CheckBoxStyle}"
-                                                Content="$0.1 NL (6 max)" />
-
-                                            <CheckBox
-                                                Style="{StaticResource CheckBoxStyle}"
-                                                Margin="0,12,0,0"
-                                                Content="$2 NL (6 max)" />
-                                        </StackPanel>
-
-                                        <StackPanel
-                                            VerticalAlignment="Top"
-                                            Grid.Column="1">
-
-                                            <Button
-                                                Content="CHECK ALL"
-                                                Width="125"
-                                                Style="{StaticResource SwitchModeButtonStyle}" />
-
-                                            <Button
-                                                Margin="0,8,0,0"
-                                                Width="125"
-                                                Content="UNCHECK ALL"
-                                                Style="{StaticResource SwitchModeButtonStyle}" />
-
-                                        </StackPanel>
-
-                                    </Grid>
-
-                                </GroupBox>-->
-
                                 <GroupBox
                                     Grid.Row="2"
                                     Height="110"

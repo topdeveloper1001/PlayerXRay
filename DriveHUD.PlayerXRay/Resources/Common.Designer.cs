@@ -1528,11 +1528,29 @@ namespace DriveHUD.PlayerXRay.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string XRay_SetFilterValueView_Cancel {
+            get {
+                return ResourceManager.GetString("XRay_SetFilterValueView_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the amount for:.
         /// </summary>
         internal static string XRay_SetFilterValueView_EnterTheAmountFor {
             get {
                 return ResourceManager.GetString("XRay_SetFilterValueView_EnterTheAmountFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string XRay_SetFilterValueView_Save {
+            get {
+                return ResourceManager.GetString("XRay_SetFilterValueView_Save", resourceCulture);
             }
         }
         
